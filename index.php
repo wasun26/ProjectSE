@@ -10,6 +10,17 @@
 
 <body>
     <?php include("nav.php"); ?>
+    <?php
+    $view = $_GET['p'];
+    switch ($view) {
+        case "login":
+            include("login.php");
+            break;
+        default:
+            include("home.php");
+            break;
+    }
+    ?>
 </body>
 
 </html>
