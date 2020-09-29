@@ -24,7 +24,7 @@ function my_session_regenerate_id()
         session_start();
     }
     // WARNING: Never use confidential strings for prefix!
-    $newid = session_create_id('-');
+    $newid = session_create_id(+'-');
     // Set deleted timestamp. Session data must not be deleted immediately for reasons.
     $_SESSION['deleted_time'] = time();
     // Finish session

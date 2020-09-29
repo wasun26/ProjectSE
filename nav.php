@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	<div class="container-fluid">
-		<a routerLink="" class="navbar-brand"><img src="" width="30" height="30" class="d-inline-block align-top" alt="srt logo">ระบบห้องสอบ</a>
+		<a href="./" class="navbar-brand">
+			<?php
+			#<img src="" width="30" height="30" class="d-inline-block align-top" alt="srt logo"> 
+			?>
+			<?php print(title_short); ?>
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -11,7 +16,7 @@
 				<?php
 				if (true) {
 					echo ("
-						<li class='nav-item'><a href='#' class='nav-link' routerLink='login'>เข้าสู่ระบบ</a></li>
+						<li class='nav-item'><a href='login.php' class='nav-link' routerLink='login'>เข้าสู่ระบบ</a></li>
 					");
 				}
 				if (false) {
