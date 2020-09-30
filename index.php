@@ -24,6 +24,9 @@ include("config.php");
         case "login":
             include("login.php");
             break;
+        case "main":
+            include("main.php");
+            break;
         default:
             include("home.php");
             break;
