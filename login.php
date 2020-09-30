@@ -52,7 +52,7 @@
 						function Login() {
 							var myform = document.login;
 							if (myform.userid.value == "Admin" && ((myform.passid.value == "803") || (myform.passid.value == "710") || (myform.passid.value == "815") || (myform.passid.value == "809") || (myform.passid.value == "665")))
-								window.open('\main.php')
+								window.open('./?page=main')
 							else
 								alert("Error Password or Username")
 							myform.reset();
