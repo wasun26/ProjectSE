@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<title>
-    E-HUMANITIES : ระบบสารสนเทศ คณะมนุษยศาสตร์ มหาวิทยาลัยเชียงใหม่    </title>
+    CS CMU  </title>
 </head>
 <body class="landing-page  pace-done"><center>
 <section id="pricing" class="pricing">
