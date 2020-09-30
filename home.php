@@ -15,12 +15,9 @@
                                 <h5>สำหรับอาจารย์</h5>
                             </center>
                         </a>
-                    </div>
-                    <a href="login.php">
-                        <button type="button" class="btn btn-succes">Login</button>
-                    </a>
-
-                </div>
+                        </div>
+                            <button type="button" class="btn btn-success" onclick="Login()">Login</button>
+                        </div>
             </div>
             <div class="col">
                 <div class="card">
@@ -29,7 +26,7 @@
                             <h5>สำหรับเจ้าหน้าที่</h5>
                         </center>
                     </div>
-                    <button type="button" class="btn btn-success">Login</button>
+                    <button type="button" class="btn btn-success" onclick="Login()">Login</button>
                 </div>
             </div>
             <div class="col">
@@ -39,7 +36,7 @@
                             <h5>สำหรับนักศึกษา</h5>
                         </center>
                     </div>
-                    <button type="button" class="btn btn-success">Login</button>
+                    <button type="button" class="btn btn-success" onclick="Login()">Login</button>
                 </div>
             </div>
         </div>
@@ -49,6 +46,12 @@
             <p class="description">ค้นหากระบวนวิชาที่เปิดสอน เพื่อดูรายละเอียดของแต่ละกระบวนวิชา ในแต่ละภาค/ปีการศึกษา</p>
         </div>
     </div>
+
+                    <script language="javascript">
+						function Login() {
+							window.open('\login.php')
+						}
+					</script>
 </body>
 
 </html>
