@@ -28,7 +28,7 @@ include("config.php");
             include("home.php");
             break;
     }
-    ?>
+    include("footer.php"); ?>
 </body>
 
 </html>
