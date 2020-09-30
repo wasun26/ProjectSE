@@ -26,11 +26,7 @@
 				<li class="nav-item"><a href="./" class="nav-link" routerLink="train">หน้าแรก</a></li>
 				<li class="nav-item"><a href="#" class="nav-link" routerLink="ticket">ดูตารางสอบ</a></li>
 				<?php
-				if (true) {
-					echo ("
-						<li class='nav-item'><a href='login.php' class='nav-link' routerLink='login'>เข้าสู่ระบบ</a></li>
-					");
-				}
+			
 				if (false) {
 					echo ("
 						<li class='nav-item'><a href='#' class='nav-link' routerLink='profile'>โปรไฟล์</a></li>

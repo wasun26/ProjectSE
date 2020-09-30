@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+<link rel="stylesheet" href="styles.css">
+</head>
 <body>
     <div class="container">
         <div class="row">
@@ -8,26 +10,29 @@
                 <div class="card">
                     <div class="card-header text-primary">
                     <a href="#">
-                        <h5>สำหรับอาจารย์</h5>
+                    <center><h5>สำหรับอาจารย์</h5></center>
                     </a>
                     </div>
-                    <div class="card-body">asdasd</div>
+                        <a href="login.php">
+                        <button type="button" class="btn btn-succes">Login</button>
+                        </a>
+                   
                 </div>
             </div>
             <div class="col">
                 <div class="card">
                     <div class="card-header text-primary">
-                        <h5>สำหรับเจ้าหน้าที่</h5>
+                        <center><h5>สำหรับเจ้าหน้าที่</h5></center>
                     </div>
-                    <div class="card-body">asdasd</div>
+                    <button type="button" class="btn btn-success">Login</button>
                 </div>
             </div>
             <div class="col">
                 <div class="card">
                     <div class="card-header text-primary">
-                        <h5>สำหรับนักศึกษา</h5>
+                    <center><h5>สำหรับนักศึกษา</h5></center>
                     </div>
-                    <div class="card-body">asdasd</div>
+                    <button type="button" class="btn btn-success">Login</button>
                 </div>
             </div>
         </div>

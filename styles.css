@@ -90,3 +90,8 @@ color: white;
 margin-left: 4px;
 }
 
+.buttonx{
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
