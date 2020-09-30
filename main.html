@@ -1,14 +1,489 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<title>
+    E-HUMANITIES : ระบบสารสนเทศ คณะมนุษยศาสตร์ มหาวิทยาลัยเชียงใหม่    </title>
 
-<h0>KUY<h0>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+	<link href="css/plugins/select2/select2.min.css" rel="stylesheet">
+<link href="css/plugins/chosen/chosen.css" rel="stylesheet">
+
+    <style>
+        input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+    </style>
+
 <style>
-body {
-  background-image: url('https://sv1.picz.in.th/images/2020/09/25/OPKvGl.jpg');
+@media print {
+  *,
+  *:before,enter code here
+  *:after {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: "";
+  }
+  abbr[title]:after {
+    content: "";
+  }
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  select {
+    background: #fff !important;
+  }
+  .navbar {
+    display: none;
+  }
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important;
+  }
+  .label {
+    border: 1px solid #000;
+  }
+  .table {
+    border-collapse: collapse !important;
+  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
 }
 </style>
-<div class="container"></div>
+  <script src='js/lang-all.js'></script>
+    <script>
+			function ConfirmDelete()
+			{
+			  var x = confirm("Are you sure you want to delete?");
+			  if (x)
+				  return true;
+			  else
+				return false;
+			}
+		</script>  
+		<script type="text/javascript" language="javascript"> 
+		function setCheckboxes3(act) {
+		  var e = document.getElementsByTagName('input');
+		  var elts_cnt  = (typeof(e.length) != 'undefined') ? e.length : 0;
+		  if (!elts_cnt) {
+			return;
+		  }
+		  for (var i = 0; i < elts_cnt; i++) {
+			if((e[i].type) == 'checkbox' && e[i].id!='tw-switch') {
+			  e[i].checked = (act == 1 || act == 0) ? act : (e[i].checked ? 0 : 1);
+			}
+		  }
+		}
+		</script> 
+        <script type="text/javascript" src="jscripts/tiny_mce/tiny_mce.js"></script>
+                        
+        <script src="jscripts/html2excel/jquery.html2excel.js"></script>
+		<script src="jscripts/html2excel/jquery.min.js"></script>
+		<script src="jscripts/DatepickerThai/bootstrap-datepicker.js"></script>
+		<script src="jscripts/DatepickerThai/bootstrap-datepicker-thai.js"></script>
+    	<script src="jscripts/DatepickerThai/bootstrap-datepicker.th.js"></script>
+</head>
+<body id="page-top" class="landing-page">
+						<style>
+.pagebreak { page-break-before: always; } /* page-break-after works, as well */
+</style>
+<body class="landing-page  pace-done">
+<section id="pricing" class="pricing">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>ตารางสอบไล่/Final ภาคเรียนที่ 1 ปีการศึกษา 2563</h1>
+                <p>เลือกแบบฟอร์มและระบุเงื่อนไขที่ต้องการสืบค้น</p>
+            </div>
+        </div>
+        <div class="row">
+        	<form method="post" action="?application=Education&module=Exams&com=exams_report_8_result.php&profile_id=8&edu_year=&edu_term=&exams_type_id=1">
+            <div class="col-lg-6 wow zoomIn animated" style="visibility: visible;">
+                <ul class="pricing-plan list-unstyled ">
+                    <li class="pricing-title"  style="font-size:18px !important">
+                        ค้นหาจากรหัสนักศึกษา
+                    </li>
+                    <li class="pricing-desc">
+                        <div class="input-group m-b"><span class="input-group-addon">รหัสนักศึกษา</span> <input type="text"  name="student_id" id="student_id" class="form-control" maxlength="9" required></div>
+                    </li>
+                    
+                    <li>
+                        <button type="submit" class="btn btn-primary btn-xs" name="search1"><i class="fa fa-search"></i> Search</button>
+                    </li>
+                </ul>
+            </div>
+			</form>
+            <form method="post"  action="?application=Education&module=Exams&com=exams_report_8_result2.php&profile_id=8&edu_year=&edu_term=&exams_type_id=1">
+            <div class="col-lg-6 wow zoomIn animated" style="visibility: visible;">
+                <ul class="pricing-plan list-unstyled ">
+                    <li class="pricing-title"  style="font-size:18px !important">
+                        ค้นหาตามวิชา
+                    </li>
+                    <li class="pricing-desc">
+                        <div class="input-group m-b"><span class="input-group-addon">รหัสวิชา</span> <input type="text"  name="course_keyword" id="course_keyword" class="form-control" maxlength="3" required></div>
+                        <i><font color="#FF0004">* ระบุรหัสวิชา 3 ตัวหน้า</font></i>
+                    </li>
+                    
+                    <li class="plan-action">
+                        <button type="submit" class="btn btn-primary btn-xs" name="search3" value="search3"><i class="fa fa-search"></i> Search</button>
+                    </li>
+                </ul>
+            </div>
+            </form>
+            <form method="post" action="?application=Education&module=Exams&com=exams_report_8_result2.php&profile_id=8&edu_year=&edu_term=&exams_type_id=1">
+            <div class="col-lg-6 wow zoomIn animated" style="visibility: visible;">
+                <ul class="pricing-plan list-unstyled">
+                    <li class="pricing-title" style="font-size:18px !important">
+                        ค้นหาจากรหัสกระบวนวิชา
+                    </li>
+                    <li class="pricing-desc">
+                       <div class="input-group m-b"><span class="input-group-addon">Course No</span> <input type="text"  name="courseno[]" class="form-control" maxlength="6" > <span class="input-group-addon">LEC</span> <input type="text"  name="lec[]"  class="form-control" maxlength="3" ><span class="input-group-addon">LAB</span> <input type="text"  name="lab[]"  class="form-control" maxlength="3" ></div>
+                       <div class="input-group m-b"><span class="input-group-addon">Course No</span> <input type="text"  name="courseno[]" class="form-control" maxlength="6" > <span class="input-group-addon">LEC</span> <input type="text"  name="lec[]"  class="form-control" maxlength="3" ><span class="input-group-addon">LAB</span> <input type="text"  name="lab[]"  class="form-control" maxlength="3" ></div>
+                       <div class="input-group m-b"><span class="input-group-addon">Course No</span> <input type="text"  name="courseno[]"  class="form-control" maxlength="6" > <span class="input-group-addon">LEC</span> <input type="text"  name="lec[]"  class="form-control" maxlength="3" ><span class="input-group-addon">LAB</span> <input type="text"  name="lab[]"  class="form-control" maxlength="3" ></div>
+                       <div class="input-group m-b"><span class="input-group-addon">Course No</span> <input type="text"  name="courseno[]"  class="form-control" maxlength="6" > <span class="input-group-addon">LEC</span> <input type="text"  name="lec[]"  class="form-control" maxlength="3" ><span class="input-group-addon">LAB</span> <input type="text"  name="lab[]"  class="form-control" maxlength="3" ></div>
+                       <div class="input-group m-b"><span class="input-group-addon">Course No</span> <input type="text"  name="courseno[]"  class="form-control" maxlength="6" > <span class="input-group-addon">LEC</span> <input type="text"  name="lec[]"  class="form-control" maxlength="3" ><span class="input-group-addon">LAB</span> <input type="text"  name="lab[]"  class="form-control" maxlength="3" ></div>
+                    </li>
+                    
+                    
+                    <li>
+                        <button type="submit" class="btn btn-primary btn-xs" name="search4"><i class="fa fa-search"></i> Search</button>
+                    </li>
+                </ul>
+            </div>
+           </form>
+            <script>
+		function searchAdvisor(keyword) {
+				document.getElementById("searchAdvisor").innerHTML = '<input type="text" class="form-control" value="Loading . . ."><br><br>';
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("searchAdvisor").innerHTML = this.responseText;
+						var config = {
+							'.chosen-select'           : {},
+							'.chosen-select-deselect'  : {allow_single_deselect:true},
+							'.chosen-select-no-single' : {disable_search_threshold:10},
+							'.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+							'.chosen-select-width'     : {width:"95%"}
+							}
+						for (var selector in config) {
+							$(selector).chosen(config[selector]);
+						}
+					}
+				};
+				xmlhttp.open("GET", "application/Education/Exams/ajax/ajax.searchAdvisor.php?keyword=" + keyword +"&profile_id=8&exams_type_id=1&application=Education&module=Exams", true);
+				xmlhttp.send();
+			
+		}
+		</script>
+			<form method="post" action="">
+            <div class="col-lg-6 wow zoomIn animated" style="visibility: visible;">
+                <ul class="pricing-plan list-unstyled">
+                    <li class="pricing-title" style="font-size:18px !important">
+                        ค้นหาจากชื่อกรรมการคุมสอบ
+                    </li>
+                    <li class="pricing-desc">
+                       <div class="input-group m-b"><span class="input-group-addon">ชื่อ-สกุล</span> <input type="text" name="owner_keyword" id="owner_keyword" class="form-control" ></div>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-primary btn-xs" name="search5" onClick="searchAdvisor(document.getElementById('owner_keyword').value);"><i class="fa fa-search"></i> Search</button>
+                    </li>
+                    <span id="searchAdvisor"></span>                   
+                </ul>
+            </div>
+           </form>
+			        </div>
+      
+    </div>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/wow/wow.min.js"></script>
+<!-- Select2 -->
+    <script src="js/plugins/select2/select2.full.min.js"></script>
+<!-- Chosen -->
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('body').scrollspy({
+            target: '.navbar-fixed-top',
+            offset: 80
+        });
+
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
+</script>
+
+    <script>
+        $(document).ready(function() {
+			
+		$(".select2_demo_1").select2();
+		
+		var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+                }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.dataTables-ReportData').DataTable({
+				"bSort": false,
+
+				"bPaginate": false,
+				"bInfo": false,
+				"bFilter": false,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                  
+                    
+                    {extend: 'excel', title: 'Education_Exams'},
+                  
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+
+            });
+			 $('.dataTables-NomalTable').DataTable({
+				"lengthMenu": [ [30, 50, 100, -1], [30, 50, 100, "All"] ],
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                  
+                    
+                    {extend: 'excel', title: 'Education_Exams'},
+                  
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+
+            });
+			$('.dataTables-ReportDataList').DataTable({
+				"bSort": false,
+				"bPaginate": false,
+				"bInfo": false,
+				
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                  
+                  
+                    {extend: 'excel', title: 'Education_Exams'},
+                  
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+
+            });
+			
+			$('.dataTables-PersonelData').DataTable({
+				
+				"bSort": false,
+				"bPaginate": false,
+				"bInfo": false,
+				
+				"bFilter": false,
+				
+				"lengthMenu": [ [30, 50, 100, -1], [30, 50, 100, "All"] ],
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                  
+                  
+                    {extend: 'excel', title: 'Education_Exams'},
+                  
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+
+            });
+			
+			$('.dataTables-TrainingData').DataTable({
+				
+				"ordering": false ,
+
+				"lengthMenu": [ [30, 50, 100, -1], [30, 50, 100, "All"] ],
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                  
+                   
+                    {extend: 'excel', title: 'Education_Exams'},
+                  
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+
+            });
+
+          });
+		
+		
+
+
+    </script>
 
 </body>
+
+
 </html>
