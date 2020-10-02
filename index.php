@@ -31,7 +31,10 @@ include("config.php");
             include("home.php");
             break;
     }
-    include("footer.php"); ?>
+    ?>
+    <?php
+    include("footer.php");
+    ?>
 </body>
 
 </html>
