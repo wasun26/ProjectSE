@@ -6,8 +6,9 @@
 .button1 {
     text-align: center;
     cursor: pointer;
-    padding-top:20px;
-    padding-bottom:20px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
 }
 </style>
 </head>
