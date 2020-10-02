@@ -14,20 +14,37 @@
 </head>
 
 <body>
-    <div>
+    <div align="center">
     <h1>ระบบงานทะเบียนการศึกษา<br>
     สำนักทะเบียนและประมวลผล มหาวิทยาลัยเชียงใหม่</h1>
     </div>
 
-    <div class="card-deck button1">
+    <div class="card-deck">
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge" onclick="Login()">สำหรับอาจารย์</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login()">สำหรับอาจารย์</button>
+            <br>
+            <ul>
+                <li>จัดการและส่งคำขอใช้ห้องสอบ</li>
+                <li>ตรวจห้องสอบและวันเวลาที่พร้อมใช้</li>
+                <li>จัดการลงวันเวลาสอบ</li>
+            </ul>
         </div>
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge" onclick="Login()">สำหรับเจ้าหน้าที่</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login()">สำหรับเจ้าหน้าที่</button>
+            <br>
+            <ul>
+                <li>จัดการคำขอใช้ห้องสอบ</li>
+                <li>ตรวจห้องสอบและวันเวลาที่พร้อมใช้</li>
+            </ul>
         </div>
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge" onclick="Login()">สำหรับนักศึกษา</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login()">สำหรับนักศึกษา</button>
+            <br>
+            <ul>
+                <li>ดูวันและเวลาสอบ</li>
+                <li>ตารางสอบ</li>
+                <li>ห้องสอบ</li>
+            </ul>
         </div>
     </div>
 
