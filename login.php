@@ -6,12 +6,10 @@
 	<!--Made with love by Mutiullah Samim -->
 
 	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 	<!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="styles.css">
@@ -31,9 +29,7 @@
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
 							<input type="text" class="form-control" placeholder="username" name="userid">
-							<span class="input-group-addon"
-								style="font-size:16px; font-weight:inherit;border-top:2px solid #dce4ec;border-right:2px solid #dce4ec;border-bottom:2px solid #dce4ec;"
-								id="basic-addon2"><font color="ffffff">@cmu.ac.th</font></span>
+							<div class="input-group-text">@cmu.ac.th</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
