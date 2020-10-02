@@ -8,7 +8,7 @@
 
     <div class="card-deck">
         <div class="card" style="border: none">
-            <div class="card-header bg-primary">
+            <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากรหัสนักศึกษา
             </div>
             <form method="post" action="">
@@ -26,8 +26,8 @@
             </form>
         </div>
 
-        <div class="card" style="background-color: #152F4F; border: none;">
-            <div class="card-header bg-primary">
+        <div class="card" style="border: none;">
+            <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาตามวิชา
             </div>
             <form method="post" action="">
@@ -50,7 +50,7 @@
 
     <div class="card-deck">
         <div class="card" style="border: none">
-            <div class="card-header bg-primary">
+            <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากรหัสกระบวนวิชา
             </div>
             <form method="post" action="">
@@ -104,7 +104,7 @@
         </div>
 
         <div class="card" style="border: none">
-            <div class="card-header bg-primary">
+            <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากชื่อกรรมการคุมสอบ
             </div>
             <form method="post" action="">
