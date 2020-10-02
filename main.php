@@ -26,7 +26,7 @@
             </form>
         </div>
 
-        <div class="card" style="border: none">
+        <div class="card" style="background-color: #152F4F; border: none;">
             <div class="card-header bg-primary">
                 ค้นหาตามวิชา
             </div>
