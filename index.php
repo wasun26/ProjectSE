@@ -14,7 +14,7 @@ include("config.php");
 
 <body>
     <?php include("nav.php"); ?>
-
+    <div class="container" align="center">
     <?php
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
