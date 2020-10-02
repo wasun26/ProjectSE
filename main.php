@@ -1,108 +1,127 @@
 <!DOCTYPE html>
-<div class="card" align="center">
-    <div class="card-header">
-        <h1>Exam Time Table Management</h1>
-    </div>
-    เลือกแบบฟอร์มและระบุเงื่อนไขที่ต้องการสืบค้น
-</div>
 
-<div class="card-deck">
-    <div class="card">
+<div class="container">
+    <div class="card" align="center">
         <div class="card-header">
-            ค้นหาจากรหัสนักศึกษา
+            <h1>Exam Time Table Management</h1>
         </div>
-        <div class="card-body">
-            <form method="post" action="?application=Education&module=Exams&com=exams_report_8_result.php&profile_id=8&edu_year=&edu_term=&exams_type_id=1">
-                <div class="input-group m-b">
-                    <span class="input-group-addon">รหัสนักศึกษา</span>
-                    <input type="text" name="student_id" id="student_id" class="form-control" maxlength="9" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-xs" name="search1"><i class="fa fa-search"></i> Search</button>
-            </form>
-        </div>
-    </div>
+        เลือกแบบฟอร์มและระบุเงื่อนไขที่ต้องการสืบค้น
+    </div><br>
 
-    <div class="card">
-        <div class="card-header">
-            ค้นหาตามวิชา
-        </div>
-        <div class="card-body">
-            <form method="post" action="?application=Education&module=Exams&com=exams_report_8_result2.php&profile_id=8&edu_year=&edu_term=&exams_type_id=1">
-                <div class="input-group m-b">
-                    <span class="input-group-addon">รหัสวิชา</span>
-                    <input type="text" name="course_keyword" id="course_keyword" class="form-control" maxlength="3" required>
-            </form>
-            <i>
-                <font color="#FF0004">* ระบุรหัสวิชา 3 ตัวหน้า</font>
-            </i>
-            <button type="submit" class="btn btn-primary btn-xs" name="search3" value="search3"><i class="fa fa-search"></i> Search</button>
-        </div>
-    </div>
-</div>
-
-<div class="card-deck">
-    <div class="card">
-        <div class="card-header">
-            ค้นหาจากรหัสกระบวนวิชา
-        </div>
-        <div class="card-body">
+    <div class="card-deck">
+        <div class="card" style="border: none">
+            <div class="card-header">
+                ค้นหาจากรหัสนักศึกษา
+            </div>
             <form method="post" action="">
-                <div class="input-group m-b">
-                    <span class="input-group-addon">Course No</span>
-                    <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                    <span class="input-group-addon">LEC</span>
-                    <input type="text" name="lec[]" class="form-control" maxlength="3">
-                    <span class="input-group-addon">LAB</span>
-                    <input type="text" name="lab[]" class="form-control" maxlength="3">
-                </div>
-                <div class="input-group m-b">
-                    <span class="input-group-addon">Course No</span>
-                    <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                    <span class="input-group-addon">LEC</span>
-                    <input type="text" name="lec[]" class="form-control" maxlength="3">
-                    <span class="input-group-addon">LAB</span>
-                    <input type="text" name="lab[]" class="form-control" maxlength="3">
-                </div>
-                <div class="input-group m-b">
-                    <span class="input-group-addon">Course No</span>
-                    <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                    <span class="input-group-addon">LEC</span>
-                    <input type="text" name="lec[]" class="form-control" maxlength="3">
-                    <span class="input-group-addon">LAB</span>
-                    <input type="text" name="lab[]" class="form-control" maxlength="3">
-                </div>
-                <div class="input-group m-b">
-                    <span class="input-group-addon">Course No</span>
-                    <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                    <span class="input-group-addon">LEC</span>
-                    <input type="text" name="lec[]" class="form-control" maxlength="3">
-                    <span class="input-group-addon">LAB</span>
-                    <input type="text" name="lab[]" class="form-control" maxlength="3"></div>
-                <div class="input-group m-b">
-                    <span class="input-group-addon">Course No</span>
-                    <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                    <span class="input-group-addon">LEC</span>
-                    <input type="text" name="lec[]" class="form-control" maxlength="3">
-                    <span class="input-group-addon">LAB</span>
-                    <input type="text" name="lab[]" class="form-control" maxlength="3">
-                </div>
-                <button type="submit" class="btn btn-primary btn-xs" name="search4"><i class="fa fa-search"></i> Search</button>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">รหัสนักศึกษา</span>
+                            <input type="text" name="student_id" id="student_id" class="form-control" maxlength="9" required>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <button type="submit" class="btn btn-primary btn-xs" name="search1"><i class="fa fa-search"></i> Search</button>
+                    </li>
+                </ul>
             </form>
         </div>
-    </div>
 
-    <div class="card">
-        <div class="card-header">
-            ค้นหาจากชื่อกรรมการคุมสอบ
-        </div>
-        <div class="card-body">
+        <div class="card" style="border: none">
+            <div class="card-header">
+                ค้นหาตามวิชา
+            </div>
             <form method="post" action="">
-                <div class="input-group m-b">
-                    <span class="input-group-addon">ชื่อ-สกุล</span>
-                    <input type="text" name="owner_keyword" id="owner_keyword" class="form-control">
-                </div>
-                <button type="button" class="btn btn-primary btn-xs" name="search5" onClick="searchAdvisor(document.getElementById('owner_keyword').value);"><i class="fa fa-search"></i> Search</button>
-                <span id="searchAdvisor"></span>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">รหัสวิชา</span>
+                            <input type="text" name="course_keyword" id="course_keyword" class="form-control" maxlength="3" required>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <i>
+                            <font color="#FF0004">* ระบุรหัสวิชา 3 ตัวหน้า</font>
+                        </i>
+                        <button type="submit" class="btn btn-primary btn-xs" name="search3" value="search3"><i class="fa fa-search"></i> Search</button>
+                    </li>
+                </ul>
+        </div>
+    </div><br>
+
+    <div class="card-deck">
+        <div class="card" style="border: none">
+            <div class="card-header">
+                ค้นหาจากรหัสกระบวนวิชา
+            </div>
+            <form method="post" action="">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">Course No</span>
+                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
+                            <span class="input-group-addon">LEC</span>
+                            <input type="text" name="lec[]" class="form-control" maxlength="3">
+                            <span class="input-group-addon">LAB</span>
+                            <input type="text" name="lab[]" class="form-control" maxlength="3">
+                        </div>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">Course No</span>
+                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
+                            <span class="input-group-addon">LEC</span>
+                            <input type="text" name="lec[]" class="form-control" maxlength="3">
+                            <span class="input-group-addon">LAB</span>
+                            <input type="text" name="lab[]" class="form-control" maxlength="3">
+                        </div>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">Course No</span>
+                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
+                            <span class="input-group-addon">LEC</span>
+                            <input type="text" name="lec[]" class="form-control" maxlength="3">
+                            <span class="input-group-addon">LAB</span>
+                            <input type="text" name="lab[]" class="form-control" maxlength="3">
+                        </div>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">Course No</span>
+                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
+                            <span class="input-group-addon">LEC</span>
+                            <input type="text" name="lec[]" class="form-control" maxlength="3">
+                            <span class="input-group-addon">LAB</span>
+                            <input type="text" name="lab[]" class="form-control" maxlength="3"></div>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">Course No</span>
+                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
+                            <span class="input-group-addon">LEC</span>
+                            <input type="text" name="lec[]" class="form-control" maxlength="3">
+                            <span class="input-group-addon">LAB</span>
+                            <input type="text" name="lab[]" class="form-control" maxlength="3">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <button type="submit" class="btn btn-primary btn-xs" name="search4"><i class="fa fa-search"></i> Search</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+        <div class="card" style="border: none">
+            <div class="card-header">
+                ค้นหาจากชื่อกรรมการคุมสอบ
+            </div>
+            <form method="post" action="">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="input-group m-b">
+                            <span class="input-group-addon">ชื่อ-สกุล</span>
+                            <input type="text" name="owner_keyword" id="owner_keyword" class="form-control">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <button type="button" class="btn btn-primary btn-xs" name="search5" onClick="searchAdvisor(document.getElementById('owner_keyword').value);"><i class="fa fa-search"></i> Search</button>
+                        <span id="searchAdvisor"></span>
+                    </li>
+                </ul>
             </form>
         </div>
     </div>

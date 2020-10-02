@@ -13,25 +13,27 @@ include("config.php");
 </head>
 
 <body>
-    <?php include("nav.php");
+    <div align="center">
+        <?php include("nav.php");
 
-    if (isset($_GET['page'])) {
-        $page = $_GET['page'];
-    } else {
-        $page = "";
-    }
-    switch ($page) {
-        case "login":
-            include("login.php");
-            break;
-        case "main":
-            include("main.php");
-            break;
-        default:
-            include("home.php");
-            break;
-    }
-    ?>
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+        } else {
+            $page = "";
+        }
+        switch ($page) {
+            case "login":
+                include("login.php");
+                break;
+            case "main":
+                include("main.php");
+                break;
+            default:
+                include("home.php");
+                break;
+        }
+        ?>
+    </div>
     <?php
     include("footer.php");
     ?>
