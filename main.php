@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
 <div class="container">
-    <div class="card" align="center">
-        <div class="card-header">
-            <h1>Exam Time Table Management</h1>
-        </div>
+    <div class="card" align="center" style="border: none;">
+        <h1>Exam Time Table Management</h1><br>
         เลือกแบบฟอร์มและระบุเงื่อนไขที่ต้องการสืบค้น
     </div><br>
 
     <div class="card-deck">
         <div class="card" style="border: none">
-            <div class="card-header">
+            <div class="card-header bg-primary">
                 ค้นหาจากรหัสนักศึกษา
             </div>
             <form method="post" action="">
@@ -29,7 +27,7 @@
         </div>
 
         <div class="card" style="border: none">
-            <div class="card-header">
+            <div class="card-header bg-primary">
                 ค้นหาตามวิชา
             </div>
             <form method="post" action="">
@@ -52,7 +50,7 @@
 
     <div class="card-deck">
         <div class="card" style="border: none">
-            <div class="card-header">
+            <div class="card-header bg-primary">
                 ค้นหาจากรหัสกระบวนวิชา
             </div>
             <form method="post" action="">
@@ -106,7 +104,7 @@
         </div>
 
         <div class="card" style="border: none">
-            <div class="card-header">
+            <div class="card-header bg-primary">
                 ค้นหาจากชื่อกรรมการคุมสอบ
             </div>
             <form method="post" action="">
