@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <div class="container">
     <div class="card" align="center" style="border: none;">
         <h1>Exam Time Table Management</h1><br>
