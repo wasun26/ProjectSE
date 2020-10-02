@@ -30,10 +30,10 @@
             <li>- <a href="https://www.google.com/maps/d/u/0/viewer?mid=1XzZUWuQlmVJeZC2dcBxA2yKIXO8&ll=18.803763000420084%2C98.95247199999994&z=20">Location</a></li><br>
           </ul>
         </div>
-        <div class="col-lg-4 col-xs-12 location">
+        <!-- <div class="col-lg-4 col-xs-12 location">
           <iframe width="420" height="345" src="https://www.youtube.com/watch?v=wrmjFXdN-zQ">
           </iframe>
-        </div>
+        </div> -->
       </div>
       <div class="row mt-5">
         <div class="col copyright">
