@@ -12,31 +12,33 @@ include("config.php");
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <?php include("nav.php"); ?>
     <div class="container">
-    <?php
-    if (isset($_GET['page'])) {
-        $page = $_GET['page'];
-    } else {
-        $page = "";
-    }
-    switch ($page) {
-        case "login":
-            include("login.php");
-            break;
-        case "main":
-            include("main.php");
-            break;
-        default:
-            include("home.php");
-            break;
-    }
-    ?>
+        <?php
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+        } else {
+            $page = "";
+        }
+        switch ($page) {
+            case "login":
+                include("login.php");
+                break;
+            case "main":
+                include("main.php");
+                break;
+            default:
+                include("home.php");
+                break;
+        }
+        ?>
     </div>
-    <?php
-    include("footer.php");
-    ?>
+    <footer class="mt-auto">
+        <?php
+        include("footer.php");
+        ?>
+    </footer>
 </body>
 
 </html>

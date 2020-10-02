@@ -38,7 +38,7 @@
           </iframe>
         </div> -->
     </div>
-    <div class="row mt-5">
+    <div class="row">
       <div class="col copyright">
         <p class=""><small class="text-white-50">Copyright © 2019 ภาควิชาวิทยาการคอมพิวเตอร์. All rights reserved.</small></p>
       </div>
