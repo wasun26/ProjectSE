@@ -7,7 +7,7 @@
 <div class="mt-5 pt-5 pb-5 footer">
   <div class="container">
     <div class="row">
-      <div class="col-lg-5 col-xs-12 about-company">
+      <div class="col about-company">
         <h2>Computer Science CMU</h2>
         <p class="pr-5 text-white-50">ภาควิชาวิทยาการคอมพิวเตอร์</p>
         <p class="pr-5 text-white-50">คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่</p>
@@ -16,9 +16,7 @@
         <p><a href="#"><i class="fa fa-facebook-square mr-1"></i></a><a href="#"><i class="fa fa-linkedin-square"></i></a></p>
       </div>
 
-
-      
-      <div class="col-lg-5 col-xs-12 about-company">
+      <div class="col about-company">
         <p class="pr-5 text-white-50">หลักสูตรปริญญาตรี : กด 103 </p>
         <p class="pr-5 text-white-50">หลักสูตรปริญญาโท-เอก : กด 105</p>
         <p class="pr-5 text-white-50">ธุรการ : กด 0 หรือ 101</p>
@@ -27,9 +25,7 @@
         <p class="pr-5 text-white-50">E-mail : compsci@cmu.ac.th</p>
       </div>
 
-
-
-      <div class="col-lg-3 col-xs-12 links">
+      <div class="col links">
         <h4 class="mt-lg-0 mt-sm-3">Social Media</h4>
         <ul class="m-0 p-0">
           <li>- <a href="https://www.facebook.com/compscicmu/">Facebook Computer Science CMU</a></li>
