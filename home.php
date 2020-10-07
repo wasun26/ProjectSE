@@ -2,26 +2,26 @@
 <html>
 
 <head>
-<style>
-.button1 {
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px #888888;
-}
-</style>
+    <style>
+        .button1 {
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid;
+            padding: 10px;
+            box-shadow: 5px 10px #888888;
+        }
+    </style>
 </head>
 
 <body>
     <div align="center">
-    <h1>ระบบจัดการและตรวจห้องสอบ<br>
-    ภาควิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยเชียงใหม่</h1>
+        <h1>ระบบจัดการและตรวจห้องสอบ<br>
+            ภาควิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยเชียงใหม่</h1>
     </div>
 
     <div class="card-deck">
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login()">สำหรับอาจารย์</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('teacher')">สำหรับอาจารย์</button>
             <br>
             <ul>
                 <li>จัดการและส่งคำขอใช้ห้องสอบ</li>
@@ -30,7 +30,7 @@
             </ul>
         </div>
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login()">สำหรับเจ้าหน้าที่</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('staff')">สำหรับเจ้าหน้าที่</button>
             <br>
             <ul>
                 <li>จัดการคำขอใช้ห้องสอบ</li>
@@ -38,7 +38,7 @@
             </ul>
         </div>
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login()">สำหรับนักศึกษา</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('student')">สำหรับนักศึกษา</button>
             <br>
             <ul>
                 <li>ดูวันและเวลาสอบ</li>
@@ -51,8 +51,8 @@
 
 
     <script language="javascript">
-        function Login() {
-            window.open('\login.php')
+        function Login(type) {
+            window.open("\login.php?type=" + type)
         }
     </script>
 </body>
