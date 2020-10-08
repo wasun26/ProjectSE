@@ -12,8 +12,10 @@
   <?php
   include("config.php");
   $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
+  $sql = "SELECT * FROM MyGuests";
+  $result = $conn->query($sql);
   ?>
-  <table class="table">
+  <table class="table table-striped table-hover">
     <thead class="thead-dark">
       <tr align="center">
         <th>วัน</th>
@@ -22,13 +24,19 @@
         <th>15.30 - 18.00</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
+    <tbody class="table hover">
+      <?php
+      for ($i = 0; $i < 7; $i++) {
+        echo ("
+        <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
+        ");
+      }
+      ?>
     </tbody>
   </table>
 </body>
