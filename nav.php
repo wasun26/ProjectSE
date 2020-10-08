@@ -25,6 +25,7 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a href="./" class="nav-link" routerLink="train">หน้าแรก</a></li>
 				<li class="nav-item"><a href="#" class="nav-link" routerLink="ticket">ดูตารางสอบ</a></li>
+				<li class="nav-item"><a href="?page=staff" class="nav-link" routerLink="ticket">Staff</a></li>
 				<?php
 			
 				if (false) {
