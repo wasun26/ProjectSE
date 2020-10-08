@@ -12,8 +12,18 @@
   <?php
   include("config.php");
   $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-  $sql = "SELECT * FROM MyGuests";
+  $sql = "SELECT DAY(E.date), T.timeStart, T.timeFinish, P.start, P.end
+  FROM timeexam T, student S, exam E, enroll EN, phase P
+  WHERE EN.sid=610510999 AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=E.phase";
   $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    echo "Name";
+    while ($row = $result->fetch_assoc()) {
+      echo ($row['timeStart']);
+      echo ($row['timeStop']);
+    }
+  }
   ?>
   <table class="table table-striped table-hover">
     <thead class="thead-dark">
