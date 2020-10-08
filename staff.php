@@ -12,7 +12,8 @@
 	ห้องสอบ: <input type = "text" name = "room"><br>
 	เวลาเริ่มสอบ: <input type = "text" name = "timeStart">&nbsp&nbsp
 	เวลาสิ้นสุดการสอบ: <input type ="text" name = "timeFinish"><br>
-	ผู้คุมสอบ: <input type = "text" name = "examiner"><br><br>
+	ผู้คุมสอบ(อาจารย์): <input type = "text" name = "examiner_t"><br>
+	ผู้คุมสอบ(เจ้าหน้าที่): <input type = "text" name = "examiner_s"><br><br>
  <input type = "submit" value = "Add">&nbsp&nbsp
  <input type = "reset" value = "Reset">
 </form>
