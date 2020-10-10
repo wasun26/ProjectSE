@@ -22,7 +22,15 @@
 ?>
 
 <?php
-    echo "<h1>ตารางFinal ภาคเรียนที่ 1 ปีการศึกษา 2563</h1>";
+    if ($result->num_rows > 0) {  //begin if
+        while ($row=$result->fetch_assoc())   {  //begin while
+            $phase=$row['phase'];
+            $semester=$row['semester']; 
+            $year= $row['year']; 
+            
+            echo "<h1>ตาราง $phase ภาคเรียนที่ $semester ปีการศึกษา $year</h1>";
+        }
+    }
 ?>
 
 <table border="1" cellspacing="2" cellpadding="2">
@@ -36,18 +44,18 @@
 <?php
 	if ($result->num_rows > 0) {  //begin if
 		 while ($row=$result->fetch_assoc())   {  //begin while
-			   $course=$row['subject'];
-			   $day=$row['date']; 
-			   $time= $row['time']; 
-			   $room=$row['room'];
+			    $course=$row['subject'];
+			    $day=$row['date']; 
+			    $time= $row['time']; 
+			    $room=$row['room'];
 			  
-				echo "<tr>";
-			   echo "<td>$row</td>";
-			   echo "<td>$course</td>";
-			   echo "<td>$day</td>";
-			   echo "<td>$time</td>";
-			   echo "<td>$room/td>";
-			   echo "</tr>";
+			    echo "<tr>";
+			    echo "<td>$row</td>";
+			    echo "<td>$course</td>";
+			    echo "<td>$day</td>";
+			    echo "<td>$time</td>";
+			    echo "<td>$room/td>";
+			    echo "</tr>";
 		}  //end while
 	}  //end if
 $conn->close();
