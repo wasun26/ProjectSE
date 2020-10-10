@@ -21,23 +21,21 @@ table, th, td {
     } 
 
    mysqli_set_charset($conn, "utf8");
-
-   //Connected successfully
-    $sql = "SELECT * FROM exam WHERE phase = 'final' AND semester = '1' AND year = '2020'"; //final, semester, year ต้องรับค่าเข้ามา
-    $result =$conn->query($sql);
 ?>
 
 <?php
+    $sql = "SELECT * FROM exam WHERE phase = 'final' AND semester = '1' AND year = '2020'"; //final, semester, year ต้องรับค่าเข้ามา
+    $result = $conn->query($sql);
     if ($result->num_rows > 0) {  //begin if
-        while ($row=$result->fetch_assoc())   {  //begin while
-            $phase=$row['phase'];
+        while ($row = $result->fetch_assoc())   {  //begin while
+            $phase = $row['phase'];
             if ($phase == "mid"){
                 $phase = "Midterm";
             }else{
                 $phase = "Final";
             } 
-            $semester=$row['semester'];
-            $year= $row['year'];
+            $semester = $row['semester'];
+            $year = $row['year'];
                     
             echo "<h1>ตาราง " .$phase." ภาคเรียนที่ " .$semester. " ปีการศึกษา " .$year. "</h1>";
         }
@@ -57,11 +55,11 @@ table, th, td {
         echo "<th> ห้องสอบ </th>";
         echo "</tr>";
 
-		while ($row=$result->fetch_assoc())   {  //begin while
-			    $course=$row['subject'];
-			    $day=$row['date']; 
-			    $time= $row['time']; 
-			    $room=$row['room'];
+		while ($row = $result->fetch_assoc())   {  //begin while
+			    $course = $row['subject'];
+			    $day = $row['date']; 
+			    $time = $row['time']; 
+			    $room = $row['room'];
 			  
 			    echo "<tr>";
 			    echo "<td>" .$course. "</td>";
