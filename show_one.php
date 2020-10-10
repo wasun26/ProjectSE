@@ -1,7 +1,13 @@
+<html>
 <head>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
 <meta charset="UTF-8">
 </head>
-
+<body>
 <?php
     $servername = "localhost";
     $username = "root";
@@ -17,7 +23,7 @@
    mysqli_set_charset($conn, "utf8");
 
    //Connected successfully
-    $sql = "SELECT * FROM exam";
+    $sql = "SELECT * FROM exam WHERE phase = 'final' AND semester = '1' AND year = '2020'"; //final, semester, year ต้องรับค่าเข้ามา
     $result =$conn->query($sql);
 ?>
 
@@ -25,38 +31,50 @@
     if ($result->num_rows > 0) {  //begin if
         while ($row=$result->fetch_assoc())   {  //begin while
             $phase=$row['phase'];
-            $semester=$row['semester']; 
-            $year= $row['year']; 
-            
-            echo "<h1>ตาราง $phase ภาคเรียนที่ $semester ปีการศึกษา $year</h1>";
+            if ($phase == "mid"){
+                $phase = "Midterm";
+            }else{
+                $phase = "Final";
+            } 
+            $semester=$row['semester'];
+            $year= $row['year'];
+                    
+            echo "<h1>ตาราง " .$phase." ภาคเรียนที่ " .$semester. " ปีการศึกษา " .$year. "</h1>";
         }
     }
 ?>
 
-<table border="1" cellspacing="2" cellpadding="2">
-<tr>
-<th>รหัสวิชา</th>  
-<th>วันที่</th>
-<th>เวลา</th>  
-<th>ห้องสอบ</th>
-</tr>
-
 <?php
-	if ($result->num_rows > 0) {  //begin if
-		 while ($row=$result->fetch_assoc())   {  //begin while
+    $sql = "SELECT * FROM exam WHERE phase = 'final' AND semester = '1' AND year = '2020'"; //final, semester, year ต้องรับค่าเข้ามา
+    $result =$conn->query($sql);
+
+    if ($result->num_rows > 0) {  //begin if
+        echo "<table>";
+        echo "<tr>";
+        echo "<th> รหัสวิชา </th>";  
+        echo "<th> วันที่ </th>";
+        echo "<th> เวลา </th>";  
+        echo "<th> ห้องสอบ </th>";
+        echo "</tr>";
+
+		while ($row=$result->fetch_assoc())   {  //begin while
 			    $course=$row['subject'];
 			    $day=$row['date']; 
 			    $time= $row['time']; 
 			    $room=$row['room'];
 			  
 			    echo "<tr>";
-			    echo "<td>$row</td>";
-			    echo "<td>$course</td>";
-			    echo "<td>$day</td>";
-			    echo "<td>$time</td>";
-			    echo "<td>$room/td>";
+			    echo "<td>" .$course. "</td>";
+			    echo "<td>" .$day. "</td>";
+			    echo "<td>" .$time. "</td>";
+			    echo "<td>" .$room. "</td>";
 			    echo "</tr>";
-		}  //end while
-	}  //end if
+        }  //end while
+        echo "</table>";
+	}else{
+        echo "0 results";
+    }
 $conn->close();
 ?>
+</body>
+</html>
