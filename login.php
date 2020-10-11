@@ -4,13 +4,9 @@
 use function PHPSTORM_META\type;
 
 include("config.php");
-$type = "";
-if ($_POST['type'] != "") {
-	$type = $_POST['type'];
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	login($type);
+	login($_POST['loginType']);
 }
 
 function login($type)
@@ -24,10 +20,6 @@ function login($type)
 		echo ('complete');
 	}
 	$conn->close();
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-	$login = "";
 }
 ?>
 <html>
@@ -48,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<h3>Login</h3>
 				</div>
 				<div class="card-body">
-					<form name="login" method="POST" action="<?php echo ($_SERVER['PHP_SELF'] + '?type=' + $_POST['type']); ?>">
+					<form name="login" method="POST" action="<?php echo ($_SERVER['PHP_SELF']); ?>">
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -65,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						<div class="form-group">
 							<input type="submit" value="Login" class="btn float-right login_btn">
 						</div>
+						<input type="hidden" name="loginType" value="<?php echo ($_GET['logintype']); ?>">
 					</form>
 					<script language="javascript">
 						function Login() {
