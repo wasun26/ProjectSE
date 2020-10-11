@@ -52,7 +52,7 @@
 
     <script language="javascript">
         function Login(type) {
-            window.open("\login.php?logintype=" + type)
+            window.open("\login.php?logintype=" + type, "_self");
         }
     </script>
 </body>

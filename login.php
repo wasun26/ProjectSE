@@ -12,12 +12,17 @@ function login($type)
 	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
 	$email = $_POST['email'] . '@cmu.ac.th';
 	echo ($email);
+	echo ($_POST['password']);
 	$login = "SELECT email, password FROM $type WHERE email='$email'";
 	$result = $conn->query($login);
 	$dbarr = $result->fetch_assoc();
+	echo ($dbarr['email']);
+	echo ($dbarr['password']);
 	if ($dbarr) {
-		if ($dbarr['email'] == $_POST['email'] && $dbarr['password'] == $_POST['password']) {
-			echo ("YAAAAAA");
+		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
+			header("location: ./?page=main");
+		} else {
+			echo ("ไม่พบ");
 		}
 	}
 	$conn->close();
