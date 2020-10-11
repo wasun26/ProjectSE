@@ -10,13 +10,13 @@ function login($type)
 {
 	include("config.php");
 	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-	$userid = $_POST['userid'].'@cmu.ac.th';
-	echo($userid);
+	$email = $_POST['email'] . '@cmu.ac.th';
+	echo ($email);
 	$login = "SELECT email, password FROM $type WHERE email='$userid'";
 	$result = $conn->query($login);
-	echo(isset($result->num_rows));
-	if ($result->num_rows > 0) {
-		$dbarr = $result->fetch_assoc();
+	$dbarr = $result->fetch_assoc();
+	if ($dbarr['email'] == $_POST['email'] && $dbarr['password'] == $_POST['password']) {
+		echo ("YAAAAAA");
 	}
 	$conn->close();
 }
@@ -44,14 +44,14 @@ function login($type)
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" class="form-control" placeholder="username" name="userid">
+							<input type="text" class="form-control" placeholder="username" name="email">
 							<div class="input-group-text">@cmu.ac.th</div>
 						</div>
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" class="form-control" placeholder="password" name="passid">
+							<input type="password" class="form-control" placeholder="password" name="password">
 						</div>
 						<div class="form-group">
 							<input type="submit" value="Login" class="btn float-right login_btn">
