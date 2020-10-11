@@ -15,7 +15,7 @@ function login($type)
 	$login = "SELECT email, password FROM $type WHERE email='$email'";
 	$result = $conn->query($login);
 	$dbarr = $result->fetch_assoc();
-	if ($dbarr != NULL) {
+	if ($dbarr) {
 		if ($dbarr['email'] == $_POST['email'] && $dbarr['password'] == $_POST['password']) {
 			echo ("YAAAAAA");
 		}
