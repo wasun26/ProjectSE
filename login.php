@@ -1,4 +1,35 @@
 <!DOCTYPE html>
+<?php
+
+use function PHPSTORM_META\type;
+
+include("config.php");
+$type = "";
+if ($_POST['type'] != "") {
+	$type = $_POST['type'];
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	login($type);
+}
+
+function login($type)
+{
+	include("config.php");
+	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
+	$login = "SELECT email, password FROM student WHERE email='test'+'@cmu.ac.th'";
+	$count = mysqli_field_count($login);
+	if ($count != 0) {
+		$result = mysqli_fetch_row($login);
+		echo ('complete');
+	}
+	$conn->close();
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
+	$login = "";
+}
+?>
 <html>
 
 <head>
@@ -17,7 +48,7 @@
 					<h3>Login</h3>
 				</div>
 				<div class="card-body">
-					<form name="login">
+					<form name="login" method="POST" action="<?php echo ($_SERVER['PHP_SELF'] + '?type=' + $_POST['type']); ?>">
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -32,7 +63,7 @@
 							<input type="password" class="form-control" placeholder="password" name="passid">
 						</div>
 						<div class="form-group">
-							<input type="submit" value="Login" class="btn float-right login_btn" onclick="Login()">
+							<input type="submit" value="Login" class="btn float-right login_btn">
 						</div>
 					</form>
 					<script language="javascript">
