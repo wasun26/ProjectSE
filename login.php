@@ -15,9 +15,8 @@ function login($type)
 	echo ($_POST['password']);
 	$login = "SELECT email, password FROM $type WHERE email='$email'";
 	$result = $conn->query($login);
-	$dbarr = $result->fetch_assoc();
-	echo ($dbarr['email']);
-	echo ($dbarr['password']);
+	$dbarr = $result->fetch_assoc(); # BUG when login wrong
+	$conn->close();
 	if ($dbarr) {
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
 			header("location: ./?page=main");
@@ -25,7 +24,6 @@ function login($type)
 			echo ("ไม่พบ");
 		}
 	}
-	$conn->close();
 }
 ?>
 <html>
