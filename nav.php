@@ -5,7 +5,6 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
 
@@ -24,8 +23,6 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a href="./" class="nav-link" routerLink="train">หน้าแรก</a></li>
-				<li class="nav-item"><a href="#" class="nav-link" routerLink="ticket">ดูตารางสอบ</a></li>
-				<li class="nav-item"><a href="?page=staff" class="nav-link" routerLink="ticket">Staff</a></li>
 				<?php
 			
 				if (false) {
@@ -39,11 +36,13 @@
 				}
 				?>
 			</ul>
-			<ul class="navbar-nav  navbar-right">
-				<li class="nav-item" *ngIf="isLoggedIn">
-					<button type="button" class="btn btn-light" routerLink="profile" *ngIf="isLoggedIn">{{email}}</button>
-				</li>
-			</ul>
+			<?php
+			#<ul class="navbar-nav  navbar-right">
+				#<li class="nav-item" *ngIf="isLoggedIn">
+					#<button type="button" class="btn btn-light" routerLink="profile" *ngIf="isLoggedIn">{{email}}</button>
+				#</li>
+			#</ul>
+			?>
 		</div>
 	</div>
 </nav>
