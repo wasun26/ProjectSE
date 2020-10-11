@@ -12,7 +12,7 @@ function login($type)
 	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
 	$email = $_POST['email'] . '@cmu.ac.th';
 	echo ($email);
-	$login = "SELECT email, password FROM $type WHERE email='$userid'";
+	$login = "SELECT email, password FROM $type WHERE email='$email'";
 	$result = $conn->query($login);
 	$dbarr = $result->fetch_assoc();
 	if ($dbarr['email'] == $_POST['email'] && $dbarr['password'] == $_POST['password']) {
