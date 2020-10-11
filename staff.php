@@ -23,9 +23,16 @@
 		<h1>เพิ่มวิชาสอบ</h1>
 		<form action="insert.php" method="post">
 
-			ปีการศึกษา: <input type="text" name="year">&nbsp&nbsp
+			ปีการศึกษา: <input type="text" name="year"><br>
 
 			ภาคการศึกษา: <input type="text" name="semester"><br>
+
+			<label for = "phase">ช่วงสอบ:</label>
+			<select name = "phase" id = "phase">
+			<option value = "NULL">เลือก</option>
+			<option value = "mid">Midterm</option>
+			<option value = "final">Final</option>
+			</select><br>
 
 			<?php
 			    $sql = "SELECT * FROM subject ";
@@ -69,16 +76,13 @@
 				echo "<option value = 'NULL'> เลือก </option>";
 				while ($row=$result->fetch_assoc())    { //begin while
 					$time = $row['id'];
-					$time_start = ['timeStart'];
-					$time_end = ['timeFinish'];
-					echo "<option value = '$time'> $time_start $time_end</option>";
+					$time_start = $row['timeStart'];
+					$time_end = $row['timeFinish'];
+					echo "<option value = '$time'> $time_start - $time_end</option>";
 				}  //end while
 	  
 				echo "</select><br>";
 			?>
-
-			เวลาเริ่มสอบ: <input type="text" name="timeStart">&nbsp&nbsp
-			เวลาสิ้นสุดการสอบ: <input type="text" name="timeFinish"><br>
 
 			<?php
 			    $sql = "SELECT * FROM teacher ";

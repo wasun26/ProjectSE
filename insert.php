@@ -5,17 +5,19 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "company";
+    $dbname = "se";
 
   //Receive data from the previous form
-   $year = $_POST['year'];
-   $semester = $_POST['semester'];
-   $subject = $_POST['subject']
-   $date = $_POST['date'];
-   $room = $_POST['room'];
-   $timeStart = $_POST['timeStart'];
-   $timeFinish = $_POST['timeFinish'];
-   $examiner = $_POST['examiner'];
+    $phase = $_POST['phase'];
+    $year = $_POST['year'];
+    $semester = $_POST['semester'];
+    $subject = $_POST['subject'];
+    $date = $_POST['date'];
+    $room = $_POST['room'];
+    $time = $_POST['time'];
+    $examiner_t = $_POST['examiner_t'];
+    $examiner_s = $_POST['examiner_s'];
+
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -29,8 +31,8 @@
 
     //Connected successfully
 
-    $sql = "INSERT INTO employee (year, semester, subject, date, room, timeStart, timeFinish, examiner) VALUES  
-                 ('$year', '$semester', '$subject', '$date', '$room', '$timeStart', '$timeFinish', '$examiner')";
+    $sql = "INSERT INTO exam (phase, subject, semester, year, date, time, room, examiner_t, examiner_s) VALUES  
+                 ('$phase', '$subject', '$semester', '$year', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
 
     $conn -> query($sql);
     $conn -> close();
