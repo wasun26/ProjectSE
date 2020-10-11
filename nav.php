@@ -17,7 +17,7 @@
 				<?php
 				#<img src="" width="30" height="30" class="d-inline-block align-top" alt="srt logo"> 
 				?>
-				<?php print(title_short); ?>
+				<?php print($config['title_short']); ?>
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>

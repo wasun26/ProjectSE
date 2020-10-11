@@ -10,8 +10,8 @@
 
 </html>
 <?php
-const title = "ระบบจัดการตารางสอบ";
-const title_short = "E-Table";
+$config['title'] = "ระบบจัดการตารางสอบ";
+$config['title_short'] = "E-Table";
 
 $config['hostname'] = "localhost";
 $config['dbuser'] = "se_exam";

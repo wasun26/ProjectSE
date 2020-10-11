@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <?php
-
-use function PHPSTORM_META\type;
-
 include("config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,11 +10,13 @@ function login($type)
 {
 	include("config.php");
 	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-	$login = "SELECT email, password FROM student WHERE email='test'+'@cmu.ac.th'";
-	$count = mysqli_field_count($login);
-	if ($count != 0) {
-		$result = mysqli_fetch_row($login);
-		echo ('complete');
+	$userid = $_POST['userid'].'@cmu.ac.th';
+	echo($userid);
+	$login = "SELECT email, password FROM $type WHERE email='$userid'";
+	$result = $conn->query($login);
+	echo(isset($result->num_rows));
+	if ($result->num_rows > 0) {
+		$dbarr = $result->fetch_assoc();
 	}
 	$conn->close();
 }
@@ -25,7 +24,7 @@ function login($type)
 <html>
 
 <head>
-	<title>Login Page</title>
+	<title>OAUTH</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="styles.css">
