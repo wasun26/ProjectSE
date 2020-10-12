@@ -23,10 +23,6 @@ mysqli_set_charset($conn, "utf8");
 		<table width="100%" border=" 0" class="table table-striped table-hover">
 			<tbody>
 				<tr>
-					<td>ปีการศึกษา:</td>
-					<td><input type="text" name="year"></td>
-				</tr>
-				<tr>
 					<td><label for="semester">ภาคการศึกษา:</label></td>
 					<td><select name="semester" id="semester">
 							<option value="NULL">เลือก</option>
