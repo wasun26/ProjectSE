@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (isset($_SESSION['login_true'])) {
-	header("Location: ?page=main");
+	header("Location: ./?page=main");
 	exit;
 }
 
@@ -44,12 +44,8 @@ function login()
 </head>
 
 <body>
-	<div class="text-light" align="center">
-		<h2>CMU IT Account</h2>
-		<h5>One account for all Services</h5>
-	</div>
 	<div class="container">
-		<div class="d-flex justify-content-center h-50">
+		<div class="d-flex justify-content-center h-100">
 			<div class="card">
 				<div class="card-header">
 					<h3>Login</h3>
@@ -85,7 +81,7 @@ function login()
 					<h4 class="modal-title">ข้อความจากระบบ</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body text-danger">
 					Email หรือ รหัสผ่าน ไม่ถูกต้อง กรุณาลองอีกครั้ง
 				</div>
 				<div class="modal-footer">
