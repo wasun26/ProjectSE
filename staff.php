@@ -121,7 +121,7 @@ mysqli_set_charset($conn, "utf8");
 								$id = $row['id'];
 								$f_name = $row['fname'];
 								$l_name = $row['lname'];
-								echo "<option value = '$id'>$f_name $l_name</option>";
+								echo "<option value='$id'>$f_name $l_name</option>";
 							}
 							?>
 						</select>
@@ -142,7 +142,7 @@ mysqli_set_charset($conn, "utf8");
 								$id = $row['id'];
 								$f_name = $row['fname'];
 								$l_name = $row['lname'];
-								echo "<option value = '$id'>$f_name $l_name</option>";
+								echo "<option value='$id'>$f_name $l_name</option>";
 							}
 							?>
 						</select>

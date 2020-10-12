@@ -13,7 +13,10 @@ $time = $_POST['time'];
 $examiner_t = $_POST['examiner_t'];
 $examiner_s = $_POST['examiner_s'];
 
+<<<<<<< HEAD
 // Create connection
+=======
+>>>>>>> 65f25652bdb7a036108e4a6ceeb9807582398a69
 $conn = new mysqli(
   $config['hostname'],
   $config['dbuser'],
@@ -21,21 +24,25 @@ $conn = new mysqli(
   $config['dbname']
 );
 
-// Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+<<<<<<< HEAD
 mysqli_set_charset($conn, "utf8");
 
 //Connected successfully
 
 $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`) VALUES  
                  (NULL, '$phase', '$subject', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
+=======
+$sql = "INSERT INTO exam (id, phase, subject, year, semester, date, time, room, examiner_t, examiner_s) VALUES (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
+>>>>>>> 65f25652bdb7a036108e4a6ceeb9807582398a69
 
 $conn->query($sql);
 $conn->close();
 
-echo "เพิ่มข้อมูลเรียบร้อยแล้ว <br><br>";
-echo "<a href='insert.html'>เพิ่มข้อมูลถัดไป</a>"
+if ($sql) {
+  echo "เพิ่มข้อมูลเรียบร้อยแล้ว <br><br>";
+}
 ?>
