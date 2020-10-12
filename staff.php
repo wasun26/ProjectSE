@@ -20,7 +20,7 @@ mysqli_set_charset($conn, "utf8");
 <div class="container">
 	<h1>เพิ่มวิชาสอบ</h1>
 	<form action="insert.php" method="POST">
-		<table width="100%" border="0" class="table table-hover table-striped">
+		<table width="100%" border=" 0" class="table table-striped table-hover">
 			<tbody>
 				<tr>
 					<td>ปีการศึกษา:</td>
@@ -47,39 +47,37 @@ mysqli_set_charset($conn, "utf8");
 						$sql = "SELECT id FROM subject";
 						$result = $conn->query($sql);
 						?>
+						วิชา:
 					<td>
-						<?php
-						echo "วิชา: ";
-						echo "<select name='subject'>";
+						<select name='subject'>
+							<option value='NULL'> เลือก </option>
+							<?php
 
-						echo "<option value = 'NULL'> เลือก </option>";
-						while ($row = $result->fetch_assoc()) { //begin while
-							$code = $row['id'];
-							echo "<option value = '$code'> $code </option>";
-						}  //end while
-
-						echo "</select><br>";
-						?></td>
+							while ($row = $result->fetch_assoc()) { //begin while
+								$code = $row['id'];
+								echo "<option value = '$code'> $code </option>";
+							}
+							?>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td><?php
 						$sql = "SELECT * FROM room ";
 						$result = $conn->query($sql);
 						?>
+						ห้องสอบ:
 					</td>
 					<td>
-						<?php
-						echo "ห้องสอบ: ";
-						echo "<select name='room'>";
-
-						echo "<option value = 'NULL'> เลือก </option>";
-						while ($row = $result->fetch_assoc()) { //begin while
-							$name = $row['name'];
-							echo "<option value = '$name'> $name </option>";
-						}  //end while
-
-						echo "</select><br>";
-						?>
+						<select name='room'>
+							<option value='NULL'> เลือก </option>
+							<?php
+							while ($row = $result->fetch_assoc()) { //begin while
+								$name = $row['name'];
+								echo "<option value = '$name'> $name </option>";
+							}
+							?>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -87,44 +85,42 @@ mysqli_set_charset($conn, "utf8");
 						$sql = "SELECT * FROM timeexam ";
 						$result = $conn->query($sql);
 						?>
+						เวลาสอบ:
 					</td>
 					<td>
-						<?php
-						echo "เวลาสอบ: ";
-						echo "<select name='time'>";
-
-						echo "<option value = 'NULL'> เลือก </option>";
-						while ($row = $result->fetch_assoc()) { //begin while
-							$time = $row['id'];
-							$time_start = $row['timeStart'];
-							$time_end = $row['timeFinish'];
-							echo "<option value = '$time'> $time_start - $time_end</option>";
-						}  //end while
-
-						echo "</select><br>";
-						?></td>
+						<select name='time'>
+							<option value='NULL'> เลือก </option>
+							<?php
+							while ($row = $result->fetch_assoc()) { //begin while
+								$time = $row['id'];
+								$time_start = $row['timeStart'];
+								$time_end = $row['timeFinish'];
+								echo "<option value = '$time'> $time_start - $time_end</option>";
+							}
+							?>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td><?php
 						$sql = "SELECT * FROM teacher ";
 						$result = $conn->query($sql);
 						?>
+						ผู้คุมสอบ(อาจารย์):
 					</td>
 					<td>
-						<?php
-						echo "ผู้คุมสอบ(อาจารย์): ";
-						echo "<select name='examiner_t'>";
-
-						echo "<option value = 'NULL'> เลือก </option>";
-						while ($row = $result->fetch_assoc()) { //begin while
-							$id = $row['id'];
-							$f_name = $row['fname'];
-							$l_name = $row['lname'];
-							echo "<option value = '$id'>$f_name $l_name</option>";
-						}  //end while
-
-						echo "</select><br>";
-						?></td>
+						<select name='examiner_t'>
+							<option value='NULL'> เลือก </option>
+							<?php
+							while ($row = $result->fetch_assoc()) {
+								$id = $row['id'];
+								$f_name = $row['fname'];
+								$l_name = $row['lname'];
+								echo "<option value = '$id'>$f_name $l_name</option>";
+							}
+							?>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>ผู้คุมสอบ(บุคลากร):
@@ -135,17 +131,17 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td>
 						<select name='examiner_s'>
-							<option value='NULL'> เลือก </option>
+							<option value='NULL'>เลือก</option>
 							<?php
-							while ($row = $result->fetch_assoc()) { //begin while
+							while ($row = $result->fetch_assoc()) {
 								$id = $row['id'];
 								$f_name = $row['fname'];
 								$l_name = $row['lname'];
 								echo "<option value = '$id'>$f_name $l_name</option>";
-							}  //end while
-
-							echo "</select><br><br>";
-							?></td>
+							}
+							?>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="Add"> <input type="reset" value="Reset"></td>
