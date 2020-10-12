@@ -26,8 +26,6 @@ if ($conn->connect_error) {
 
 mysqli_set_charset($conn, "utf8");
 
-//Connected successfully
-
 $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`) VALUES  
                  (NULL, '$phase', '$subject', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
 
