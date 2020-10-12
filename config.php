@@ -14,7 +14,7 @@ $config['title'] = "ระบบจัดการตารางสอบ";
 $config['title_short'] = "E-Table";
 
 $config['hostname'] = "localhost";
-$config['dbuser'] = "se_exam";
-$config['dbpassword'] = "sedb";
+$config['dbuser'] = "root";
+$config['dbpassword'] = "";
 $config['dbname'] = "se_exam";
 ?>
