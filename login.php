@@ -31,10 +31,7 @@ function login()
 		}
 	}
 	$conn->close();
-	echo ("<script type='text/javascript'>
-		$('#myModal').modal('show');
-		</script>
-		");
+	echo ("<script> $(document).ready(function(){ $('#myModal').modal('show'); }); </script>");
 }
 ?>
 <html>
@@ -47,9 +44,12 @@ function login()
 </head>
 
 <body>
-	<div></div>
+	<div class="text-light" align="center">
+		<h2>CMU IT Account</h2>
+		<h5>One account for all Services</h5>
+	</div>
 	<div class="container">
-		<div class="d-flex justify-content-center h-100">
+		<div class="d-flex justify-content-center h-50">
 			<div class="card">
 				<div class="card-header">
 					<h3>Login</h3>
@@ -91,7 +91,6 @@ function login()
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">ปิด</button>
 				</div>
-
 			</div>
 		</div>
 	</div>
