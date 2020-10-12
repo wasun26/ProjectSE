@@ -29,18 +29,14 @@ include("config.php");
 	<div class="container">
 		<h1>เพิ่มวิชาสอบ</h1>
 		<form action="insert.php" method="post">
-
 			ปีการศึกษา: <input type="text" name="year"><br>
-
 			ภาคการศึกษา: <input type="text" name="semester"><br>
-
 			<label for="phase">ช่วงสอบ:</label>
 			<select name="phase" id="phase">
 				<option value="NULL">เลือก</option>
 				<option value="mid">Midterm</option>
 				<option value="final">Final</option>
 			</select><br>
-
 			<?php
 			$sql = "SELECT * FROM subject ";
 			$result = $conn->query($sql);
