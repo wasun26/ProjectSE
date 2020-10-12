@@ -19,13 +19,13 @@ function login($type)
 	$email = $_POST['email'] . '@cmu.ac.th';
 	echo ($email);
 	echo ($_POST['password']);
-	$login = "SELECT email, password FROM $type WHERE email='$email'";
+	$login = "SELECT email, password FROM user WHERE email='$email'";
 	$result = $conn->query($login);
 	$dbarr = $result->fetch_assoc();
 	$conn->close();
 	if ($dbarr) {
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
-			$_SESSION['login_true'] = $user_login;
+			$_SESSION['login_true'] = $email;
 			header("location: ./?page=main");
 		} else {
 			echo ("<script>
@@ -77,16 +77,6 @@ function login($type)
 																			echo ($_POST['loginType']);
 																		} ?>">
 					</form>
-					<script language="javascript">
-						function Login() {
-							var myform = document.login;
-							if (myform.userid.value == "Admin" && ((myform.passid.value == "803") || (myform.passid.value == "710") || (myform.passid.value == "815") || (myform.passid.value == "809") || (myform.passid.value == "665")))
-								window.open('./?page=main')
-							else
-								alert("Error Password or Username")
-							myform.reset();
-						}
-					</script>
 				</div>
 			</div>
 		</div>
