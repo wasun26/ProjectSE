@@ -29,15 +29,49 @@ include("config.php");
 	<div class="container">
 		<h1>เพิ่มวิชาสอบ</h1>
 		<form action="insert.php" method="POST">
-			ปีการศึกษา: <input type="text" name="year"><br>
-			ภาคการศึกษา: <input type="text" name="semester"><br>
-			<label for="phase">ช่วงสอบ:</label>
-			<select name="phase" id="phase">
-				<option value="NULL">เลือก</option>
-				<option value="mid">Midterm</option>
-				<option value="final">Final</option>
-			</select><br>
-			<?php
+		  <table width="200" border="1">
+		    <tbody>
+		      <tr>
+		        <td>ปีการศึกษา:</td>
+		        <td><input type="text" name="year"></td>
+	          </tr>
+		      <tr>
+		        <td>&nbsp;</td>
+		        <td>&nbsp;</td>
+	          </tr>
+		      <tr>
+		        <td>&nbsp;</td>
+		        <td>&nbsp;</td>
+	          </tr>
+		      <tr>
+		        <td>&nbsp;</td>
+		        <td>&nbsp;</td>
+	          </tr>
+		      <tr>
+		        <td>&nbsp;</td>
+		        <td>&nbsp;</td>
+	          </tr>
+		      <tr>
+		        <td>&nbsp;</td>
+		        <td>&nbsp;</td>
+	          </tr>
+		      <tr>
+		        <td>&nbsp;</td>
+		        <td>&nbsp;</td>
+	          </tr>
+	        </tbody>
+	      </table>
+		  <p>&nbsp;</p>
+			<p><br>
+			  ภาคการศึกษา: <input type="text" name="semester"><br>
+			  <label for="phase">ช่วงสอบ:</label>
+			  <select name="phase" id="phase">
+			    <option value="NULL">เลือก</option>
+			    <option value="mid">Midterm</option>
+			    <option value="final">Final</option>
+		      </select>
+			  <br>
+			  <?php
 			$sql = "SELECT id FROM subject";
 			$result = $conn->query($sql);
 			echo "วิชา: ";
@@ -51,11 +85,11 @@ include("config.php");
 
 			echo "</select><br>";
 			?>
-
-			<label for="date">วันที่:</label>
-			<input type="date" id="date" name="date"><br>
-
-			<?php
+			  
+			  <label for="date">วันที่:</label>
+			  <input type="date" id="date" name="date"><br>
+			  
+			  <?php
 			$sql = "SELECT * FROM room ";
 			$result = $conn->query($sql);
 			echo "ห้องสอบ: ";
@@ -69,8 +103,8 @@ include("config.php");
 
 			echo "</select><br>";
 			?>
-
-			<?php
+			  
+			  <?php
 			$sql = "SELECT * FROM timeexam ";
 			$result = $conn->query($sql);
 			echo "เวลาสอบ: ";
@@ -86,8 +120,8 @@ include("config.php");
 
 			echo "</select><br>";
 			?>
-
-			<?php
+			  
+			  <?php
 			$sql = "SELECT * FROM teacher ";
 			$result = $conn->query($sql);
 			echo "ผู้คุมสอบ(อาจารย์): ";
@@ -103,8 +137,8 @@ include("config.php");
 
 			echo "</select><br>";
 			?>
-
-			<?php
+			  
+			  <?php
 			$sql = "SELECT * FROM staff ";
 			$result = $conn->query($sql);
 			echo "ผู้คุมสอบ(บุคลากร): ";
@@ -120,8 +154,9 @@ include("config.php");
 
 			echo "</select><br><br>";
 			?>
-			<input type="submit" value="Add">&nbsp&nbsp
-			<input type="reset" value="Reset">
+			  <input type="submit" value="Add">&nbsp&nbsp
+			  <input type="reset" value="Reset">
+		  </p>
 		</form>
 	</div>
 </body>
