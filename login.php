@@ -21,6 +21,7 @@ function login()
 	echo ($_POST['password']);
 	$sql = "SELECT email, password FROM user WHERE email='$email'";
 	$result = $conn->query($sql);
+	echo ($result->num_rows);
 	$dbarr = $result->fetch_assoc();
 	$conn->close();
 	if ($dbarr) {
@@ -28,7 +29,8 @@ function login()
 			$_SESSION['login_true'] = $email;
 			header("location: ./?page=main");
 		} else {
-			echo ("<script>
+			echo ("ssssssss");
+			echo ("<script type='text/javascript'>
 			$('#myModal').modal('show');
 			</script>
 			");
