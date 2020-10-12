@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
-
+session_start();
+if (isset($_SESSION['login_true'])) {
+	header("Location: ?page=main");
+	exit;
+}
 
 include("config.php");
 
@@ -17,10 +21,11 @@ function login($type)
 	echo ($_POST['password']);
 	$login = "SELECT email, password FROM $type WHERE email='$email'";
 	$result = $conn->query($login);
-	$dbarr = $result->fetch_assoc(); # BUG when login wrong
+	$dbarr = $result->fetch_assoc();
 	$conn->close();
 	if ($dbarr) {
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
+			$_SESSION['login_true'] = $user_login;
 			header("location: ./?page=main");
 		} else {
 			echo ("<script>
