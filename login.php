@@ -21,7 +21,10 @@ function login($type)
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
 			header("location: ./?page=main");
 		} else {
-			echo ("ไม่พบ");
+			echo ("<script>
+			document.getElementById('alert').showModal();
+			</script>
+			");
 		}
 	}
 }
@@ -61,7 +64,11 @@ function login($type)
 						<div class="form-group">
 							<input type="submit" value="Login" class="btn float-right login_btn">
 						</div>
-						<input type="hidden" name="loginType" value="<?php echo ($_GET['logintype']); ?>">
+						<input type="hidden" name="loginType" value="<?php if (isset($_GET['logintype'])) {
+																			echo ($_GET['logintype']);
+																		} else {
+																			echo ($_POST['loginType']);
+																		} ?>">
 					</form>
 					<script language="javascript">
 						function Login() {
@@ -74,6 +81,24 @@ function login($type)
 						}
 					</script>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">ข้อความจากระบบ</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					Email หรือ รหัสผ่าน ไม่ถูกต้อง กรุณาลองอีกครั้ง
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+				</div>
+
 			</div>
 		</div>
 	</div>
