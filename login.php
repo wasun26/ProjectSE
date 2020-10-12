@@ -22,11 +22,11 @@ function login()
 	$sql = "SELECT email, password FROM user WHERE email='$email'";
 	$result = $conn->query($sql);
 	echo ($result->num_rows);
-	$dbarr = $result->fetch_assoc();
-	$conn->close();
-	if ($dbarr) {
+	if ($result->num_rows > 0) {
+		$dbarr = $result->fetch_assoc();
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
 			$_SESSION['login_true'] = $email;
+			$conn->close();
 			header("location: ./?page=main");
 		} else {
 			echo ("ssssssss");
@@ -35,6 +35,7 @@ function login()
 			</script>
 			");
 		}
+		$conn->close();
 	}
 }
 ?>
