@@ -27,19 +27,24 @@ mysqli_set_charset($conn, "utf8");
 					<td><input type="text" name="year"></td>
 				</tr>
 				<tr>
-					<td>ภาคการศึกษา:</td>
-					<td><input type="text" name="semester"></td>
+					<td><label for="semester">ภาคการศึกษา:</label></td>
+					<td><select name="semester" id="semester">
+							<option value="NULL">เลือก</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select></td>
 				</tr>
 				<tr>
 					<td><label for="phase">ช่วงสอบ:</label></td>
 					<td><select name="phase" id="phase">
 							<option value="NULL">เลือก</option>
-							<option value="mid">Midterm</option>
-							<option value="final">Final</option>
+							<option value="1">Midterm</option>
+							<option value="2">Final</option>
 						</select></td>
 				</tr>
 				<tr>
-					<td><label for="date2">วันที่:</label></td>
+					<td><label for="date">วันที่:</label></td>
 					<td><input type="date" id="date" name="date"></td>
 				</tr>
 				<tr>

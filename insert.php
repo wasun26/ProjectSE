@@ -4,7 +4,7 @@
 <?php
 include("config.php");
 $phase = $_POST['phase'];
-$year = $_POST['year']-543;
+$year = $_POST['year'];
 $semester = $_POST['semester'];
 $subject = $_POST['subject'];
 $date = $_POST['date'];
@@ -12,7 +12,6 @@ $room = $_POST['room'];
 $time = $_POST['time'];
 $examiner_t = $_POST['examiner_t'];
 $examiner_s = $_POST['examiner_s'];
-
 
 // Create connection
 $conn = new mysqli(
@@ -31,8 +30,8 @@ mysqli_set_charset($conn, "utf8");
 
 //Connected successfully
 
-$sql = "INSERT INTO exam (phase, subject, semester, year, date, time, room, examiner_t, examiner_s) VALUES  
-                 ('$phase', '$subject', '$semester', '$year', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
+$sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`) VALUES  
+                 (NULL, '$phase', '$subject', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
 
 $conn->query($sql);
 $conn->close();
