@@ -28,15 +28,14 @@ function login()
 			$_SESSION['login_true'] = $email;
 			$conn->close();
 			header("location: ./?page=main");
-		} else {
-			echo ("ssssssss");
-			echo ("<script type='text/javascript'>
-			$('#myModal').modal('show');
-			</script>
-			");
 		}
-		$conn->close();
 	}
+	$conn->close();
+	echo ("ssssssss");
+	echo ("<script type='text/javascript'>
+		$('#myModal').modal('show');
+		</script>
+		");
 }
 ?>
 <html>
