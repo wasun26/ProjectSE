@@ -24,7 +24,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO exam (phase, subject, year, semester, date, time, room, examiner_t, examiner_s) VALUES ('$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
+$sql = "INSERT INTO exam (id, phase, subject, year, semester, date, time, room, examiner_t, examiner_s) VALUES (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s')";
 
 $conn->query($sql);
 $conn->close();
