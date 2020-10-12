@@ -31,7 +31,6 @@ function login()
 		}
 	}
 	$conn->close();
-	echo ("ssssssss");
 	echo ("<script type='text/javascript'>
 		$('#myModal').modal('show');
 		</script>
