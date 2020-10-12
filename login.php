@@ -9,18 +9,18 @@ if (isset($_SESSION['login_true'])) {
 include("config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	login($_POST['loginType']);
+	login();
 }
 
-function login($type)
+function login()
 {
 	include("config.php");
 	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
 	$email = $_POST['email'] . '@cmu.ac.th';
 	echo ($email);
 	echo ($_POST['password']);
-	$login = "SELECT email, password FROM user WHERE email='$email'";
-	$result = $conn->query($login);
+	$sql = "SELECT email, password FROM user WHERE email='$email'";
+	$result = $conn->query($sql);
 	$dbarr = $result->fetch_assoc();
 	$conn->close();
 	if ($dbarr) {
@@ -29,7 +29,7 @@ function login($type)
 			header("location: ./?page=main");
 		} else {
 			echo ("<script>
-			document.getElementById('alert').showModal();
+			$('#myModal').modal('show');
 			</script>
 			");
 		}
@@ -71,11 +71,6 @@ function login($type)
 						<div class="form-group">
 							<input type="submit" value="Login" class="btn float-right login_btn">
 						</div>
-						<input type="hidden" name="loginType" value="<?php if (isset($_GET['logintype'])) {
-																			echo ($_GET['logintype']);
-																		} else {
-																			echo ($_POST['loginType']);
-																		} ?>">
 					</form>
 				</div>
 			</div>
