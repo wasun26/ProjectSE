@@ -11,6 +11,10 @@
 <body>
   <?php
   include("config.php");
+
+  if () {
+    # code...
+  }
   $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
   $sql = "SELECT DAY(E.date), T.timeStart, T.timeFinish, P.start, P.end
   FROM timeexam T, student S, exam E, enroll EN, phase P
