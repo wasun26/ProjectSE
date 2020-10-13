@@ -91,9 +91,13 @@
                     <li class="list-group-item">
                         <div class="input-group m-b">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">ชื่อ-สกุล</span>
+                                <span class="input-group-text">ชื่อ</span>
                             </div>
-                            <input type="text" name="owner_keyword" id="owner_keyword" class="form-control">
+                            <input type="text" name="owner_fname" class="form-control">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">สกุล</span>
+                            </div>
+                            <input type="text" name="owner_lname" class="form-control">
                         </div>
                     </li>
                     <li class="list-group-item">
