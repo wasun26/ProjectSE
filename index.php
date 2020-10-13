@@ -26,6 +26,12 @@ session_start();
             case "login":
                 include("login.php");
                 break;
+            case "examlist":
+                include("examlist.php");
+                break;
+            case "timelist":
+                include("timelist.php");
+                break;
             case "main":
                 include("main.php");
                 break;
