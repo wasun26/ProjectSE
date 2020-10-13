@@ -16,7 +16,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">รหัสนักศึกษา</span>
                             </div>
-                            <input type="text" name="student_id" id="student_id" class="form-control" maxlength="9" required>
+                            <input name="student_id" type="text" required class="form-control" id="student_id" placeholder="610510XXX" maxlength="9">
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -38,7 +38,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">รหัสวิชา</span>
                             </div>
-                            <input type="text" name="course_keyword" id="course_keyword" class="form-control" maxlength="3" required>
+                            <input name="course_keyword" type="text" required class="form-control" id="course_keyword" placeholder="204XXX" maxlength="3">
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -68,7 +68,7 @@
                             <div class='input-group-prepend'>
                                 <span class='input-group-text'>รหัสวิชา</span>
                             </div>
-                            <input type='text' name='courseno[]' id='$i' class='form-control' maxlength='6'>
+                            <input type='text' name='courseno[]' id='$i' class='form-control' maxlength='6' placeholder='204XXX'>
                         </div>
                             ");
                         }
