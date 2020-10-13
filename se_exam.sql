@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2020 at 09:17 PM
+-- Generation Time: Oct 13, 2020 at 09:57 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -56,18 +56,20 @@ CREATE TABLE `exam` (
   `semester` int(10) UNSIGNED NOT NULL,
   `date` date NOT NULL,
   `time` int(1) NOT NULL,
-  `room` varchar(6) NOT NULL,
+  `room` varchar(8) NOT NULL,
   `examiner_t` int(10) UNSIGNED DEFAULT NULL,
-  `examiner_s` int(10) UNSIGNED DEFAULT NULL
+  `examiner_s` int(10) UNSIGNED DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `exam`
 --
 
-INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`) VALUES
-(9, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100', 11111, 1),
-(10, 1, '204111', 2020, 1, '2020-10-13', 1, 'CSB100', 11111, 1);
+INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `status`) VALUES
+(1, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100-1', 11111, 1, -1),
+(2, 1, '204100', 2020, 1, '2020-10-13', 1, 'CSB100-2', 11122, 1, -1),
+(12, 1, '204231', 2020, 1, '2020-10-14', 3, 'CSB100-2', 11122, NULL, -1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,7 @@ INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`
 
 CREATE TABLE `phase` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(5) NOT NULL
+  `name` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -85,7 +87,9 @@ CREATE TABLE `phase` (
 --
 
 INSERT INTO `phase` (`id`, `name`) VALUES
-(1, 'mid');
+(1, 'Mid'),
+(2, 'Final'),
+(3, 'Summer');
 
 -- --------------------------------------------------------
 
@@ -94,7 +98,7 @@ INSERT INTO `phase` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `room` (
-  `name` varchar(6) NOT NULL,
+  `name` varchar(8) NOT NULL,
   `status` int(1) UNSIGNED NOT NULL DEFAULT 1,
   `capacity` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -104,7 +108,8 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`name`, `status`, `capacity`) VALUES
-('CSB100', 1, 100);
+('CSB100-1', 1, 50),
+('CSB100-2', 1, 50);
 
 -- --------------------------------------------------------
 
@@ -183,7 +188,7 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`id`, `name`, `tid`) VALUES
-('204100', 'Information Technology and Modern Life', 11111),
+('204100', 'Information Technology and Modern Life', 11122),
 ('204111', 'Fundamentals of Programming', 11111),
 ('204112', 'Fundamentals of Programming 2', 11111),
 ('204113', 'Principles of Computing', 11111),
@@ -254,6 +259,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fname`, `lname`, `type`, `email`, `password`) VALUES
+('1', 'เจ้าหน้าที่1', 'นามสกุลเจ้าหน้าที่1', 3, 'staff1@cmu.ac.th', '1111'),
 ('11111', 'aaa', 'bbb', 2, 'test.t@cmu.ac.th', '1234'),
 ('11122', 'ccc', 'eee', 2, 'test2.t@cmu.ac.th', '1234'),
 ('610510999', 'นายก', 'สกุล', 1, 'test@cmu.ac.th', '1234');
@@ -373,13 +379,13 @@ ALTER TABLE `enroll`
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `phase`
 --
 ALTER TABLE `phase`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `semester`
