@@ -22,20 +22,40 @@ include("config.php");
           case 'studentID':
             $input = $_POST['searchData'];
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
-        FROM timeexam T, exam E, enroll EN, phase P
-        WHERE EN.sid=$input AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=P.id";
+            FROM timeexam T, exam E, enroll EN, phase P
+            WHERE EN.sid=$input AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=P.id
+            ORDER BY E.date";
             break;
           case 'subjectID':
             $input = $_POST['searchData'];
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
             FROM timeexam T, exam E, phase P
-            WHERE E.phase=P.id AND E.time=T.id OR E.id LIKE '$input%'";
+            WHERE E.phase=P.id AND E.time=T.id OR E.id LIKE '$input%'
+            ORDER BY E.date";
             break;
-          case 'multisubjectID':
+          case 'multisubjectID':  
             $input = $_POST['searchData'];
+            $sum = "$input[0]";
+            for ($i = 1; $i < 5; $i++) {
+              if ($input[$i] != "") {
+                $sum .= ",$input[$i]";
+              }
+            }
+            $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
+            FROM timeexam T, exam E, phase P
+            WHERE E.phase=P.id AND E.time=T.id AND E.subject IN ($sum)";
             break;
           case 'examinerName':
             $input = $_POST['searchData'];
+            $name = explode(" ", $input);
+            $nameCon = "U.fname=$name[0]";
+            if (count($name) == 2) {
+              $nameCon .= " AND U.lname=$name[1]";
+            }
+            echo ($nameCon);
+            $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
+            FROM timeexam T, exam E, phase P, user U
+            WHERE E.phase=P.id AND E.time=T.id AND $nameCon";
             break;
         }
         $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);

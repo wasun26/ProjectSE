@@ -97,7 +97,7 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <button type="button" class="btn btn-primary btn-xs" name="search5" onClick="searchAdvisor(document.getElementById('owner_keyword').value);"><i class="fa fa-search"></i> Search</button>
+                        <button type="submit" class="btn btn-primary btn-xs" name="search5"><i class="fa fa-search"></i> Search</button>
                         <span id="searchAdvisor"></span>
                     </li>
                 </ul>
