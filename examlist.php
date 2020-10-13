@@ -33,7 +33,7 @@ include("config.php");
             WHERE E.phase=P.id AND E.time=T.id OR E.id LIKE '$input%'
             ORDER BY E.date";
             break;
-          case 'multisubjectID':  
+          case 'multisubjectID':
             $input = $_POST['searchData'];
             $sum = "$input[0]";
             for ($i = 1; $i < 5; $i++) {
@@ -48,14 +48,14 @@ include("config.php");
           case 'examinerName':
             $input = $_POST['searchData'];
             $name = explode(" ", $input);
-            $nameCon = "U.fname=$name[0]";
+            $nameCon = "U.fname='" . $name[0] . "'";
             if (count($name) == 2) {
-              $nameCon .= " AND U.lname=$name[1]";
+              $nameCon .= " AND U.lname='" . $name[1] . "'";
             }
-            echo ($nameCon);
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
             FROM timeexam T, exam E, phase P, user U
-            WHERE E.phase=P.id AND E.time=T.id AND $nameCon";
+            WHERE E.phase=P.id AND E.time=T.id AND (E.examiner_t=U.id OR E.examiner_s=U.id) AND $nameCon";
+            echo($nameCon);
             break;
         }
         $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
