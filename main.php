@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <div class="container">
     <div class="card" align="center" style="border: none;">
-        <h1>Exam Time Table Management</h1><br>
-        เลือกแบบฟอร์มและระบุเงื่อนไขที่ต้องการสืบค้น
-    </div><br>
+        <h1>Exam Time Table Management</h1>
+    </div>
 
     <div class="card-deck">
         <div class="card" style="border: none">
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากรหัสนักศึกษา
             </div>
-            <form method="post" action="">
+            <form method="POST" action="examlist.php">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="input-group m-b">
-                            <span class="input-group-addon">รหัสนักศึกษา</span>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">รหัสนักศึกษา</span>
+                            </div>
                             <input type="text" name="student_id" id="student_id" class="form-control" maxlength="9" required>
                         </div>
                     </li>
@@ -22,6 +23,7 @@
                         <button type="submit" class="btn btn-primary btn-xs" name="search1"><i class="fa fa-search"></i> Search</button>
                     </li>
                 </ul>
+                <input type="hidden" name="searchType" value="studentID">
             </form>
         </div>
 
@@ -29,21 +31,25 @@
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาตามวิชา
             </div>
-            <form method="post" action="">
+            <form method="POST" action="examlist.php">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="input-group m-b">
-                            <span class="input-group-addon">รหัสวิชา</span>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">รหัสวิชา</span>
+                            </div>
                             <input type="text" name="course_keyword" id="course_keyword" class="form-control" maxlength="3" required>
                         </div>
                     </li>
                     <li class="list-group-item">
+                        <button type="submit" class="btn btn-primary btn-xs" name="search3" value="search3"><i class="fa fa-search"></i> Search</button>
                         <i>
                             <font color="#FF0004">* ระบุรหัสวิชา 3 ตัวหน้า</font>
                         </i>
-                        <button type="submit" class="btn btn-primary btn-xs" name="search3" value="search3"><i class="fa fa-search"></i> Search</button>
                     </li>
                 </ul>
+                <input type="hidden" name="searchType" value="subjectID">
+            </form>
         </div>
     </div><br>
 
@@ -52,53 +58,27 @@
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากรหัสกระบวนวิชา
             </div>
-            <form method="post" action="">
+            <form method="POST" action="examlist.php">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <div class="input-group m-b">
-                            <span class="input-group-addon">Course No</span>
-                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                            <span class="input-group-addon">LEC</span>
-                            <input type="text" name="lec[]" class="form-control" maxlength="3">
-                            <span class="input-group-addon">LAB</span>
-                            <input type="text" name="lab[]" class="form-control" maxlength="3">
+                        <?php
+                        for ($i = 0; $i < 5; $i++) {
+                            echo ("
+                            <div class='input-group m-b'>
+                            <div class='input-group-prepend'>
+                                <span class='input-group-text'>รหัสวิชา</span>
+                            </div>
+                            <input type='text' name='courseno[]' id='$i' class='form-control' maxlength='6'>
                         </div>
-                        <div class="input-group m-b">
-                            <span class="input-group-addon">Course No</span>
-                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                            <span class="input-group-addon">LEC</span>
-                            <input type="text" name="lec[]" class="form-control" maxlength="3">
-                            <span class="input-group-addon">LAB</span>
-                            <input type="text" name="lab[]" class="form-control" maxlength="3">
-                        </div>
-                        <div class="input-group m-b">
-                            <span class="input-group-addon">Course No</span>
-                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                            <span class="input-group-addon">LEC</span>
-                            <input type="text" name="lec[]" class="form-control" maxlength="3">
-                            <span class="input-group-addon">LAB</span>
-                            <input type="text" name="lab[]" class="form-control" maxlength="3">
-                        </div>
-                        <div class="input-group m-b">
-                            <span class="input-group-addon">Course No</span>
-                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                            <span class="input-group-addon">LEC</span>
-                            <input type="text" name="lec[]" class="form-control" maxlength="3">
-                            <span class="input-group-addon">LAB</span>
-                            <input type="text" name="lab[]" class="form-control" maxlength="3"></div>
-                        <div class="input-group m-b">
-                            <span class="input-group-addon">Course No</span>
-                            <input type="text" name="courseno[]" class="form-control" maxlength="6">
-                            <span class="input-group-addon">LEC</span>
-                            <input type="text" name="lec[]" class="form-control" maxlength="3">
-                            <span class="input-group-addon">LAB</span>
-                            <input type="text" name="lab[]" class="form-control" maxlength="3">
-                        </div>
+                            ");
+                        }
+                        ?>
                     </li>
                     <li class="list-group-item">
                         <button type="submit" class="btn btn-primary btn-xs" name="search4"><i class="fa fa-search"></i> Search</button>
                     </li>
                 </ul>
+                <input type="hidden" name="searchType" value="multisubjectID">
             </form>
         </div>
 
@@ -106,11 +86,13 @@
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากชื่อกรรมการคุมสอบ
             </div>
-            <form method="post" action="">
+            <form method="POST" action="examlist.php">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="input-group m-b">
-                            <span class="input-group-addon">ชื่อ-สกุล</span>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ชื่อ-สกุล</span>
+                            </div>
                             <input type="text" name="owner_keyword" id="owner_keyword" class="form-control">
                         </div>
                     </li>
@@ -119,6 +101,7 @@
                         <span id="searchAdvisor"></span>
                     </li>
                 </ul>
+                <input type="hidden" name="searchType" value="examinerName">
             </form>
         </div>
     </div>
