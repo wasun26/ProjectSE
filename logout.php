@@ -1,13 +1,13 @@
 <?php
-#session_start();
-#session_destroy();
+session_start();
+session_destroy();
 
 if (!(isset($_SESSION['login_true']))) {
     header("Location: ./?");
 	exit;
 }
 
-#<meta http-equiv=refresh content=1;URL=?>?>
+#<meta http-equiv=refresh content=1;URL=?>
 <div class="container justify-content-center">
   <p><br>
     <br>

@@ -23,31 +23,34 @@
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a href="./" class="nav-link" routerLink="train">หน้าแรก</a></li>
+
 					<?php
-					#$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-					#$email = $_POST['email'] . '@cmu.ac.th';
-					#$login = "SELECT email, password FROM $type WHERE email='$email'";
-					#$result = $conn->query($login);
-					#$dbarr = $result->fetch_assoc();
-					#$conn->close();
-					if (false) {
+					if (isset($_SESSION['login_true'])) {
 						echo ("
 						<li class='nav-item'><a href='#' class='nav-link' routerLink='profile'>โปรไฟล์</a></li>
 						<li class='nav-item'><a href='#' class='nav-link' routerLink='login'>เข้าสู่ระบบ</a></li>
 						<li class='nav-item'><a href='#' class='nav-link' routerLink='register'>ลงทะเบียน</a></li>
-						<li class='nav-item'><a href='#' class='nav-link' (click)='logout()'>ออกจากระบบ</a></li>
+						<li class='nav-item'><a href='./?page=logout' class='nav-link'>ออกจากระบบ</a></li>
 				
 					");
 					}
 					?>
 				</ul>
 				<?php
-				#<ul class="navbar-nav  navbar-right">
-				#<li class="nav-item" *ngIf="isLoggedIn">
-				#<button type="button" class="btn btn-light" routerLink="profile" *ngIf="isLoggedIn">{{email}}</button>
-				#</li>
-				#</ul>
+				if (isset($_SESSION['login_true'])) {
+					$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
+					$email = $_SESSION['login_true'];
+					$login = "SELECT fname, lname FROM user WHERE email='$email'";
+					$result = $conn->query($login);
+					$dbarr = $result->fetch_assoc();
+					$conn->close();
 				?>
+					<ul class='navbar-nav  navbar-right'>
+						<li class='nav-item'>
+							<button type='button' class='btn btn-light' routerLink='profile'><?php echo ($dbarr['fname'] . ' ' . $dbarr['lname']);
+																							} ?></button>
+						</li>
+					</ul>
 			</div>
 		</div>
 	</nav>

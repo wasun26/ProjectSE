@@ -24,6 +24,7 @@ function login()
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
 			$_SESSION['login_true'] = $email;
 			$conn->close();
+			echo($_SESSION['login_true']);
 			header("location: ./?page=main");
 		}
 	}
