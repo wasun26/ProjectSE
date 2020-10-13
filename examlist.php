@@ -10,7 +10,7 @@ include("config.php");
     switch ($_POST['searchType']) {
       case 'studentID':
         $input = $_POST['searchData'];
-        $sql = "SELECT E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
+        $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
         FROM timeexam T, exam E, enroll EN, phase P
         WHERE EN.sid=$input AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=P.id";
         break;
@@ -42,6 +42,7 @@ include("config.php");
       <?php
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+          $id = $row['id'];
           echo ("<tr><td>" . $row['subject'] . "</td>");
           echo ("<td>" . $row['date'] . "</td>");
           echo ("<td>" . $row['timeStart'] . "</td>");
@@ -49,22 +50,33 @@ include("config.php");
           echo ("<td>" . $row['room'] . "</td>");
           echo ("<td>" . $row['name'] . "</td>");
           echo ("<td>");
-          $examiner = "SELECT T.fname tfname, T.lname tlname, S.fname sfname, s.lname slname
-          FROM user T, user S, exam E
-          WHERE E.examiner_t=T.id AND E.examiner_S=S.id AND E.id=9";
-          $result = $conn->query($examiner);
-          if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-              echo($row['tfname']." ".$row('tlname'));
-              echo($row['sfname']." ".$row('slname'));
+          $examiner_t = "SELECT U.fname, U.lname
+          FROM user U, exam E
+          WHERE E.examiner_t=U.id AND E.id=$id";
+          $result2 = $conn->query($examiner_t);
+          if ($result2->num_rows > 0) {
+            while ($row2 = $result2->fetch_assoc()) {
+              echo ($row2['fname']);
+              echo (" " . $row2['lname'] . "<br>");
+            }
           }
+          $examiner_s = "SELECT U.fname, U.lname
+          FROM user U, exam E
+          WHERE E.examiner_s=U.id AND E.id=$id";
+          $result3 = $conn->query($examiner_s);
+          if ($result3->num_rows > 0) {
+            while ($row3 = $result3->fetch_assoc()) {
+              echo ($row3['fname']);
+              echo (" " . $row3['lname']);
+            }
+          }
+          echo ("</td></tr>");
         }
-        echo("</td></tr>");
+        $conn->close();
+        echo ("</tbody></table>");
+      } else {
+        echo ("ไม่มีข้อมูล");
       }
-      $conn->close();
-      echo ("</tbody></table>");
-    } else {
-      echo ("ไม่มีข้อมูล");
     }
       ?>
 
