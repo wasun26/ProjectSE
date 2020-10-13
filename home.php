@@ -21,7 +21,7 @@
 
     <div class="card-deck">
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('teacher')">สำหรับอาจารย์</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('2')">สำหรับอาจารย์</button>
             <br>
             <ul>
                 <li>จัดการและส่งคำขอใช้ห้องสอบ</li>
@@ -30,7 +30,7 @@
             </ul>
         </div>
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('staff')">สำหรับเจ้าหน้าที่</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('3')">สำหรับเจ้าหน้าที่</button>
             <br>
             <ul>
                 <li>จัดการคำขอใช้ห้องสอบ</li>
@@ -38,7 +38,7 @@
             </ul>
         </div>
         <div class="card">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('student')">สำหรับนักศึกษา</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('1')">สำหรับนักศึกษา</button>
             <br>
             <ul>
                 <li>ดูวันและเวลาสอบ</li>
