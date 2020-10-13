@@ -87,7 +87,9 @@ function login()
 							<span class="swal2-x-mark-line-right"></span>
 						</span>
 					</div>
+					<div class="d-flex justify-content-center">
 					Email หรือ รหัสผ่าน ไม่ถูกต้อง กรุณาลองอีกครั้ง
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">ปิด</button>

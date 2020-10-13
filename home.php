@@ -48,8 +48,6 @@
         </div>
     </div>
 
-
-
     <script language="javascript">
         function Login(type) {
             window.open("\login.php?logintype=" + type, "_self");
