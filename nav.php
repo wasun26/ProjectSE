@@ -27,7 +27,7 @@
 					<?php
 					if (isset($_SESSION['login_true'])) {
 						echo ("
-						<li class='nav-item'><a href='#' class='nav-link' routerLink='profile'>โปรไฟล์</a></li>
+						<li class='nav-item'><a href='?page=main' class='nav-link'>ค้นหา</a></li>
 						<li class='nav-item'><a href='#' class='nav-link' routerLink='login'>เข้าสู่ระบบ</a></li>
 						<li class='nav-item'><a href='#' class='nav-link' routerLink='register'>ลงทะเบียน</a></li>
 						<li class='nav-item'><a href='./?page=logout' class='nav-link'>ออกจากระบบ</a></li>
