@@ -1,57 +1,66 @@
 <!doctype html>
 <html>
-
-<head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-</head>
+<?php
+include("config.php");
+?>
 
 <body>
   <?php
-  include("config.php");
-
-  if () {
-    # code...
-  }
-  $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-  $sql = "SELECT DAY(E.date), T.timeStart, T.timeFinish, P.start, P.end
-  FROM timeexam T, student S, exam E, enroll EN, phase P
-  WHERE EN.sid=610510999 AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=E.phase";
-  $result = $conn->query($sql); 
-  if ($result->num_rows > 0) {
-    echo "Name";
-    while ($row = $result->fetch_assoc()) {
-      echo ($row['timeStart']);
-      echo ($row['timeStop']);
+  if (isset($_POST['searchType']) && isset($_POST['searchData'])) {
+    switch ($_POST['searchType']) {
+      case 'studentID':
+        $input = $_POST['searchData'];
+        $sql = "SELECT E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
+        FROM timeexam T, exam E, enroll EN, phase P
+        WHERE EN.sid=$input AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=P.id";
+        break;
+      case 'courseID':
+        $input = $_POST['searchData'];
+        break;
+      case 'multicourseID':
+        $input = $_POST['searchData'];
+        break;
+      case 'examinerName':
+        $input = $_POST['searchData'];
+        break;
     }
-  }
+
+    $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
+    $result = $conn->query($sql);
   ?>
-  <table class="table table-striped table-hover">
-    <thead class="thead-dark">
-      <tr align="center">
-        <th>วัน</th>
-        <th>8.00 - 11.00</th>
-        <th>12.00 - 15.00</th>
-        <th>15.30 - 18.00</th>
-      </tr>
-    </thead>
-    <tbody class="table hover">
+    <table class="table table-hover table-striped">
+      <thead>
+        <th>รหัสวิชา</th>
+        <th>วันที่</th>
+        <th>เวลาเริ่ม</th>
+        <th>เวลาสิ้นสุด</th>
+        <th>ห้อง</th>
+        <th>ห้วงสอบ</th>
+        <th>กรรมการคุมสอบ</th>
+      </thead>
+      <tbody class="table-hover">
       <?php
-      #for ($i = 0; $i < 7; $i++) {
-        #echo ("
-        #<tr>
-        #<td>&nbsp;</td>
-        #<td>&nbsp;</td>
-        #<td>&nbsp;</td>
-        #<td>&nbsp;</td>
-      #</tr>
-        #");
-      #}
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          echo ("<tr><td>" . $row['subject'] . "</td>");
+          echo ("<td>" . $row['date'] . "</td>");
+          echo ("<td>" . $row['timeStart'] . "</td>");
+          echo ("<td>" . $row['timeFinish'] . "</td>");
+          echo ("<td>" . $row['room'] . "</td>");
+          echo ("<td>" . $row['name'] . "</td>");
+          if (false) {
+            # code...
+          }
+          echo ("<td>-</td></tr>");
+        }
+      }
+      $conn->close();
+      echo (" </tbody></table>");
+    } else {
+      echo ("ไม่มีข้อมูล");
+    }
       ?>
-    </tbody>
-  </table>
+
 </body>
 
 </html>

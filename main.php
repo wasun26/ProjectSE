@@ -9,14 +9,14 @@
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากรหัสนักศึกษา
             </div>
-            <form method="POST" action="examlist.php">
+            <form method="POST" action="?page=examlist">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="input-group m-b">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">รหัสนักศึกษา</span>
                             </div>
-                            <input name="student_id" type="text" required class="form-control" id="student_id" placeholder="610510XXX" maxlength="9">
+                            <input name="searchData" type="text" required class="form-control" id="student_id" placeholder="610510XXX" maxlength="9">
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -31,14 +31,14 @@
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาตามวิชา
             </div>
-            <form method="POST" action="examlist.php">
+            <form method="POST" action="?page=examlist">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="input-group m-b">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">รหัสวิชา</span>
                             </div>
-                            <input name="course_keyword" type="text" required class="form-control" id="course_keyword" placeholder="204XXX" maxlength="3">
+                            <input name="searchData" type="text" required class="form-control" id="course_keyword" placeholder="XXX" maxlength="3">
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -58,7 +58,7 @@
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากรหัสกระบวนวิชา
             </div>
-            <form method="POST" action="examlist.php">
+            <form method="POST" action="?page=examlist">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <?php
@@ -68,7 +68,7 @@
                             <div class='input-group-prepend'>
                                 <span class='input-group-text'>รหัสวิชา</span>
                             </div>
-                            <input type='text' name='courseno[]' id='$i' class='form-control' maxlength='6' placeholder='204XXX'>
+                            <input type='text' name='searchData[]' id='$i' class='form-control' maxlength='6' placeholder='204XXX'>
                         </div>
                             ");
                         }
@@ -86,18 +86,14 @@
             <div class="card-header text-light" style="background-color: #152F4F;">
                 ค้นหาจากชื่อกรรมการคุมสอบ
             </div>
-            <form method="POST" action="examlist.php">
+            <form method="POST" action="?page=examlist">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="input-group m-b">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">ชื่อ</span>
+                                <span class="input-group-text">ชื่อ-สกุล</span>
                             </div>
-                            <input type="text" name="owner_fname" class="form-control">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">สกุล</span>
-                            </div>
-                            <input type="text" name="owner_lname" class="form-control">
+                            <input type="text" name="searchData" class="form-control">
                         </div>
                     </li>
                     <li class="list-group-item">
