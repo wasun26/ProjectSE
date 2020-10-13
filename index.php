@@ -31,6 +31,9 @@ include("config.php");
             case "staff":
                 include("staff.php");
                 break;
+            case "logout":
+                include("logout.php");
+                break;
             default:
                 include("home.php");
                 break;

@@ -17,11 +17,8 @@ function login()
 	include("config.php");
 	$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
 	$email = $_POST['email'] . '@cmu.ac.th';
-	echo ($email);
-	echo ($_POST['password']);
 	$sql = "SELECT email, password FROM user WHERE email='$email'";
 	$result = $conn->query($sql);
-	echo ($result->num_rows);
 	if ($result->num_rows > 0) {
 		$dbarr = $result->fetch_assoc();
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
@@ -41,6 +38,7 @@ function login()
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="animation.css">
 </head>
 
 <body>
@@ -81,7 +79,13 @@ function login()
 					<h4 class="modal-title">ข้อความจากระบบ</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<div class="modal-body text-danger">
+				<div class="modal-body text-danger justify-content-center">
+					<div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+						<span class="swal2-x-mark">
+							<span class="swal2-x-mark-line-left"></span>
+							<span class="swal2-x-mark-line-right"></span>
+						</span>
+					</div>
 					Email หรือ รหัสผ่าน ไม่ถูกต้อง กรุณาลองอีกครั้ง
 				</div>
 				<div class="modal-footer">
