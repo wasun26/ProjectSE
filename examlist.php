@@ -25,11 +25,13 @@ include("config.php");
         FROM timeexam T, exam E, enroll EN, phase P
         WHERE EN.sid=$input AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=P.id";
             break;
-          case 'courseID':
+          case 'subjectID':
             $input = $_POST['searchData'];
-
+            $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
+            FROM timeexam T, exam E, phase P
+            WHERE E.phase=P.id AND E.time=T.id OR E.id LIKE '$input%'";
             break;
-          case 'multicourseID':
+          case 'multisubjectID':
             $input = $_POST['searchData'];
             break;
           case 'examinerName':
@@ -72,7 +74,7 @@ include("config.php");
           }
           $conn->close();
         } else {
-          echo ("<div class='d-flex justify-content-center text-danger'><h3>ไม่มีข้อมูล</h3></div>");
+          echo ("<tr><td colspan='7'><h3 class='text-danger d-flex justify-content-center'>ไม่มีข้อมูล</h3></td></tr>");
         }
       }
       ?>
