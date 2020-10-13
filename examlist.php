@@ -48,14 +48,21 @@ include("config.php");
           echo ("<td>" . $row['timeFinish'] . "</td>");
           echo ("<td>" . $row['room'] . "</td>");
           echo ("<td>" . $row['name'] . "</td>");
-          if (false) {
-            # code...
+          echo ("<td>");
+          $examiner = "SELECT T.fname tfname, T.lname tlname, S.fname sfname, s.lname slname
+          FROM user T, user S, exam E
+          WHERE E.examiner_t=T.id AND E.examiner_S=S.id AND E.id=9";
+          $result = $conn->query($examiner);
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+              echo($row['tfname']." ".$row('tlname'));
+              echo($row['sfname']." ".$row('slname'));
           }
-          echo ("<td>-</td></tr>");
         }
+        echo("</td></tr>");
       }
       $conn->close();
-      echo (" </tbody></table>");
+      echo ("</tbody></table>");
     } else {
       echo ("ไม่มีข้อมูล");
     }
