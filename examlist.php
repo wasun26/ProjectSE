@@ -62,7 +62,7 @@ include("config.php");
         echo ("
         <div class='d-flex justify-content-between'>
         <div class='p-0'>พบ " . $result->num_rows . " รายการ</div>
-        <div class='p-0'><a href='?page=main'><i class='fas fa-search'></i></a></div>
+        <div class='p-0'><a href='?page=main' class='btn btn-outline-primary'><i class='fas fa-search'></i></a></div>
         </div>
         ");
         if ($result->num_rows > 0) {
