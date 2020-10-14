@@ -60,6 +60,12 @@ include("config.php");
         $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
+          echo ("
+          <div class='d-flex justify-content-between'>
+          <div class='p-0'>พบ " . $result->num_rows . " รายการ</div>
+          <div class='p-0'><a href='?page=main'><i class='fas fa-search'></i></a></div>
+          </div>
+          ");
           while ($row = $result->fetch_assoc()) {
             $id = $row['id'];
             echo ("<tr><td>" . $row['subject'] . "</td>");
@@ -97,6 +103,7 @@ include("config.php");
         }
       }
       ?>
+      <i></i>
     </tbody>
   </table>
 </body>
