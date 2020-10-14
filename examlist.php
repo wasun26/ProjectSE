@@ -103,7 +103,6 @@ include("config.php");
         }
       }
       ?>
-      <i></i>
     </tbody>
   </table>
 </body>
