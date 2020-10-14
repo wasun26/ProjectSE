@@ -32,6 +32,9 @@ session_start();
             case "timelist":
                 include("timelist.php");
                 break;
+            case "listtable":
+                include("listtable.php");
+                break;
             case "main":
                 include("main.php");
                 break;
