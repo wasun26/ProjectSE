@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2020 at 09:57 PM
+-- Generation Time: Oct 14, 2020 at 12:02 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -31,7 +31,7 @@ CREATE TABLE `enroll` (
   `id` int(10) UNSIGNED NOT NULL,
   `sid` varchar(10) NOT NULL,
   `subjectid` varchar(6) NOT NULL,
-  `semester` int(10) UNSIGNED NOT NULL
+  `semester` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,8 +39,8 @@ CREATE TABLE `enroll` (
 --
 
 INSERT INTO `enroll` (`id`, `sid`, `subjectid`, `semester`) VALUES
-(1, '610510999', '204111', 0),
-(2, '610510999', '204100', 0);
+(1, '610510999', '204111', 1),
+(2, '610510999', '204100', 1);
 
 -- --------------------------------------------------------
 
@@ -57,8 +57,8 @@ CREATE TABLE `exam` (
   `date` date NOT NULL,
   `time` int(1) NOT NULL,
   `room` varchar(8) NOT NULL,
-  `examiner_t` int(10) UNSIGNED DEFAULT NULL,
-  `examiner_s` int(10) UNSIGNED DEFAULT NULL,
+  `examiner_t` varchar(10) DEFAULT NULL,
+  `examiner_s` varchar(10) DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -67,9 +67,9 @@ CREATE TABLE `exam` (
 --
 
 INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `status`) VALUES
-(1, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100-1', 11111, 1, -1),
-(2, 1, '204100', 2020, 1, '2020-10-13', 1, 'CSB100-2', 11122, 1, -1),
-(12, 1, '204231', 2020, 1, '2020-10-14', 3, 'CSB100-2', 11122, NULL, -1);
+(1, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100-1', 'T11111', 'S1', -1),
+(2, 1, '204100', 2020, 1, '2020-10-13', 1, 'CSB100-2', 'T11122', 'S1', -1),
+(3, 1, '204231', 2020, 1, '2020-10-14', 3, 'CSB100-2', 'T11122', NULL, -1);
 
 -- --------------------------------------------------------
 
@@ -99,17 +99,17 @@ INSERT INTO `phase` (`id`, `name`) VALUES
 
 CREATE TABLE `room` (
   `name` varchar(8) NOT NULL,
-  `status` int(1) UNSIGNED NOT NULL DEFAULT 1,
-  `capacity` int(2) NOT NULL
+  `capacity` int(3) UNSIGNED NOT NULL,
+  `status` int(1) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`name`, `status`, `capacity`) VALUES
-('CSB100-1', 1, 50),
-('CSB100-2', 1, 50);
+INSERT INTO `room` (`name`, `capacity`, `status`) VALUES
+('CSB100-1', 50, 1),
+('CSB100-2', 50, 1);
 
 -- --------------------------------------------------------
 
@@ -152,35 +152,13 @@ INSERT INTO `staff` (`id`, `fname`, `lname`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `access` int(1) UNSIGNED NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`id`, `fname`, `lname`, `access`, `email`, `password`) VALUES
-(610510999, 'นายก', 'สกุล', 3, 'test@cmu.ac.th', '1234');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `subject`
 --
 
 CREATE TABLE `subject` (
   `id` varchar(6) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `tid` int(10) UNSIGNED NOT NULL
+  `tid` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -188,35 +166,15 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`id`, `name`, `tid`) VALUES
-('204100', 'Information Technology and Modern Life', 11122),
-('204111', 'Fundamentals of Programming', 11111),
-('204112', 'Fundamentals of Programming 2', 11111),
-('204113', 'Principles of Computing', 11111),
-('204211', 'Object-Oriented Programming', 11111),
-('204231', 'Computer Organization and Architecture', 11111),
-('204232', 'Computer Networks and Protocols', 11111),
-('204251', 'Data Structures', 11111),
-('204315', 'Organization of Programming Languages', 11111);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teacher`
---
-
-CREATE TABLE `teacher` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `teacher`
---
-
-INSERT INTO `teacher` (`id`, `fname`, `lname`) VALUES
-(11111, 'aaa', 'bbb'),
-(11122, 'ccc', 'eee');
+('204100', 'Information Technology and Modern Life', 'T11122'),
+('204111', 'Fundamentals of Programming', 'T11111'),
+('204112', 'Fundamentals of Programming 2', 'T11111'),
+('204113', 'Principles of Computing', 'T11111'),
+('204211', 'Object-Oriented Programming', 'T11111'),
+('204231', 'Computer Organization and Architecture', 'T11111'),
+('204232', 'Computer Networks and Protocols', 'T11111'),
+('204251', 'Data Structures', 'T11111'),
+('204315', 'Organization of Programming Languages', 'T11111');
 
 -- --------------------------------------------------------
 
@@ -249,7 +207,7 @@ CREATE TABLE `user` (
   `id` varchar(10) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
-  `type` int(1) UNSIGNED NOT NULL,
+  `access` int(1) UNSIGNED DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -258,22 +216,31 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `fname`, `lname`, `type`, `email`, `password`) VALUES
-('1', 'เจ้าหน้าที่1', 'นามสกุลเจ้าหน้าที่1', 3, 'staff1@cmu.ac.th', '1111'),
-('11111', 'aaa', 'bbb', 2, 'test.t@cmu.ac.th', '1234'),
-('11122', 'ccc', 'eee', 2, 'test2.t@cmu.ac.th', '1234'),
-('610510999', 'นายก', 'สกุล', 1, 'test@cmu.ac.th', '1234');
+INSERT INTO `user` (`id`, `fname`, `lname`, `access`, `email`, `password`) VALUES
+('610510999', 'นายก', 'สกุล', 1, 'test@cmu.ac.th', '1234'),
+('S1', 'เจ้าหน้าที่1', 'นามสกุลเจ้าหน้าที่1', 3, 'staff1@cmu.ac.th', '1111'),
+('T11111', 'aaa', 'bbb', 2, 'test.t@cmu.ac.th', '1234'),
+('T11122', 'ccc', 'eee', 2, 'test2.t@cmu.ac.th', '1234');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_type`
+-- Table structure for table `user_access`
 --
 
-CREATE TABLE `user_type` (
+CREATE TABLE `user_access` (
   `id` int(1) UNSIGNED NOT NULL,
   `name` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_access`
+--
+
+INSERT INTO `user_access` (`id`, `name`) VALUES
+(1, 'Student'),
+(2, 'Teacher'),
+(3, 'Staff');
 
 --
 -- Indexes for dumped tables
@@ -295,11 +262,12 @@ ALTER TABLE `exam`
   ADD PRIMARY KEY (`id`),
   ADD KEY `room` (`room`),
   ADD KEY `subject` (`subject`),
-  ADD KEY `exam_ibfk_2` (`time`),
+  ADD KEY `phase` (`phase`),
+  ADD KEY `semester` (`semester`),
   ADD KEY `examiner_t` (`examiner_t`),
   ADD KEY `examiner_s` (`examiner_s`),
-  ADD KEY `phase` (`phase`),
-  ADD KEY `semester` (`semester`);
+  ADD KEY `time` (`time`),
+  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `phase`
@@ -328,23 +296,11 @@ ALTER TABLE `staff`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `tid_id` (`tid`);
-
---
--- Indexes for table `teacher`
---
-ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`id`);
+  ADD KEY `tid` (`tid`);
 
 --
 -- Indexes for table `timeexam`
@@ -357,12 +313,12 @@ ALTER TABLE `timeexam`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type` (`type`);
+  ADD KEY `access` (`access`);
 
 --
--- Indexes for table `user_type`
+-- Indexes for table `user_access`
 --
-ALTER TABLE `user_type`
+ALTER TABLE `user_access`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -379,7 +335,7 @@ ALTER TABLE `enroll`
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `phase`
@@ -400,6 +356,12 @@ ALTER TABLE `timeexam`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `user_access`
+--
+ALTER TABLE `user_access`
+  MODIFY `id` int(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -408,25 +370,32 @@ ALTER TABLE `timeexam`
 --
 ALTER TABLE `enroll`
   ADD CONSTRAINT `enroll_ibfk_1` FOREIGN KEY (`subjectid`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `enroll_ibfk_2` FOREIGN KEY (`sid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `enroll_ibfk_2` FOREIGN KEY (`sid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `enroll_ibfk_3` FOREIGN KEY (`semester`) REFERENCES `semester` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `exam`
 --
 ALTER TABLE `exam`
   ADD CONSTRAINT `exam_ibfk_1` FOREIGN KEY (`room`) REFERENCES `room` (`name`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `exam_ibfk_2` FOREIGN KEY (`time`) REFERENCES `timeexam` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `exam_ibfk_3` FOREIGN KEY (`examiner_s`) REFERENCES `staff` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `exam_ibfk_4` FOREIGN KEY (`examiner_t`) REFERENCES `teacher` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `exam_ibfk_10` FOREIGN KEY (`examiner_t`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `exam_ibfk_11` FOREIGN KEY (`examiner_s`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_6` FOREIGN KEY (`phase`) REFERENCES `phase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_7` FOREIGN KEY (`subject`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `exam_ibfk_8` FOREIGN KEY (`semester`) REFERENCES `semester` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `exam_ibfk_8` FOREIGN KEY (`semester`) REFERENCES `semester` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `exam_ibfk_9` FOREIGN KEY (`time`) REFERENCES `timeexam` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subject`
 --
 ALTER TABLE `subject`
-  ADD CONSTRAINT `tid_id` FOREIGN KEY (`tid`) REFERENCES `teacher` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`tid`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`access`) REFERENCES `user_access` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
