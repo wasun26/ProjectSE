@@ -23,7 +23,7 @@
 				$navbar = "navbar-dark bg-primary";
 				break;
 			case '3':
-				$navbar = "navbar-light bg-dark";
+				$navbar = "navbar-dark bg-dark";
 				break;
 			default:
 				$navbar = "navbar-dark bg-success";
