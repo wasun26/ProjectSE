@@ -9,7 +9,29 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<?php
+	$navbar = "navbar-dark bg-primary";
+	if (isset($_SESSION['login_true'])) {
+		$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
+		$email = $_SESSION['login_true'];
+		$login = "SELECT fname, lname, access, UA.name nameacc FROM user, user_access UA WHERE email='$email' and user.access=UA.id";
+		$result = $conn->query($login);
+		$dbarr = $result->fetch_assoc();
+		$conn->close();
+		switch ($dbarr['access']) {
+			case '2':
+				$navbar = "navbar-dark bg-primary";
+				break;
+			case '3':
+				$navbar = "navbar-light bg-dark";
+				break;
+			default:
+				$navbar = "navbar-dark bg-success";
+				break;
+		}
+	}
+	?>
+	<nav class="navbar navbar-expand-lg <?php echo ($navbar); ?>">
 		<div class="container-fluid">
 			<a href="./" class="navbar-brand">
 				<?php
@@ -23,34 +45,41 @@
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a href="./" class="nav-link" routerLink="train">หน้าแรก</a></li>
-
 					<?php
 					if (isset($_SESSION['login_true'])) {
 						echo ("
 						<li class='nav-item'><a href='?page=main' class='nav-link'>ค้นหา</a></li>
-						<li class='nav-item'><a href='#' class='nav-link' routerLink='login'>เข้าสู่ระบบ</a></li>
-						<li class='nav-item'><a href='#' class='nav-link' routerLink='register'>ลงทะเบียน</a></li>
-						<li class='nav-item'><a href='./?page=logout' class='nav-link'>ออกจากระบบ</a></li>
+						
 				
 					");
-					}
+						switch ($dbarr['access']) {
+							case '2':
+								echo ("
+								<li class='nav-item'><a href='?page=staff' class='nav-link'>เพิ่มกระบวนวิชาสอบ</a></li>
+								<li class='nav-item'><a href='?page=editexam' class='nav-link'>จัดการคำขอ</a></li>
+								");
+								break;
+							case '3':
+								echo ("
+								<li class='nav-item'><a href='?page=staff' class='nav-link'>เพิ่มกระบวนวิชาสอบ</a></li>
+								<li class='nav-item'><a href='?page=editexam' class='nav-link'>จัดการคำขอ</a></li>
+								");
+								break;
+						}
+						echo ("<li class='nav-item'><a href='./?page=logout' class='nav-link'>ออกจากระบบ</a></li>");
 					?>
 				</ul>
-				<?php
-				if (isset($_SESSION['login_true'])) {
-					$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-					$email = $_SESSION['login_true'];
-					$login = "SELECT fname, lname FROM user WHERE email='$email'";
-					$result = $conn->query($login);
-					$dbarr = $result->fetch_assoc();
-					$conn->close();
-				?>
-					<ul class='navbar-nav  navbar-right'>
-						<li class='nav-item'>
-							<button type='button' class='btn btn-light' routerLink='profile'><?php echo ($dbarr['fname'] . ' ' . $dbarr['lname']);
-																							} ?></button>
-						</li>
-					</ul>
+				<ul class='navbar-nav  navbar-right'>
+					<li class='nav-item'>
+						<button type='button' class='btn btn-light' routerLink='profile'>
+							<b><?php echo ($dbarr['nameacc']); ?></b></button>
+					</li>
+					<li class='nav-item'>
+						<button type='button' class='btn btn-light' routerLink='profile'>
+						<?php echo ($dbarr['fname'] . ' ' . $dbarr['lname']);
+					} ?></button>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</nav>
