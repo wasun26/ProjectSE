@@ -85,25 +85,34 @@ mysqli_set_charset($conn, "utf8");
 
                         echo "<td>" .$room. "</td>";
 
-                        $sql_t = "SELECT * FROM teacher WHERE id = $examiner_t";
-                        $result_t =$conn->query($sql_t);
-                        if ($result_t->num_rows > 0) {  //begin if
-                            while ($row = $result_t->fetch_assoc())   {  //begin while
-                                $fname = $row['fname'];
-                                $lname = $row['lname'];
-                                echo "<td>" .$fname." ".$lname. "</td>";
+                        if (!is_null($examiner_t)){
+                            $sql_t = "SELECT * FROM user WHERE id = '$examiner_t' AND access = '2'" ;
+                            $result_t =$conn->query($sql_t);
+                            if ($result_t->num_rows > 0) {  //begin if
+                                while ($row = $result_t->fetch_assoc())   {  //begin while
+                                    $fname = $row['fname'];
+                                    $lname = $row['lname'];
+                                    echo "<td>" .$fname." ".$lname. "</td>";
+                                }
                             }
+                        }else{
+                            echo "<td> - </td>";
                         }
 
-                        $sql_s = "SELECT * FROM staff WHERE id = $examiner_s";
-                        $result_s =$conn->query($sql_s);
-                        if ($result_s->num_rows > 0) {  //begin if
-                            while ($row = $result_s->fetch_assoc())   {  //begin while
-                                $fname = $row['fname'];
-                                $lname = $row['lname'];
-                                echo "<td>" .$fname." ".$lname. "</td>";
+                        if (!is_null($examiner_s)){
+                            $sql_s = "SELECT * FROM user WHERE id = '$examiner_s' AND access = '3'";
+                            $result_s =$conn->query($sql_s);
+                            if ($result_s->num_rows > 0) {  //begin if
+                                while ($row = $result_s->fetch_assoc())   {  //begin while
+                                    $fname = $row['fname'];
+                                    $lname = $row['lname'];
+                                    echo "<td>" .$fname." ".$lname. "</td>";
+                                }
                             }
+                        }else{
+                            echo "<td> - </td>";
                         }
+
                         echo "</tr>";
                 }  //end while
                 echo "</table>";
