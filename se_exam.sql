@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 12:02 PM
+-- Generation Time: Oct 15, 2020 at 01:01 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -59,6 +59,7 @@ CREATE TABLE `exam` (
   `room` varchar(8) NOT NULL,
   `examiner_t` varchar(10) DEFAULT NULL,
   `examiner_s` varchar(10) DEFAULT NULL,
+  `ownerID` varchar(10) NOT NULL,
   `status` int(1) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -66,10 +67,10 @@ CREATE TABLE `exam` (
 -- Dumping data for table `exam`
 --
 
-INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `status`) VALUES
-(1, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100-1', 'T11111', 'S1', -1),
-(2, 1, '204100', 2020, 1, '2020-10-13', 1, 'CSB100-2', 'T11122', 'S1', -1),
-(3, 1, '204231', 2020, 1, '2020-10-14', 3, 'CSB100-2', 'T11122', NULL, -1);
+INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`, `status`) VALUES
+(1, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100-1', 'T11111', 'S1', 'T11111', -1),
+(2, 1, '204100', 2020, 1, '2020-10-13', 1, 'CSB100-2', 'T11122', 'S1', 'T11122', -1),
+(3, 1, '204231', 2020, 1, '2020-10-14', 3, 'CSB100-2', 'T11122', NULL, 'T11122', -1);
 
 -- --------------------------------------------------------
 
@@ -267,7 +268,8 @@ ALTER TABLE `exam`
   ADD KEY `examiner_t` (`examiner_t`),
   ADD KEY `examiner_s` (`examiner_s`),
   ADD KEY `time` (`time`),
-  ADD KEY `status` (`status`);
+  ADD KEY `status` (`status`),
+  ADD KEY `ownerID` (`ownerID`);
 
 --
 -- Indexes for table `phase`
@@ -380,6 +382,7 @@ ALTER TABLE `exam`
   ADD CONSTRAINT `exam_ibfk_1` FOREIGN KEY (`room`) REFERENCES `room` (`name`) ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_10` FOREIGN KEY (`examiner_t`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_11` FOREIGN KEY (`examiner_s`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `exam_ibfk_12` FOREIGN KEY (`ownerID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_6` FOREIGN KEY (`phase`) REFERENCES `phase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_7` FOREIGN KEY (`subject`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_8` FOREIGN KEY (`semester`) REFERENCES `semester` (`id`) ON UPDATE CASCADE,
