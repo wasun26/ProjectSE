@@ -49,7 +49,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><?php
-						$sql = "SELECT id FROM subject";
+						$sql = "SELECT id, name FROM subject";
 						$result = $conn->query($sql);
 						?>
 						วิชา:
@@ -60,7 +60,8 @@ mysqli_set_charset($conn, "utf8");
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
 									$code = $row['id'];
-									echo "<option value = '$code'> $code </option>";
+									$name = $row['name'];
+									echo "<option value = '$code'> $code - $name </option>";
 								}
 							}
 							?>
@@ -69,7 +70,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><?php
-						$sql = "SELECT * FROM room ";
+						$sql = "SELECT name FROM room ";
 						$result = $conn->query($sql);
 						?>
 						ห้องสอบ:
@@ -90,7 +91,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><?php
-						$sql = "SELECT * FROM timeexam ";
+						$sql = "SELECT id, timeStart, timeFinish FROM timeexam ";
 						$result = $conn->query($sql);
 						?>
 						เวลาสอบ:
@@ -113,7 +114,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><?php
-						$sql = "SELECT * FROM user WHERE access=2";
+						$sql = "SELECT id, fname, lname FROM user WHERE access=2";
 						$result = $conn->query($sql);
 						?>
 						ผู้คุมสอบ(อาจารย์):
@@ -137,7 +138,7 @@ mysqli_set_charset($conn, "utf8");
 				<tr>
 					<td>ผู้คุมสอบ(บุคลากร):
 						<?php
-						$sql = "SELECT * FROM user WHERE access=3";
+						$sql = "SELECT id, fname, lname FROM user WHERE access=3";
 						$result = $conn->query($sql);
 						?>
 					</td>
