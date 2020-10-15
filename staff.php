@@ -36,12 +36,26 @@ mysqli_set_charset($conn, "utf8");
 						</select></td>
 				</tr>
 				<tr>
-					<td><label for="phase">ช่วงสอบ:</label></td>
-					<td><select name="phase" id="phase">
-							<option value="NULL">เลือก</option>
-							<option value="1">Midterm</option>
-							<option value="2">Final</option>
-						</select></td>
+					<td><?php
+						$sql = "SELECT name FROM phase ";
+						$result = $conn->query($sql);
+						?>
+						ช่วงสอบ:
+					</td>
+					<td>
+						<select name='phase'>
+							<option value='NULL'> เลือก </option>
+							<?php
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) { //begin while
+									$id = $row['id'];
+									$name = $row['name'];
+									echo "<option value = '$id'> $name </option>";
+								}
+							}
+							?>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td><label for="date">วันที่:</label></td>
