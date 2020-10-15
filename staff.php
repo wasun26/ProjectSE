@@ -24,7 +24,7 @@ mysqli_set_charset($conn, "utf8");
 			<tbody>
 				<tr>
 					<td>ปีการศึกษา:</td>
-					<td><input type = "text" name = "year"></td>
+					<td><input type="text" name="year"></td>
 				</tr>
 				<tr>
 					<td><label for="semester">ภาคการศึกษา:</label></td>
@@ -57,10 +57,11 @@ mysqli_set_charset($conn, "utf8");
 						<select name='subject'>
 							<option value='NULL'> เลือก </option>
 							<?php
-
-							while ($row = $result->fetch_assoc()) { //begin while
-								$code = $row['id'];
-								echo "<option value = '$code'> $code </option>";
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) { //begin while
+									$code = $row['id'];
+									echo "<option value = '$code'> $code </option>";
+								}
 							}
 							?>
 						</select>
@@ -77,9 +78,11 @@ mysqli_set_charset($conn, "utf8");
 						<select name='room'>
 							<option value='NULL'> เลือก </option>
 							<?php
-							while ($row = $result->fetch_assoc()) { //begin while
-								$name = $row['name'];
-								echo "<option value = '$name'> $name </option>";
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) { //begin while
+									$name = $row['name'];
+									echo "<option value = '$name'> $name </option>";
+								}
 							}
 							?>
 						</select>
@@ -96,11 +99,13 @@ mysqli_set_charset($conn, "utf8");
 						<select name='time'>
 							<option value='NULL'> เลือก </option>
 							<?php
-							while ($row = $result->fetch_assoc()) { //begin while
-								$time = $row['id'];
-								$time_start = $row['timeStart'];
-								$time_end = $row['timeFinish'];
-								echo "<option value = '$time'> $time_start - $time_end</option>";
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) { //begin while
+									$time = $row['id'];
+									$time_start = $row['timeStart'];
+									$time_end = $row['timeFinish'];
+									echo "<option value = '$time'> $time_start - $time_end</option>";
+								}
 							}
 							?>
 						</select>
@@ -117,11 +122,13 @@ mysqli_set_charset($conn, "utf8");
 						<select name='examiner_t'>
 							<option value='NULL'> เลือก </option>
 							<?php
-							while ($row = $result->fetch_assoc()) {
-								$id = $row['id'];
-								$f_name = $row['fname'];
-								$l_name = $row['lname'];
-								echo "<option value='$id'>$f_name $l_name</option>";
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) {
+									$id = $row['id'];
+									$f_name = $row['fname'];
+									$l_name = $row['lname'];
+									echo "<option value='$id'>$f_name $l_name</option>";
+								}
 							}
 							?>
 						</select>
@@ -138,11 +145,13 @@ mysqli_set_charset($conn, "utf8");
 						<select name='examiner_s'>
 							<option value='NULL'>เลือก</option>
 							<?php
-							while ($row = $result->fetch_assoc()) {
-								$id = $row['id'];
-								$f_name = $row['fname'];
-								$l_name = $row['lname'];
-								echo "<option value='$id'>$f_name $l_name</option>";
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) {
+									$id = $row['id'];
+									$f_name = $row['fname'];
+									$l_name = $row['lname'];
+									echo "<option value='$id'>$f_name $l_name</option>";
+								}
 							}
 							?>
 						</select>
