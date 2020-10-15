@@ -113,7 +113,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><?php
-						$sql = "SELECT * FROM teacher ";
+						$sql = "SELECT * FROM user WHERE access=2";
 						$result = $conn->query($sql);
 						?>
 						ผู้คุมสอบ(อาจารย์):
@@ -137,7 +137,7 @@ mysqli_set_charset($conn, "utf8");
 				<tr>
 					<td>ผู้คุมสอบ(บุคลากร):
 						<?php
-						$sql = "SELECT * FROM staff ";
+						$sql = "SELECT * FROM user WHERE access=3";
 						$result = $conn->query($sql);
 						?>
 					</td>
