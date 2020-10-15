@@ -23,6 +23,9 @@ session_start();
             $page = "";
         }
         switch ($page) {
+            case "selectexamall":
+                include("selectexamall.php");
+                break;
             case "login":
                 include("login.php");
                 break;

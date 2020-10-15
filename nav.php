@@ -49,8 +49,7 @@
 					if (isset($_SESSION['login_true'])) {
 						echo ("
 						<li class='nav-item'><a href='?page=main' class='nav-link'>ค้นหา</a></li>
-						
-				
+						<il class='nav-item'><a href='?page=selectexamall' class='nav-link'>แสดงทั้งหมด</a></il>				
 					");
 						switch ($dbarr['access']) {
 							case '2':
