@@ -7,7 +7,7 @@ $sql = "SELECT DISTINCT S.year
 $result = $conn->query($sql);
 ?><br>
 <div class="form-inline d-flex justify-content-center">
-    <form action="?page=show_all" method="POST">
+    <form action="?page=examlist" method="POST">
         <select name="phase" class="form-control">
             <option value="1">Midterm</option>
             <option value="2">Final</option>
@@ -28,6 +28,8 @@ $result = $conn->query($sql);
             }
             ?>
         </select>
+        <input type="hidden" name="searchType" value="byterm">
+        <input type="hidden" name="searchData" value="0">
         <button type="submit" value="ค้นหา" class="btn btn-primary">ค้นหา</button>
     </form>
 </div>

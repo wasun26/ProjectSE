@@ -57,6 +57,15 @@ include("config.php");
             FROM timeexam T, exam E, phase P, user U
             WHERE E.phase=P.id AND E.time=T.id AND (E.examiner_t=U.id OR E.examiner_s=U.id) AND $nameCon";
             break;
+            case 'byterm':
+              $phase = $_POST['phase'];
+              $semester = $_POST['semester'];
+              $year = $_POST['year'];
+              $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name,YEAR(E.date)
+              FROM exam E, phase P, timeexam T
+              WHERE E.phase=$phase AND E.semester=$semester AND YEAR(E.date)=$year-543 AND E.time=T.id
+              GROUP BY E.subject";
+              break;
         }
         $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
         $result = $conn->query($sql);

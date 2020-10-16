@@ -26,7 +26,6 @@
     $phase = $_POST['phase'];
     $semester = $_POST['semester'];
     $year = $_POST['year'];
-    echo($phase.$semester.$year);
     ?>
 
     <?php
