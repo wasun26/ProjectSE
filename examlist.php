@@ -14,6 +14,7 @@ include("config.php");
       <th>ห้อง</th>
       <th>ห้วงสอบ</th>
       <th>กรรมการคุมสอบ</th>
+      <th>ดำเนินการ</th>
     </thead>
     <tbody class='table-hover'>
       <?php
@@ -95,7 +96,19 @@ include("config.php");
                 echo (" " . $row3['lname']);
               }
             }
-            echo ("</td></tr>");
+            echo ("</td>");
+            echo"<td><form action='?page=update' method='POST'>
+            <button class = 'btn btn-link'>
+            <i class='fas fa-cog text-warning'></i>
+            </button>
+            <input type='hidden' name = 'id' value = '$id'>
+            
+            <button class = 'btn btn-link'>
+            <i class='fas fa-trash text-danger'></i>
+            </button>
+            </form>  
+            </td>
+            </tr>";
           }
           $conn->close();
         } else {

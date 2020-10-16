@@ -47,6 +47,9 @@ session_start();
             case "logout":
                 include("logout.php");
                 break;
+            case "update":
+                include("update.php");
+                break;    
             default:
                 include("home.php");
                 break;
