@@ -5,9 +5,18 @@ $sql = "SELECT DISTINCT S.year
   FROM exam E, semester S
   WHERE E.semester=S.id";
 $result = $conn->query($sql);
-?>
-<div class="form-group">
-    <form action="?page=show_all">
+?><br>
+<div class="form-inline d-flex justify-content-center">
+    <form action="?page=show_all" method="POST">
+        <select name="phase" class="form-control">
+            <option value="1">Midterm</option>
+            <option value="2">Final</option>
+        </select>
+        <select name="semester" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">Summer</option>
+        </select>
         <select name="year" class="form-control">
             <?php
             if ($result->num_rows > 0) {
@@ -18,9 +27,7 @@ $result = $conn->query($sql);
                 }
             }
             ?>
-            <option value="">1</option>
-            <option value="">2</option>
         </select>
-        <button type="submit" value="ค้นหา" class="btn btn-dark">ค้นหา</button>
+        <button type="submit" value="ค้นหา" class="btn btn-primary">ค้นหา</button>
     </form>
 </div>

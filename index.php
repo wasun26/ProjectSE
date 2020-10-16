@@ -23,6 +23,9 @@ session_start();
             $page = "";
         }
         switch ($page) {
+            case "show_all":
+                include("show_all.php");
+                break;
             case "selectexamall":
                 include("selectexamall.php");
                 break;
@@ -49,7 +52,7 @@ session_start();
                 break;
             case "update":
                 include("update.php");
-                break;    
+                break;
             default:
                 include("home.php");
                 break;

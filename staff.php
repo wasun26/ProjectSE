@@ -23,7 +23,7 @@ mysqli_set_charset($conn, "utf8");
 		<table width="100%" border=" 0" class="table table-striped table-hover">
 			<tbody>
 				<tr>
-					<td>ปีการศึกษา: *</td>
+					<td>ปีการศึกษา:</td>
 					<td class="text-danger"><input type="text" name="year" class="form-control" required></td>
 				</tr>
 				<tr>
@@ -40,7 +40,7 @@ mysqli_set_charset($conn, "utf8");
 						$sql = "SELECT name FROM phase ";
 						$result = $conn->query($sql);
 						?>
-						ช่วงสอบ: *
+						ช่วงสอบ:
 					</td>
 					<td class="text-danger">
 						<select name='phase' class="form-control" required>
