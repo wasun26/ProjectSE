@@ -36,20 +36,25 @@ if (isset($_POST['id'])){
 				</tr>
 				<tr>
 					<td><label for="semester">ภาคการศึกษา:</label></td>
-					<td><select name="semester" id="semester">
-                    <?php
-                     $semester = $row['semester'];
-                     ?>
+					<td><select name="semester" id="semester"><option value="1"></option>
+					<?php
+					$i = 1;
+					while ($i != 4){
+						echo "<option value ='$i'";?>
 
-                            <option value="<?php echo "$semester";
-                            ?>"
-                            >
-
-                    <?php                           
-                            echo "$semester" ?></option>
-							<option value="1">1</option>
+						<?php
+						if ($row['semester'] == $i){
+						echo "selected";
+						}
+						?>
+						>
+						<?php echo "$i</option>";
+						$i++;
+					}
+					?>
+							<!-- <option value="1">1</option>
 							<option value="2">2</option>
-							<option value="3">3</option>
+							<option value="3">3</option> -->
 						</select></td>
 				</tr>
 				<tr>
@@ -187,7 +192,7 @@ if (isset($_POST['id'])){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Add"> <input type="reset" value="Reset"></td>
+					<td colspan="2"><input type="submit" value="update"> <input type="reset" value="Reset"></td>
 				</tr>
 			</tbody>
 		</table>
