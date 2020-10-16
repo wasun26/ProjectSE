@@ -43,7 +43,7 @@ mysqli_set_charset($conn, "utf8");
 						ช่วงสอบ: *
 					</td>
 					<td class="text-danger">
-						<select name='phase' required>
+						<select name='phase' class="form-control" required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -59,7 +59,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><label for="date">วันที่:</label></td>
-					<td class="text-danger"><input type="date" id="date" name="date" required> *</td>
+					<td class="text-danger"><input type="date" id="date" name="date" class="form-control" required></td>
 				</tr>
 				<tr>
 					<td><?php
@@ -68,7 +68,7 @@ mysqli_set_charset($conn, "utf8");
 						?>
 						วิชา:
 					<td class="text-danger">
-						<select name='subject' required>
+						<select name='subject' class="form-control" required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -90,7 +90,7 @@ mysqli_set_charset($conn, "utf8");
 						ห้องสอบ:
 					</td>
 					<td class="text-danger">
-						<select name='room' required>
+						<select name='room' class="form-control" required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -111,7 +111,7 @@ mysqli_set_charset($conn, "utf8");
 						เวลาสอบ:
 					</td>
 					<td class="text-danger">
-						<select name='time' required>
+						<select name='time' class="form-control" required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -134,7 +134,7 @@ mysqli_set_charset($conn, "utf8");
 						ผู้คุมสอบ(อาจารย์):
 					</td>
 					<td class="text-danger">
-						<select name='examiner_t' required>
+						<select name='examiner_t' class="form-control" required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -157,7 +157,7 @@ mysqli_set_charset($conn, "utf8");
 						?>
 					</td>
 					<td class="text-danger">
-						<select name='examiner_s' required>
+						<select name='examiner_s' class="form-control" required>
 							<option value='NULL'>เลือก</option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -173,7 +173,7 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Add"> <input type="reset" value="Reset"></td>
+					<td colspan="2"><input type="submit" value="Add" class="btn btn-primary"> <input type="reset" value="Reset" class="btn btn-danger"></td>
 				</tr>
 			</tbody>
 		</table>
