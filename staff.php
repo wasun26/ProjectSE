@@ -28,7 +28,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><label for="semester">ภาคการศึกษา:</label></td>
-					<td><select name="semester" id="semester">
+					<td><select name="semester" id="semester" required>
 							<option value="NULL">เลือก</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -43,7 +43,7 @@ mysqli_set_charset($conn, "utf8");
 						ช่วงสอบ:
 					</td>
 					<td>
-						<select name='phase'>
+						<select name='phase' required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -59,7 +59,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><label for="date">วันที่:</label></td>
-					<td><input type="date" id="date" name="date"></td>
+					<td><input type="date" id="date" name="date" required></td>
 				</tr>
 				<tr>
 					<td><?php
@@ -68,7 +68,7 @@ mysqli_set_charset($conn, "utf8");
 						?>
 						วิชา:
 					<td>
-						<select name='subject'>
+						<select name='subject' required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -90,7 +90,7 @@ mysqli_set_charset($conn, "utf8");
 						ห้องสอบ:
 					</td>
 					<td>
-						<select name='room'>
+						<select name='room' required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -111,7 +111,7 @@ mysqli_set_charset($conn, "utf8");
 						เวลาสอบ:
 					</td>
 					<td>
-						<select name='time'>
+						<select name='time' required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -134,7 +134,7 @@ mysqli_set_charset($conn, "utf8");
 						ผู้คุมสอบ(อาจารย์):
 					</td>
 					<td>
-						<select name='examiner_t'>
+						<select name='examiner_t' required>
 							<option value='NULL'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
@@ -157,7 +157,7 @@ mysqli_set_charset($conn, "utf8");
 						?>
 					</td>
 					<td>
-						<select name='examiner_s'>
+						<select name='examiner_s' required>
 							<option value='NULL'>เลือก</option>
 							<?php
 							if ($result->num_rows > 0) {
