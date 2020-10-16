@@ -23,12 +23,12 @@ mysqli_set_charset($conn, "utf8");
 		<table width="100%" border=" 0" class="table table-striped table-hover">
 			<tbody>
 				<tr>
-					<td>ปีการศึกษา:</td>
-					<td><input type="text" name="year"></td>
+					<td>ปีการศึกษา: *</td>
+					<td class="text-danger"><input type="text" name="year" class="form-control" required></td>
 				</tr>
 				<tr>
 					<td><label for="semester">ภาคการศึกษา:</label></td>
-					<td><select name="semester" id="semester" required>
+					<td class="text-danger"><select name="semester" id="semester" class="form-control" required>
 							<option value="NULL">เลือก</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -40,9 +40,9 @@ mysqli_set_charset($conn, "utf8");
 						$sql = "SELECT name FROM phase ";
 						$result = $conn->query($sql);
 						?>
-						ช่วงสอบ:
+						ช่วงสอบ: *
 					</td>
-					<td>
+					<td class="text-danger">
 						<select name='phase' required>
 							<option value='NULL'> เลือก </option>
 							<?php
@@ -59,7 +59,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><label for="date">วันที่:</label></td>
-					<td><input type="date" id="date" name="date" required></td>
+					<td class="text-danger"><input type="date" id="date" name="date" required> *</td>
 				</tr>
 				<tr>
 					<td><?php
@@ -67,7 +67,7 @@ mysqli_set_charset($conn, "utf8");
 						$result = $conn->query($sql);
 						?>
 						วิชา:
-					<td>
+					<td class="text-danger">
 						<select name='subject' required>
 							<option value='NULL'> เลือก </option>
 							<?php
@@ -89,7 +89,7 @@ mysqli_set_charset($conn, "utf8");
 						?>
 						ห้องสอบ:
 					</td>
-					<td>
+					<td class="text-danger">
 						<select name='room' required>
 							<option value='NULL'> เลือก </option>
 							<?php
@@ -110,7 +110,7 @@ mysqli_set_charset($conn, "utf8");
 						?>
 						เวลาสอบ:
 					</td>
-					<td>
+					<td class="text-danger">
 						<select name='time' required>
 							<option value='NULL'> เลือก </option>
 							<?php
@@ -133,7 +133,7 @@ mysqli_set_charset($conn, "utf8");
 						?>
 						ผู้คุมสอบ(อาจารย์):
 					</td>
-					<td>
+					<td class="text-danger">
 						<select name='examiner_t' required>
 							<option value='NULL'> เลือก </option>
 							<?php
@@ -156,7 +156,7 @@ mysqli_set_charset($conn, "utf8");
 						$result = $conn->query($sql);
 						?>
 					</td>
-					<td>
+					<td class="text-danger">
 						<select name='examiner_s' required>
 							<option value='NULL'>เลือก</option>
 							<?php
