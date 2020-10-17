@@ -24,7 +24,7 @@ if (isset($_POST['id'])){
     <div class="container">
 	<h1>แก้ไขวิชาสอบ</h1>
 	<form action="edit.php" method="POST">
-    <input type='hidden' name = 'id' value = '$id'>
+	<input type='hidden' name = 'id' value = "<?php echo ($row['id']);?>">
 		<table width="100%" border=" 0" class="table table-striped table-hover">
 			<tbody>
 				<tr>

@@ -26,13 +26,14 @@ if ($conn->connect_error) {
 
 mysqli_set_charset($conn, "utf8");
 
-$sql = "UPDATE `exam` SET `phase` = '$phase', 
- `year` = '$phase',  `date`  = '$date', 
- `time`  = '$time', 
- `room`  = '$room', 
- `semester`  = '$semester',
- `examiner_t`  = '$examiner_t', 
- `examiner_s`  = '$examiner_s' 
+
+$sql = "UPDATE exam SET exam.phase = '$phase',
+                        exam.semester = '$semester',
+                        exam.date = '$date',
+                        exam.room = '$room',
+                        exam.time = '$time',
+                        exam.examiner_t = '$examiner_t',
+                        exam.examiner_s = '$examiner_s'
  WHERE  exam.id  = '$id'" ;
 
 $conn->query($sql);
