@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <?php
-$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
-$sql = "SELECT DISTINCT S.year
-  FROM exam E, semester S
-  WHERE E.semester=S.id";
+
+include("config.php");
+
+$conn = new mysqli(
+	$config['hostname'],
+	$config['dbuser'],
+	$config['dbpassword'],
+	$config['dbname']
+);
+
+$sql = "SELECT DISTINCT year FROM exam";
 $result = $conn->query($sql);
 ?><br>
 <div class="form-inline d-flex justify-content-center">
     <div class="card">
         <div class="card-header text-light" style="background-color: #152F4F;">ค้นหารายเทอม</div>
         <div class="card-body">
-            <form action="?page=examlist" method="POST">
+            <form action="show_all.php" method="POST">
                 <select name="phase" class="form-control">
                     <option value="1">Midterm</option>
                     <option value="2">Final</option>
@@ -24,9 +31,8 @@ $result = $conn->query($sql);
                     <?php
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo ("<option value=");
-                            echo ($row['year'] . ">");
-                            echo ($row['year'] . "</option>");
+                            $year = $row['year'];
+                            echo ("<option value = '$year'> $year </option>");
                         }
                     }
                     ?>

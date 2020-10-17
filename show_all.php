@@ -9,30 +9,29 @@
 
 <body>
     <?php
-    include("config.php");
 
-    $conn = new mysqli(
-        $config['hostname'],
-        $config['dbuser'],
-        $config['dbpassword'],
-        $config['dbname']
-    );
+        $phase = $_POST['phase'];
+        $semester = $_POST['semester'];
+        $year = $_POST['year'];
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+        include("config.php");
 
-    mysqli_set_charset($conn, "utf8");
-    $phase = $_POST['phase'];
-    $semester = $_POST['semester'];
-    $year = $_POST['year'];
+        $conn = new mysqli(
+            $config['hostname'],
+            $config['dbuser'],
+            $config['dbpassword'],
+            $config['dbname']
+         );
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        mysqli_set_charset($conn, "utf8");
     ?>
 
     <?php
-    $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name,YEAR(E.date)
-    FROM exam E, phase P, timeexam T
-    WHERE E.phase=$phase AND E.semester=$semester AND YEAR(E.date)=$year AND E.time=T.id
-    GROUP BY E.subject"; //final, semester, year ต้องรับค่าเข้ามา
+    $sql = "SELECT * FROM exam LEFT JOIN timeexam ON time = timeexam.id WHERE phase = $phase AND semester = $semester AND year = $year GROUP BY date, timeStart"; //final, semester, year ต้องรับค่าเข้ามา
     if ($phase == "1") {
         $phase = "Midterm";
     } else {
@@ -75,9 +74,7 @@
                     echo "<td>" . $timeStart . " - " . $timeFinish . "</td>";
                     echo "<td>" . $room . "</td>";
                     if (!is_null($examiner_t)) {
-                        $sql_t = "SELECT U.fname, U.lname
-                        FROM user U, exam E
-                        WHERE E.examiner_t=U.id AND E.id=$id";
+                        $sql_t = "SELECT fname, lname FROM user WHERE id = '$examiner_t'";
                         $result_t = $conn->query($sql_t);
                         if ($result_t->num_rows > 0) {  //begin if
                             while ($row = $result_t->fetch_assoc()) {  //begin while
@@ -90,9 +87,7 @@
                         echo "<td> - </td>";
                     }
                     if (!is_null($examiner_s)) {
-                        $sql_s = "SELECT U.fname, U.lname
-                        FROM user U, exam E
-                        WHERE E.examiner_t=U.id AND E.id=$id";
+                        $sql_s = "SELECT fname, lname FROM user WHERE id = '$examiner_s'";
                         $result_s = $conn->query($sql_s);
                         if ($result_s->num_rows > 0) {  //begin if
                             while ($row = $result_s->fetch_assoc()) {  //begin while
@@ -109,7 +104,7 @@
                 }  //end while
                 echo "</table>";
             } else {
-                echo "0 results";
+                echo "ไม่มีข้อมูล";
             }
             $conn->close();
             ?>
