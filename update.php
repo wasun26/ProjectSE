@@ -36,7 +36,7 @@ if (isset($_POST['id'])){
 				</tr>
 				<tr>
 					<td><label for="semester">ภาคการศึกษา:</label></td>
-					<td><select name="semester" id="semester"><option value="1"></option>
+					<td><select name="semester" id="semester"><option value="<?php echo ($row['semester']);?>"></option>
 					<?php
 					$i = 1;
 					while ($i != 4){
@@ -60,20 +60,31 @@ if (isset($_POST['id'])){
 				<tr>
 					<td><label for="phase">ช่วงสอบ:</label></td>
 					<td><select name="phase" id="phase">
-							<option value="<?php echo ($row['phase']);
-                            ?>
-                            ">
-                            <?php 
-                            if ($row['phase'] == 1){
-                                echo "Midterm";
-                            }
-                            else{
-                                echo "Final";
-                            }
-                            ?>
-                            </option>
-							<option value="1">Midterm</option>
-							<option value="2">Final</option>
+							<option value="<?php echo ($row['phase']);?>"></option>
+					<?php
+					$i = 1;
+					while ($i != 3){
+						echo "<option value ='$i'";?>
+
+						<?php
+						if ($row['phase'] == $i){
+						echo "selected";
+						}
+						?>
+						>
+						<?php
+						if ($i == 1){
+						echo ("Midterm");
+						}
+						else{
+						echo ("Final");
+						}
+						echo "</option>";
+						$i++;
+					}
+					?>
+							<!-- <option value="1">Midterm</option>
+							<option value="2">Final</option> -->
 						</select></td>
 				</tr>
 				<tr>
@@ -110,12 +121,18 @@ if (isset($_POST['id'])){
 					</td>
 					<td>
 						<select name='room' >
-							<option value='<?php echo ($row['room']); ?>' disabled> เลือก </option>
+							<option value='<?php echo ($row['room']); ?>'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
 									$name = $row['name'];
-									echo "<option value = '$name'> $name </option>";
+									echo "<option value = '$name'";?>
+									<?php if ($name == $row['room']){
+										echo "selected>";
+									}
+									?>
+									<?php echo "$name </option>";
+									
 								}
 							}
 							?>
