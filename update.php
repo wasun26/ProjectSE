@@ -241,7 +241,7 @@ if (isset($_POST['id'])){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="update"> <input type="reset" value="Reset"></td>
+					<td colspan="2"><input type="submit" value="update"></td>
 				</tr>
 			</tbody>
 		</table>
