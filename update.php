@@ -219,7 +219,7 @@ if (isset($_POST['id'])){
 					</td>
 					<td>
 						<select name='examiner_s'>
-							<option value='<?php echo ($row['examiner_s']); ?>'>เลือก</option>
+							<option value='NULL'>เลือก</option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
