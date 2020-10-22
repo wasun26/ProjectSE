@@ -13,7 +13,6 @@
         <p class="pr-5 text-white-50">คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่</p>
         <p class="pr-5 text-white-50">239 ถ. ห้วยแก้ว ต.สุเทพ อ. เมือง จ. เชียงใหม่ 50200</p>
         <p class="pr-5 text-white-50">โทรศัพท์ : 0-5394-3412-16 ธุรการ : กด 0 หรือ 101 </p><br>
-        <p><a href="https://www.facebook.com/compscicmu/"><i class="fa fa-facebook-square mr-1"></i></a></p>
       </div>
 
       <div class="col about-company">
@@ -33,10 +32,6 @@
           <li>- <a href="https://www.google.com/maps/d/u/0/viewer?mid=1XzZUWuQlmVJeZC2dcBxA2yKIXO8&ll=18.803763000420084%2C98.95247199999994&z=20">Location</a></li><br>
         </ul>
       </div>
-      <!-- <div class="col-lg-4 col-xs-12 location">
-          <iframe width="420" height="345" src="https://www.youtube.com/watch?v=wrmjFXdN-zQ">
-          </iframe>
-        </div> -->
     </div>
     <div class="row">
       <div class="col copyright">
