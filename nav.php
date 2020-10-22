@@ -74,6 +74,7 @@
 							<b><?php echo ($dbarr['nameacc']); ?></b></button>
 						<button type='button' class='btn btn-light' routerLink='profile'>
 						<?php echo ($dbarr['fname'] . ' ' . $dbarr['lname']);
+						$id = $dbarr['user.id'];
 					} ?></button>
 					</li>
 				</ul>
