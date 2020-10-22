@@ -18,7 +18,9 @@
 		$result = $conn->query($login);
 		$dbarr = $result->fetch_assoc();
 		$conn->close();
-		switch ($dbarr['access']) {
+		$access = $dbarr['access'];
+		$idUser = $dbarr['user.id'];
+		switch ($access) {
 			case '2':
 				$navbar = "navbar-dark bg-primary";
 				break;
@@ -74,7 +76,6 @@
 							<b><?php echo ($dbarr['nameacc']); ?></b></button>
 						<button type='button' class='btn btn-light' routerLink='profile'>
 						<?php echo ($dbarr['fname'] . ' ' . $dbarr['lname']);
-						$id = $dbarr['user.id'];
 					} ?></button>
 					</li>
 				</ul>
