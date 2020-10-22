@@ -111,7 +111,9 @@ include("config.php");
             <i class='fas fa-cog text-warning'></i>
             </button>
             <input type='hidden' name = 'id' value = '$id'>
-            
+            </form>
+            </td>
+            <td><form action='?page=delete' method='POST'>
             <button class = 'btn btn-link'>
             <i class='fas fa-trash text-danger'></i>
             </button>
