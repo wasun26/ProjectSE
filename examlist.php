@@ -119,12 +119,6 @@ include("config.php");
             <input type='hidden' name = 'id' value = '$id'>
             </form>
             </td>
-            <td><form action='?page=delete' method='POST'>
-            <button class = 'btn btn-link'>
-            <i class='fas fa-trash text-danger'></i>
-            </button>
-            </form>  
-            </td>
             </tr>";
           }
           $conn->close();
