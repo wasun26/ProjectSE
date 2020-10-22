@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
-
+if (!isset($_SESSION['login_true'])) {
+	header("Location: login.php");
+	exit;
+}
 include("config.php");
 
 $conn = new mysqli(
@@ -22,6 +25,10 @@ mysqli_set_charset($conn, "utf8");
 	<form action="insert.php" method="POST">
 		<table width="100%" border=" 0" class="table table-striped table-hover">
 			<tbody>
+				<tr>
+					<td>ผู้กรอก:</td>
+					<td class="text-danger"><input type="text" name="id" class="form-control" value="<?php echo($idUser); ?>" required disabled></td>
+				</tr>
 				<tr>
 					<td>ปีการศึกษา:</td>
 					<td class="text-danger"><input type="text" name="year" class="form-control" required></td>
@@ -179,3 +186,5 @@ mysqli_set_charset($conn, "utf8");
 		</table>
 	</form>
 </div>
+
+<input type="hidden" value="ควยยย">

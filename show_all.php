@@ -9,28 +9,30 @@
 
 <body>
     <?php
+    if (!isset($_SESSION['login_true'])) {
+        header("Location: login.php");
+        exit;
+    }
 
-        $phase = $_POST['phase'];
-        $semester = $_POST['semester'];
-        $year = $_POST['year'];
+    $phase = $_POST['phase'];
+    $semester = $_POST['semester'];
+    $year = $_POST['year'];
 
-        include("config.php");
+    include("config.php");
 
-        $conn = new mysqli(
-            $config['hostname'],
-            $config['dbuser'],
-            $config['dbpassword'],
-            $config['dbname']
-         );
+    $conn = new mysqli(
+        $config['hostname'],
+        $config['dbuser'],
+        $config['dbpassword'],
+        $config['dbname']
+    );
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-        mysqli_set_charset($conn, "utf8");
-    ?>
+    mysqli_set_charset($conn, "utf8");
 
-    <?php
     $sql = "SELECT * FROM exam LEFT JOIN timeexam ON time = timeexam.id WHERE phase = $phase AND semester = $semester AND year = $year GROUP BY date, timeStart"; //final, semester, year ต้องรับค่าเข้ามา
     if ($phase == "1") {
         $phase = "Midterm";

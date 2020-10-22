@@ -1,6 +1,12 @@
 <!doctype html>
 <html>
 <?php
+
+if (!isset($_SESSION['login_true'])) {
+  header("Location: login.php");
+  exit;
+}
+
 include("config.php");
 ?>
 
@@ -111,11 +117,7 @@ include("config.php");
             <i class='fas fa-cog text-warning'></i>
             </button>
             <input type='hidden' name = 'id' value = '$id'>
-            
-            <button class = 'btn btn-link'>
-            <i class='fas fa-trash text-danger'></i>
-            </button>
-            </form>  
+            </form>
             </td>
             </tr>";
           }
