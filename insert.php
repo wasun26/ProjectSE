@@ -33,8 +33,8 @@ if ($conn->connect_error) {
 
 mysqli_set_charset($conn, "utf8");
 
-$sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `status`) VALUES  
-                 (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', NULL)";
+$sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`, `status`) VALUES  
+                 (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '-1')";
 
 $conn->query($sql);
 $conn->close();
