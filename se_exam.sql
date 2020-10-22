@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 01:01 PM
+-- Generation Time: Oct 22, 2020 at 02:47 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -70,7 +70,7 @@ CREATE TABLE `exam` (
 INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`, `status`) VALUES
 (1, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100-1', 'T11111', 'S1', 'T11111', -1),
 (2, 1, '204100', 2020, 1, '2020-10-13', 1, 'CSB100-2', 'T11122', 'S1', 'T11122', -1),
-(3, 1, '204231', 2020, 1, '2020-10-14', 3, 'CSB100-2', 'T11122', NULL, 'T11122', -1);
+(3, 1, '204231', 2020, 2, '2020-10-14', 3, 'CSB100-2', 'T11122', NULL, 'T11122', -1);
 
 -- --------------------------------------------------------
 
@@ -89,8 +89,7 @@ CREATE TABLE `phase` (
 
 INSERT INTO `phase` (`id`, `name`) VALUES
 (1, 'Mid'),
-(2, 'Final'),
-(3, 'Summer');
+(2, 'Final');
 
 -- --------------------------------------------------------
 
@@ -130,25 +129,6 @@ CREATE TABLE `semester` (
 
 INSERT INTO `semester` (`id`, `term`, `year`) VALUES
 (1, 1, 2563);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `staff`
---
-
-CREATE TABLE `staff` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`id`, `fname`, `lname`) VALUES
-(1, 'เจ้าหน้าที่1', '');
 
 -- --------------------------------------------------------
 
@@ -264,7 +244,6 @@ ALTER TABLE `exam`
   ADD KEY `room` (`room`),
   ADD KEY `subject` (`subject`),
   ADD KEY `phase` (`phase`),
-  ADD KEY `semester` (`semester`),
   ADD KEY `examiner_t` (`examiner_t`),
   ADD KEY `examiner_s` (`examiner_s`),
   ADD KEY `time` (`time`),
@@ -290,12 +269,6 @@ ALTER TABLE `semester`
   ADD PRIMARY KEY (`id`),
   ADD KEY `term` (`term`),
   ADD KEY `year` (`year`);
-
---
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `subject`
@@ -337,7 +310,7 @@ ALTER TABLE `enroll`
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `phase`
@@ -385,7 +358,6 @@ ALTER TABLE `exam`
   ADD CONSTRAINT `exam_ibfk_12` FOREIGN KEY (`ownerID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_6` FOREIGN KEY (`phase`) REFERENCES `phase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_7` FOREIGN KEY (`subject`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `exam_ibfk_8` FOREIGN KEY (`semester`) REFERENCES `semester` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_9` FOREIGN KEY (`time`) REFERENCES `timeexam` (`id`) ON UPDATE CASCADE;
 
 --
