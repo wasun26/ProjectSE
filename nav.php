@@ -19,7 +19,7 @@
 		$dbarr = $result->fetch_assoc();
 		$conn->close();
 		$access = $dbarr['access'];
-		$idUser = $dbarr['user.id'];
+		$idUser = $dbarr['id'];
 		switch ($access) {
 			case '2':
 				$navbar = "navbar-dark bg-primary";
