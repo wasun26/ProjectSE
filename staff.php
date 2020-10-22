@@ -44,7 +44,7 @@ mysqli_set_charset($conn, "utf8");
 				</tr>
 				<tr>
 					<td><?php
-						$sql = "SELECT name FROM phase ";
+						$sql = "SELECT * FROM phase ";
 						$result = $conn->query($sql);
 						?>
 						ช่วงสอบ:
