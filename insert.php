@@ -18,7 +18,7 @@ $room = $_POST['room'];
 $time = $_POST['time'];
 $examiner_t = $_POST['examiner_t'];
 $examiner_s = $_POST['examiner_s'];
-$owner_id = ;
+$owner_id = $idUser;
 
 // Create connection
 $conn = new mysqli(
@@ -32,7 +32,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE `phase` = $phase AND `subject` = $subject AND `year` = $year AND `semester` = $semester AND `date` = $data AND `time` = $time AND `room` = $room AND `examiner_t` = $examiner_t AND `examiner_s` = $examiner_s";
+$sql = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE `phase` = '$phase' AND `subject` = '$subject' AND `year` = '$year' AND `semester` = '$semester' AND `date` = '$date' AND `time` = '$time' AND `room` = '$room' AND `examiner_t` = '$examiner_t' AND `examiner_s` = '$examiner_s'";
 $result = $conn->query($sql);
   if ($result->num_rows > 0) {  //begin if
     while ($row = $result->fetch_assoc()){
@@ -46,13 +46,13 @@ $result = $conn->query($sql);
       $examiner_t_db = $row['examiner_t'];
       $examiner_s_db = $row['examiner_s'];
       if ($subject == $subject_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
-        echo "วิชานี้ได้ถูกลงทะเบียนแล้ว"
+        echo "วิชานี้ได้ถูกลงทะเบียนแล้ว";
       }elseif ($room == $room_db and $time == $time_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
-        echo "ห้องนี้ได้ถูกใช้แล้ว"
+        echo "ห้องนี้ได้ถูกใช้แล้ว";
       }elseif ($examiner_t == $examiner_t_db and $time == $time_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
-        echo "ผู้คุมสอบ(อาจารย์)มีหน้าที่ในเวลานี้แล้ว"
+        echo "ผู้คุมสอบ(อาจารย์)มีหน้าที่ในเวลานี้แล้ว";
       }elseif ($examiner_s == $examiner_s_db and $time == $time_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
-        echo "ผู้คุมสอบ(บุคลากร)มีหน้าที่ในเวลานี้แล้ว"
+        echo "ผู้คุมสอบ(บุคลากร)มีหน้าที่ในเวลานี้แล้ว";
       }
     }
   }else{

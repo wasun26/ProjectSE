@@ -22,7 +22,7 @@ mysqli_set_charset($conn, "utf8");
 
 <div class="container">
 	<h1>เพิ่มวิชาสอบ</h1>
-	<form action="insert.php" method="POST">
+	<form action="?page=insert" method="POST">
 		<table width="100%" border=" 0" class="table table-striped table-hover">
 			<tbody>
 				<tr>
@@ -186,5 +186,3 @@ mysqli_set_charset($conn, "utf8");
 		</table>
 	</form>
 </div>
-
-<input type="hidden" value="ควยยย">
