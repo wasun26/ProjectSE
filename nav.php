@@ -14,7 +14,7 @@
 	if (isset($_SESSION['login_true'])) {
 		$conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
 		$email = $_SESSION['login_true'];
-		$login = "SELECT fname, lname, access, UA.name nameacc FROM user, user_access UA WHERE email='$email' and user.access=UA.id";
+		$login = "SELECT user.id, fname, lname, access, UA.name nameacc FROM user, user_access UA WHERE email='$email' and user.access=UA.id";
 		$result = $conn->query($login);
 		$dbarr = $result->fetch_assoc();
 		$conn->close();

@@ -2,7 +2,13 @@
   <meta charset="UTF-8">
 </head>
 <?php
+if (!isset($_SESSION['login_true'])) {
+  header("Location: login.php");
+  exit;
+}
+
 include("config.php");
+
 $id = $_POST['id'];
 $phase = $_POST['phase'];
 $semester = $_POST['semester'];

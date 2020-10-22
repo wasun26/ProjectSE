@@ -10,12 +10,18 @@
 
 <body>
   <?php
+  if (!isset($_SESSION['login_true'])) {
+    header("Location: login.php");
+    exit;
+  }
+
   include("config.php");
+
   $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
   $sql = "SELECT DAY(E.date), T.timeStart, T.timeFinish, P.start, P.end
   FROM timeexam T, student S, exam E, enroll EN, phase P
   WHERE EN.sid=610510999 AND E.subject=EN.subjectid AND E.time=T.id AND E.phase=E.phase";
-  $result = $conn->query($sql); 
+  $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     echo "Name";
     while ($row = $result->fetch_assoc()) {
@@ -36,14 +42,14 @@
     <tbody class="table hover">
       <?php
       #for ($i = 0; $i < 7; $i++) {
-        #echo ("
-        #<tr>
-        #<td>&nbsp;</td>
-        #<td>&nbsp;</td>
-        #<td>&nbsp;</td>
-        #<td>&nbsp;</td>
+      #echo ("
+      #<tr>
+      #<td>&nbsp;</td>
+      #<td>&nbsp;</td>
+      #<td>&nbsp;</td>
+      #<td>&nbsp;</td>
       #</tr>
-        #");
+      #");
       #}
       ?>
     </tbody>
