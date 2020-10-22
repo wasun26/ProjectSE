@@ -21,11 +21,12 @@ include("config.php");
       <th>ห้วงสอบ</th>
       <th>กรรมการคุมสอบ</th>
       <?php
-      if ($access > 1){
-        ?><th>ดำเนินการ</th>
+      if ($_POST['searchType'] == 'owner' ){
+        ?>
+        <th>ดำเนินการ</th>
         <?php
       }
-      ?>
+      ?>      
     </thead>
     <tbody class='table-hover'>
       <?php     
@@ -81,7 +82,7 @@ include("config.php");
               break;
             case 'owner':
               $input = $_POST['searchData'];
-              echo "$input";
+              // echo "$input";
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name, E.ownerID
             FROM timeexam T, exam E, enroll EN, phase P
             WHERE E.ownerID='$input'

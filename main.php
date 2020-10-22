@@ -117,6 +117,7 @@ include("config.php");
 
     <!-- <div class="d-flex justify-content-center"> -->
         <!-- <div class="card" style="border: none"> -->
+        <?php if ($access == 2){ ?>
             <div class="card-header text-light" style="background-color: #152F4F;">
                 รายวิชาของฉัน
             </div>
@@ -138,7 +139,8 @@ include("config.php");
                     </li>
                 </ul>
                 
-            </form>
+            </form><?php
+        }?>
         </div>
     </div>
 </div>
