@@ -54,6 +54,7 @@ $result = $conn->query($sql_check);
       }elseif ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db){
         echo "ผู้คุมสอบ(บุคลากร)มีหน้าที่ในเวลานี้แล้ว";
       }
+      break;
     }
   }else{
     mysqli_set_charset($conn, "utf8");
