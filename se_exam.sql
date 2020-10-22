@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 01:01 PM
+-- Generation Time: Oct 22, 2020 at 03:36 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -34,14 +34,6 @@ CREATE TABLE `enroll` (
   `semester` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `enroll`
---
-
-INSERT INTO `enroll` (`id`, `sid`, `subjectid`, `semester`) VALUES
-(1, '610510999', '204111', 1),
-(2, '610510999', '204100', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -59,18 +51,8 @@ CREATE TABLE `exam` (
   `room` varchar(8) NOT NULL,
   `examiner_t` varchar(10) DEFAULT NULL,
   `examiner_s` varchar(10) DEFAULT NULL,
-  `ownerID` varchar(10) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT -1
+  `ownerID` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `exam`
---
-
-INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`, `status`) VALUES
-(1, 1, '204111', 2020, 1, '2020-10-12', 1, 'CSB100-1', 'T11111', 'S1', 'T11111', -1),
-(2, 1, '204100', 2020, 1, '2020-10-13', 1, 'CSB100-2', 'T11122', 'S1', 'T11122', -1),
-(3, 1, '204231', 2020, 1, '2020-10-14', 3, 'CSB100-2', 'T11122', NULL, 'T11122', -1);
 
 -- --------------------------------------------------------
 
@@ -89,8 +71,7 @@ CREATE TABLE `phase` (
 
 INSERT INTO `phase` (`id`, `name`) VALUES
 (1, 'Mid'),
-(2, 'Final'),
-(3, 'Summer');
+(2, 'Final');
 
 -- --------------------------------------------------------
 
@@ -99,18 +80,36 @@ INSERT INTO `phase` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `room` (
-  `name` varchar(8) NOT NULL,
-  `capacity` int(3) UNSIGNED NOT NULL,
-  `status` int(1) UNSIGNED NOT NULL DEFAULT 1
+  `name` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`name`, `capacity`, `status`) VALUES
-('CSB100-1', 50, 1),
-('CSB100-2', 50, 1);
+INSERT INTO `room` (`name`) VALUES
+('CS201'),
+('CS202'),
+('CS203'),
+('CS204'),
+('CS205'),
+('CS206'),
+('CS207'),
+('CS208'),
+('CS209'),
+('CS210'),
+('CS301'),
+('CS302'),
+('CS303'),
+('CS304'),
+('CS305'),
+('CS306'),
+('CS307'),
+('CS308'),
+('CS309'),
+('CS310'),
+('CSB100-1'),
+('CSB100-2');
 
 -- --------------------------------------------------------
 
@@ -129,26 +128,9 @@ CREATE TABLE `semester` (
 --
 
 INSERT INTO `semester` (`id`, `term`, `year`) VALUES
-(1, 1, 2563);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `staff`
---
-
-CREATE TABLE `staff` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`id`, `fname`, `lname`) VALUES
-(1, 'เจ้าหน้าที่1', '');
+(1, 1, 2020),
+(2, 2, 2020),
+(3, 3, 2020);
 
 -- --------------------------------------------------------
 
@@ -167,15 +149,14 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`id`, `name`, `tid`) VALUES
-('204100', 'Information Technology and Modern Life', 'T11122'),
-('204111', 'Fundamentals of Programming', 'T11111'),
-('204112', 'Fundamentals of Programming 2', 'T11111'),
-('204113', 'Principles of Computing', 'T11111'),
-('204211', 'Object-Oriented Programming', 'T11111'),
-('204231', 'Computer Organization and Architecture', 'T11111'),
-('204232', 'Computer Networks and Protocols', 'T11111'),
-('204251', 'Data Structures', 'T11111'),
-('204315', 'Organization of Programming Languages', 'T11111');
+('204101', 'Introduction to Computer', 'T1'),
+('204202', 'Information Technology II', 'T3'),
+('204211', 'Object-Oriented Programming', 'T3'),
+('204321', 'Database System 1', 'T2'),
+('204361', 'Software Engineering ', 'T1'),
+('204362', 'Object-Oriented Design', 'T1'),
+('204422', 'Data Warehousing', 'T2'),
+('204490', 'Research in Computer Science', 'T1');
 
 -- --------------------------------------------------------
 
@@ -218,10 +199,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fname`, `lname`, `access`, `email`, `password`) VALUES
-('610510999', 'นายก', 'สกุล', 1, 'test@cmu.ac.th', '1234'),
-('S1', 'เจ้าหน้าที่1', 'นามสกุลเจ้าหน้าที่1', 3, 'staff1@cmu.ac.th', '1111'),
-('T11111', 'aaa', 'bbb', 2, 'test.t@cmu.ac.th', '1234'),
-('T11122', 'ccc', 'eee', 2, 'test2.t@cmu.ac.th', '1234');
+('610510665', 'นายภูริภัทร', 'สิวะโภไคยกุล', 1, 'Puripat.si@cmu.ac.th', 'Puripat'),
+('610510710', 'นายสหัสวรรษ', 'ปัญจขันธ์', 1, 'sahassawas_panjakan@cmu.ac.th', 'sahassawas'),
+('610510803', 'นายธเนศ ', 'สิงห์ลอ', 1, 'Tanad_s@cmu.ac.th', 'Tanad'),
+('610510809', 'นายวสันต์ ', 'แพทย์รัตน์', 1, 'wasun_pa@cmu.ac.th', 'wasun'),
+('610510815', 'นายสิทธา', 'สินประสาธน์', 1, 'sittha_sinprasat@cmu.ac.th', 'sittha'),
+('S1', 'นางสาววราภรณ์', 'อินสม', 3, 'insom.waraporn@cmu.ac.th', 'insom'),
+('T1', 'ผู้ช่วยศาสตราจารย์ ดร.วัชรี', 'จำปามูล', 2, 'wjumpa@cmu.ac.th', 'wjumpa'),
+('T2', 'ผู้ช่วยศาสตราจารย์ ดร.ดุษฎี', ' ประเสริฐธิติพงษ์', 2, 'dussadee.p@cmu.ac.th', 'dussadee'),
+('T3', 'ผู้ช่วยศาสตราจารย์ ดร.เมทินี ', 'เขียวกันยะ', 2, 'matinee.k@cmu.ac.th', 'matinee');
 
 -- --------------------------------------------------------
 
@@ -268,7 +254,6 @@ ALTER TABLE `exam`
   ADD KEY `examiner_t` (`examiner_t`),
   ADD KEY `examiner_s` (`examiner_s`),
   ADD KEY `time` (`time`),
-  ADD KEY `status` (`status`),
   ADD KEY `ownerID` (`ownerID`);
 
 --
@@ -290,12 +275,6 @@ ALTER TABLE `semester`
   ADD PRIMARY KEY (`id`),
   ADD KEY `term` (`term`),
   ADD KEY `year` (`year`);
-
---
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `subject`
@@ -337,7 +316,7 @@ ALTER TABLE `enroll`
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `phase`
@@ -349,7 +328,7 @@ ALTER TABLE `phase`
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `timeexam`
