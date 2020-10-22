@@ -250,7 +250,6 @@ ALTER TABLE `exam`
   ADD KEY `room` (`room`),
   ADD KEY `subject` (`subject`),
   ADD KEY `phase` (`phase`),
-  ADD KEY `semester` (`semester`),
   ADD KEY `examiner_t` (`examiner_t`),
   ADD KEY `examiner_s` (`examiner_s`),
   ADD KEY `time` (`time`),
@@ -364,7 +363,6 @@ ALTER TABLE `exam`
   ADD CONSTRAINT `exam_ibfk_12` FOREIGN KEY (`ownerID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_6` FOREIGN KEY (`phase`) REFERENCES `phase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_7` FOREIGN KEY (`subject`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `exam_ibfk_8` FOREIGN KEY (`semester`) REFERENCES `semester` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_9` FOREIGN KEY (`time`) REFERENCES `timeexam` (`id`) ON UPDATE CASCADE;
 
 --
