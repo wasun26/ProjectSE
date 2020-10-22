@@ -27,7 +27,7 @@ mysqli_set_charset($conn, "utf8");
 			<tbody>
 				<tr>
 					<td>ผู้กรอก:</td>
-					<td class="text-danger"><input type="text" name="id" class="form-control" value="<?php echo($id) ?>" required disabled></td>
+					<td class="text-danger"><input type="text" name="id" class="form-control" value="<?php echo($idUser) ?>" required disabled></td>
 				</tr>
 				<tr>
 					<td>ปีการศึกษา:</td>
