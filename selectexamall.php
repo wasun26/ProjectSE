@@ -17,7 +17,7 @@ $result = $conn->query($sql);
     <div class="card">
         <div class="card-header text-light" style="background-color: #152F4F;">ค้นหารายเทอม</div>
         <div class="card-body">
-            <form action="show_all.php" method="POST">
+            <form action="?page=show_all" method="POST">
                 <select name="phase" class="form-control">
                     <option value="1">Midterm</option>
                     <option value="2">Final</option>

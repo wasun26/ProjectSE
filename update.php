@@ -36,7 +36,7 @@ if (isset($_POST['id'])){
 				</tr>
 				<tr>
 					<td><label for="semester">ภาคการศึกษา:</label></td>
-					<td><select name="semester" id="semester"><option value="1"></option>
+					<td><select name="semester" id="semester"><option value="<?php echo ($row['semester']);?>"></option>
 					<?php
 					$i = 1;
 					while ($i != 4){
@@ -60,20 +60,31 @@ if (isset($_POST['id'])){
 				<tr>
 					<td><label for="phase">ช่วงสอบ:</label></td>
 					<td><select name="phase" id="phase">
-							<option value="<?php echo ($row['phase']);
-                            ?>
-                            ">
-                            <?php 
-                            if ($row['phase'] == 1){
-                                echo "Midterm";
-                            }
-                            else{
-                                echo "Final";
-                            }
-                            ?>
-                            </option>
-							<option value="1">Midterm</option>
-							<option value="2">Final</option>
+							<option value="<?php echo ($row['phase']);?>"></option>
+					<?php
+					$i = 1;
+					while ($i != 3){
+						echo "<option value ='$i'";?>
+
+						<?php
+						if ($row['phase'] == $i){
+						echo "selected";
+						}
+						?>
+						>
+						<?php
+						if ($i == 1){
+						echo ("Midterm");
+						}
+						else{
+						echo ("Final");
+						}
+						echo "</option>";
+						$i++;
+					}
+					?>
+							<!-- <option value="1">Midterm</option>
+							<option value="2">Final</option> -->
 						</select></td>
 				</tr>
 				<tr>
@@ -105,17 +116,27 @@ if (isset($_POST['id'])){
 					<td><?php
 						$sql = "SELECT name FROM room ";
 						$result = $conn->query($sql);
+						$sql1 = "SELECT e.* from exam e where e.id = '$input'";
+						$result1 = $conn->query($sql1);
+						$row1 = $result1->fetch_assoc();
 						?>
 						ห้องสอบ:
 					</td>
 					<td>
 						<select name='room' >
-							<option value='<?php echo ($row['room']); ?>' disabled> เลือก </option>
+							<option value='<?php echo ($row['room']); ?>'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
 									$name = $row['name'];
-									echo "<option value = '$name'> $name </option>";
+									echo "<option value = '$name'";?>
+									<?php if ($name == $row1['room']){
+										echo "selected";
+									}
+									?>			
+									>						
+									<?php echo "$name </option>";
+									
 								}
 							}
 							?>
@@ -126,19 +147,27 @@ if (isset($_POST['id'])){
 					<td><?php
 						$sql = "SELECT id, timeStart, timeFinish FROM timeexam ";
 						$result = $conn->query($sql);
+						$sql1 = "SELECT e.* from exam e where e.id = '$input'";
+						$result1 = $conn->query($sql1);
+						$row1 = $result1->fetch_assoc();					
 						?>
 						เวลาสอบ:
 					</td>
 					<td>
 						<select name='time'>
-							<option value='<?php echo ($row['time']); ?>' disabled> เลือก </option>
+							<option value='<?php echo ($row['time']); ?>'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
+								
 								while ($row = $result->fetch_assoc()) { //begin while
 									$time = $row['id'];
 									$time_start = $row['timeStart'];
 									$time_end = $row['timeFinish'];
-									echo "<option value = '$time'> $time_start - $time_end</option>";
+									echo "<option value = '$time'"?><?php
+									if ($row['id'] == $row1['time']){
+										echo "selected";
+									}
+									 ?>> <?php echo "$time_start - $time_end</option>";
 								}
 							}
 							?>
@@ -149,19 +178,29 @@ if (isset($_POST['id'])){
 					<td><?php
 						$sql = "SELECT id, fname, lname FROM user WHERE access=2";
 						$result = $conn->query($sql);
+						$sql1 = "SELECT e.* from exam e where e.id = '$input'";
+						$result1 = $conn->query($sql1);
+						$row1 = $result1->fetch_assoc();
 						?>
 						ผู้คุมสอบ(อาจารย์):
 					</td>
 					<td>
 						<select name='examiner_t'>
-							<option value='<?php echo ($row['examiner_t']); ?>' disabled> เลือก </option>
+							<option value='<?php echo ($row['examiner_t']); ?>'> เลือก </option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
 									$id = $row['id'];
 									$f_name = $row['fname'];
 									$l_name = $row['lname'];
-									echo "<option value='$id'>$f_name $l_name</option>";
+									echo "<option value='$id'";?>
+									<?php
+									if ($id == $row1['examiner_t']){
+										echo "selected";
+									} 
+									?>
+									> 
+									<?php echo "$f_name $l_name</option>";
 								}
 							}
 							?>
@@ -173,18 +212,28 @@ if (isset($_POST['id'])){
 						<?php
 						$sql = "SELECT id, fname, lname FROM user WHERE access=3";
 						$result = $conn->query($sql);
+						$sql1 = "SELECT e.* from exam e where e.id = '$input'";
+						$result1 = $conn->query($sql1);
+						$row1 = $result1->fetch_assoc();
 						?>
 					</td>
 					<td>
 						<select name='examiner_s'>
-							<option value='<?php echo ($row['examiner_s']); ?>' disabled>เลือก</option>
+							<option value='NULL'>เลือก</option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
 									$id = $row['id'];
 									$f_name = $row['fname'];
 									$l_name = $row['lname'];
-									echo "<option value='$id'>$f_name $l_name</option>";
+									echo "<option value='$id'"?>
+									<?php
+									if($id == $row1['examiner_s']){
+										echo "selected";
+									} 
+									?>
+									>
+									<?php echo "$f_name $l_name</option>";
 								}
 							}
 							?>
@@ -192,7 +241,7 @@ if (isset($_POST['id'])){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="update"> <input type="reset" value="Reset"></td>
+					<td colspan="2"><input type="submit" value="update"></td>
 				</tr>
 			</tbody>
 		</table>

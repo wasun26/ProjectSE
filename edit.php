@@ -27,14 +27,30 @@ if ($conn->connect_error) {
 mysqli_set_charset($conn, "utf8");
 
 
-$sql = "UPDATE exam SET exam.phase = '$phase',
-                        exam.semester = '$semester',
-                        exam.date = '$date',
-                        exam.room = '$room',
-                        exam.time = '$time',
-                        exam.examiner_t = '$examiner_t',
-                        exam.examiner_s = '$examiner_s'
- WHERE  exam.id  = '$id'" ;
+// $sql = "UPDATE exam SET 
+                        // WHERE  exam.id  = '$id'";
+?>
+<?php 
+if ($examiner_s != 'NULL'){
+  $sql = "UPDATE exam SET exam.phase = '$phase',
+  exam.semester = '$semester',
+  exam.date = '$date',
+  exam.room = '$room',
+  exam.time = '$time',
+  exam.examiner_t = '$examiner_t',
+  exam.examiner_s = '$examiner_s'
+  WHERE  exam.id  = '$id'" ;
+  }
+else{
+  $sql = "UPDATE exam SET exam.phase = '$phase',
+  exam.semester = '$semester',
+  exam.date = '$date',
+  exam.room = '$room',
+  exam.time = '$time',
+  exam.examiner_t = '$examiner_t',
+  exam.examiner_s = NULL
+  WHERE  exam.id  = '$id'" ;
+}
 
 $conn->query($sql);
 $conn->close();
