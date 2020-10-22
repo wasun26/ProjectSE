@@ -31,9 +31,9 @@ $conn = new mysqli(
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+$sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester' AND `date` = '$date' AND `time` = '$time') AND (`subject` = '$subject' OR `room` = '$room' OR `examiner_t` = '$examiner_t' OR `examiner_s` = '$examiner_s')";
+$result = $conn->query($sql_check);
 
-$sql = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE `phase` = '$phase' AND `subject` = '$subject' AND `year` = '$year' AND `semester` = '$semester' AND `date` = '$date' AND `time` = '$time' AND `room` = '$room' AND `examiner_t` = '$examiner_t' AND `examiner_s` = '$examiner_s'";
-$result = $conn->query($sql);
   if ($result->num_rows > 0) {  //begin if
     while ($row = $result->fetch_assoc()){
       $phase_db = $row['phase'];
@@ -45,28 +45,27 @@ $result = $conn->query($sql);
       $time_db = $row['time'];
       $examiner_t_db = $row['examiner_t'];
       $examiner_s_db = $row['examiner_s'];
-      if ($subject == $subject_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
+      if ($subject == $subject_db){
         echo "วิชานี้ได้ถูกลงทะเบียนแล้ว";
-      }elseif ($room == $room_db and $time == $time_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
+      }elseif ($room == $room_db and $time == $time_db){
         echo "ห้องนี้ได้ถูกใช้แล้ว";
-      }elseif ($examiner_t == $examiner_t_db and $time == $time_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
+      }elseif ($examiner_t == $examiner_t_db and $time == $time_db){
         echo "ผู้คุมสอบ(อาจารย์)มีหน้าที่ในเวลานี้แล้ว";
-      }elseif ($examiner_s == $examiner_s_db and $time == $time_db and $phase == $phase_db and $semester == $semester_db and $year == $year_db){
+      }elseif ($examiner_s == $examiner_s_db and $time == $time_db){
         echo "ผู้คุมสอบ(บุคลากร)มีหน้าที่ในเวลานี้แล้ว";
       }
     }
   }else{
     mysqli_set_charset($conn, "utf8");
 
-
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`, `status`) VALUES  
-                    (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id', '-1')";
+                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id', '-1')";
 
     $conn->query($sql);
-    $conn->close();
     echo "เพิ่มข้อมูลเรียบร้อยแล้ว";
   }
-
-echo "<a herf = 'staff.php'>เพิ่มข้อมูล</a>  <a herf = 'main.php'>กลับไปหน้าหลัก</a>"
+$conn->close();
 
 ?>
+<br><br>
+<a href = 'staff.php'>เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href = 'main.php'>กลับไปหน้าหลัก</a>
