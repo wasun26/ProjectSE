@@ -20,11 +20,18 @@ include("config.php");
       <th>ห้อง</th>
       <th>ห้วงสอบ</th>
       <th>กรรมการคุมสอบ</th>
-      <th>ดำเนินการ</th>
+      <?php
+      if ($_POST['searchType'] == 'owner' ){
+        ?>
+        <th>ดำเนินการ</th>
+        <?php
+      }
+      ?>      
     </thead>
     <tbody class='table-hover'>
-      <?php
-      if (isset($_POST['searchType']) && isset($_POST['searchData'])) {
+      <?php     
+      if (isset($_POST['searchType']) && isset($_POST['searchData'])) {  
+          
         switch ($_POST['searchType']) {
           case 'studentID':
             $input = $_POST['searchData'];
@@ -53,6 +60,7 @@ include("config.php");
             WHERE E.phase=P.id AND E.time=T.id AND E.subject IN ($sum)";
             break;
           case 'examinerName':
+            
             $input = $_POST['searchData'];
             $name = explode(" ", $input);
             $nameCon = "U.fname='" . $name[0] . "'";
@@ -63,7 +71,7 @@ include("config.php");
             FROM timeexam T, exam E, phase P, user U
             WHERE E.phase=P.id AND E.time=T.id AND (E.examiner_t=U.id OR E.examiner_s=U.id) AND $nameCon";
             break;
-            case 'byterm':
+            case 'byterm':              
               $phase = $_POST['phase'];
               $semester = $_POST['semester'];
               $year = $_POST['year'];
@@ -72,6 +80,15 @@ include("config.php");
               WHERE E.phase=$phase AND E.semester=$semester AND YEAR(E.date)=$year-543 AND E.time=T.id
               GROUP BY E.subject";
               break;
+            case 'owner':
+              $input = $_POST['searchData'];
+              // echo "$input";
+            $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name, E.ownerID
+            FROM timeexam T, exam E, enroll EN, phase P
+            WHERE E.ownerID='$input'
+            GROUP BY E.subject
+            ORDER BY E.date";
+            break;
         }
         $conn = new mysqli($config['hostname'], $config['dbuser'], $config['dbpassword'], $config['dbname']);
         $result = $conn->query($sql);
@@ -112,6 +129,8 @@ include("config.php");
               }
             }
             echo ("</td>");
+            if ($access > 1){
+              if($access == 2 and $_POST['searchData']  == $idUser){
             echo"<td><form action='?page=update' method='POST'>
             <button class = 'btn btn-link'>
             <i class='fas fa-cog text-warning'></i>
@@ -120,6 +139,8 @@ include("config.php");
             </form>
             </td>
             </tr>";
+              }
+            }            
           }
           $conn->close();
         } else {

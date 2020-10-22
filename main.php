@@ -111,6 +111,36 @@ include("config.php");
                 </ul>
                 <input type="hidden" name="searchType" value="examinerName">
             </form>
+            <br>
+        <!-- </div> -->
+    <!-- </div><br> -->
+
+    <!-- <div class="d-flex justify-content-center"> -->
+        <!-- <div class="card" style="border: none"> -->
+        <?php if ($access == 2){ ?>
+            <div class="card-header text-light" style="background-color: #152F4F;">
+                รายวิชาของฉัน
+            </div>
+            <form method="POST" action="?page=examlist">
+                <ul class="list-group">
+                    <!-- <li class="list-group-item">
+                        <div class="input-group m-b">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ชื่อ-สกุล</span>
+                            </div>
+                            <input type="text" name="searchData" class="form-control">
+                        </div>
+                    </li> -->
+                    <li class="list-group-item">
+                    <input type="hidden" name="searchType" value="owner">
+                    <input type="hidden" name="searchData" value="<?php echo ($idUser)?>">
+                        <button type="submit" class="btn btn-primary btn-xs" name="search5"><i class="fa fa-search"></i> Search</button>
+                        <span id="searchAdvisor"></span>
+                    </li>
+                </ul>
+                
+            </form><?php
+        }?>
         </div>
     </div>
 </div>

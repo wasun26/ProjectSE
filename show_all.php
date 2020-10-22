@@ -54,12 +54,18 @@
                 <th> ห้องสอบ </th>
                 <th> ผู้คุมสอบ(อาจารย์) </th>
                 <th> ผู้คุมสอบ(บุคลากร) </th>
+                <?php
+                if ($access == 3){
+                ?>
+                <th> ดำเนินการ </th>
+                <?php
+                } ?>
             </tr>
         </thead>
         <tbody class="table hover">
             <?php
             $result = $conn->query($sql);
-            if ($result->num_rows > 0) {  //begin if
+            if ($result->num_rows > 0) {  //begin if                
                 while ($row = $result->fetch_assoc()) {  //begin while
                     $id = $row['id'];
                     $course = $row['subject'];
@@ -101,9 +107,19 @@
                     } else {
                         echo "<td> - </td>";
                     }
-
-                    echo "</tr>";
+                    
+                    if ($access == 3){
+                      echo"<td><form action='?page=update' method='POST'>
+                      <button class = 'btn btn-link'>
+                      <i class='fas fa-cog text-warning'></i>
+                      </button>
+                      <input type='hidden' name = 'id' value = '$id'>
+                      </form>
+                      </td>
+                      </tr>";
+                      }      
                 }  //end while
+                
                 echo "</table>";
             } else {
                 echo "ไม่มีข้อมูล";
