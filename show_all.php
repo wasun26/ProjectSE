@@ -64,8 +64,8 @@
         </thead>
         <tbody class="table hover">
             <?php
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {  //begin if                
+            $result = $conn->query($sql);            
+            if ($result->num_rows > 0) {  //begin if        
                 while ($row = $result->fetch_assoc()) {  //begin while
                     $id = $row['id'];
                     $course = $row['subject'];
@@ -73,9 +73,9 @@
                     $time = $row['time'];
                     $room = $row['room'];
                     $examiner_t = $row['examiner_t'];
-                    $examiner_s = $row['examiner_s'];
+                    $examiner_s = $row['examiner_s'];                    
                     echo "<tr align='center'>";
-                    echo "<td>" . $course . "</td>";
+                    echo "<td>"  . $course .  "</td>";
                     echo "<td>" . $day . "</td>";
                     $timeStart = $row['timeStart'];
                     $timeFinish = $row['timeFinish'];
