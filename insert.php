@@ -21,7 +21,7 @@ $subject = $_POST['subject'];
 $date = $_POST['date'];
 $room = $_POST['room'];
 $time = $_POST['time'];
-$examiner_t = $_POST['examiner_t']; 
+$examiner_t = $_POST['examiner_t'];
 $owner_id = $idUser;
 
 // Create connection
@@ -47,8 +47,10 @@ if ($result->num_rows > 0) {  //begin if
     $date_db = $row['date'];
     $room_db = $row['room'];
     $time_db = $row['time'];
-    $examiner_t_db = $row['examiner_t'];
-    $examiner_s_db = $row['examiner_s'];
+    // $examiner_t_db = $row['examiner_t'];
+    // $examiner_s_db = $row['examiner_s'];
+    $examiner_t_db = !empty($row['examiner_t']) ? "'$row[examiner_t]'" : "NULL";
+    $examiner_s_db = !empty($row['examiner_s']) ? "'$row[examiner_s]'" : "NULL";
     if ($subject == $subject_db) {
       echo "วิชานี้ได้ถูกลงทะเบียนแล้ว";
     } elseif ($room == $room_db and $time == $time_db and $date == $date_db) {
@@ -63,13 +65,8 @@ if ($result->num_rows > 0) {  //begin if
 } else {
   mysqli_set_charset($conn, "utf8");
 
-  if ($examiner_s == NULL) {
-    $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
-    (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', $examiner_s, '$owner_id')";
-  } else {
-    $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
-                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
-  }
+  $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
+    (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', $examiner_t, $examiner_s, '$owner_id')";
 
   $conn->query($sql);
 ?>
