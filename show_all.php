@@ -33,11 +33,11 @@
 
     mysqli_set_charset($conn, "utf8");
 
-    $sql = "SELECT exam.id, exam.subject, exam.date, exam.time, exam.room, exam.examiner_t, exam.examiner_s, timeexam.timeStart, timeexam.timeFinish 
+    $sql = "SELECT exam.id, exam.subject, DAY(exam.date) day, MONTH(exam.date) month, YEAR(exam.date) year, exam.time, exam.room, exam.examiner_t, exam.examiner_s, timeexam.timeStart, timeexam.timeFinish 
             FROM exam 
             LEFT JOIN timeexam ON exam.time = timeexam.id 
             WHERE exam.phase = $phase AND exam.semester = $semester AND exam.year = $year 
-            GROUP BY exam.year, timeexam.timeStart"; 
+            GROUP BY exam.year, timeexam.timeStart";
     if ($phase == "1") {
         $phase = "Midterm";
     } else {
@@ -59,28 +59,30 @@
                 <th> ผู้คุมสอบ(อาจารย์) </th>
                 <th> ผู้คุมสอบ(บุคลากร) </th>
                 <?php
-                if ($access == 3){
+                if ($access == 3) {
                 ?>
-                <th> ดำเนินการ </th>
+                    <th> ดำเนินการ </th>
                 <?php
                 } ?>
             </tr>
         </thead>
         <tbody class="table hover">
             <?php
-            $result = $conn->query($sql);            
+            $result = $conn->query($sql);
             if ($result->num_rows > 0) {  //begin if        
                 while ($row = $result->fetch_assoc()) {  //begin while
                     $id = $row['id'];
                     $course = $row['subject'];
-                    $day = $row['date'];
+                    $day = $row['day'];
+                    $month = $row['month'];
+                    $year = $row['year'];
                     $time = $row['time'];
                     $room = $row['room'];
                     $examiner_t = $row['examiner_t'];
-                    $examiner_s = $row['examiner_s'];                    
+                    $examiner_s = $row['examiner_s'];
                     echo "<tr align='center'>";
                     echo "<td>"  . $course .  "</td>";
-                    echo "<td>" . $day . "</td>";
+                    echo "<td>" . $day . "/" . $month . "/" . $year . "</td>";
                     $timeStart = $row['timeStart'];
                     $timeFinish = $row['timeFinish'];
                     echo "<td>" . $timeStart . " - " . $timeFinish . "</td>";
@@ -111,9 +113,9 @@
                     } else {
                         echo "<td> - </td>";
                     }
-                    
-                    if ($access == 3){
-                      echo"<td><form action='?page=update' method='POST'>
+
+                    if ($access == 3) {
+                        echo "<td><form action='?page=update' method='POST'>
                       <button class = 'btn btn-link'>
                       <i class='fas fa-cog text-warning'></i>
                       </button>
@@ -121,9 +123,9 @@
                       </form>
                       </td>
                       </tr>";
-                      }      
+                    }
                 }  //end while
-                
+
                 echo "</table>";
             } else {
                 echo "ไม่มีข้อมูล";

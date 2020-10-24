@@ -166,13 +166,13 @@ if (isset($_POST['id'])) {
 										$time_start = $row['timeStart'];
 										$time_end = $row['timeFinish'];
 										echo "<option value = '$time'" ?><?php
-																	if ($row['id'] == $row1['time']) {
-																		echo "selected";
+																			if ($row['id'] == $row1['time']) {
+																				echo "selected";
+																			}
+																			?>> <?php echo "$time_start - $time_end</option>";
 																	}
-																	?>> <?php echo "$time_start - $time_end</option>";
-										}
-									}
-											?>
+																}
+																		?>
 							</select>
 						</td>
 					</tr>
@@ -252,5 +252,7 @@ if (isset($_POST['id'])) {
 
 
 <?php
+} else {
+	echo("<meta http-equiv=refresh content=0;URL=?>");
 }
 ?>

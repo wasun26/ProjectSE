@@ -4,6 +4,10 @@ if (!isset($_SESSION['login_true'])) {
 	header("Location: login.php");
 	exit;
 }
+if ($access < 2) {
+	echo("<meta http-equiv=refresh content=0;URL=?>");
+	exit;
+}
 include("config.php");
 
 $conn = new mysqli(
