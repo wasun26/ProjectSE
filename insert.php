@@ -52,12 +52,12 @@ if ($result->num_rows > 0) {
     $room_db = $row['room'];
     $time_db = $row['time'];
     $examiner_t_db = $row['examiner_t'];
-    echo ($row['examiner_s']);
-    if ($row['$examiner_s'] == "NULL") {
+    if ($row['examiner_s'] == "NULL") {
       $examiner_s_db = "";
     } else {
       $examiner_s_db = $row['examiner_s'];
     }
+    echo($examiner_s);
     if ($subject == $subject_db) {
       echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว";
     } elseif ($room == $room_db and $time == $time_db and $date == $date_db) {
@@ -81,10 +81,8 @@ if ($result->num_rows > 0) {
     <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
   </div>
   <?php
-  echo '2';
   mysqli_set_charset($conn, "utf8");
   if ($examiner_s == "NULL") {
-    echo '1';
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
                                (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
   } else {
