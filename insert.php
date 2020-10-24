@@ -9,7 +9,6 @@ if (!isset($_SESSION['login_true'])) {
 
 include("config.php");
 
-
 $phase = $_POST['phase'];
 $year = $_POST['year'];
 $semester = $_POST['semester'];
@@ -47,10 +46,8 @@ if ($result->num_rows > 0) {
     $date_db = $row['date'];
     $room_db = $row['room'];
     $time_db = $row['time'];
-    // $examiner_t_db = $row['examiner_t'];
-    // $examiner_s_db = $row['examiner_s'];
-    $examiner_t_db = !empty($row['examiner_t']) ? "'$row[examiner_t]'" : "NULL";
-    $examiner_s_db = !empty($row['examiner_s']) ? "'$row[examiner_s]'" : "NULL";
+    $examiner_t_db = $row['examiner_t'];
+    $examiner_s_db = $row['examiner_s'];
     if ($subject == $subject_db) {
       echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว";
     } elseif ($room == $room_db and $time == $time_db and $date == $date_db) {
