@@ -165,16 +165,8 @@ mysqli_set_charset($conn, "utf8");
 					<td class="text-danger">
 						<select name='examiner_t' class="form-control" required>
 							<option value></option>
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
 							<option value= NULL> เลือก </option>
->>>>>>> Stashed changes
-=======
 							<option value=NULL>ไม่เลือก</option>
->>>>>>> Stashed changes
->>>>>>> 4f0549e262206cd2afdd1fbd2b206a2778833c6a
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
