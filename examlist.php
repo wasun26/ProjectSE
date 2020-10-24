@@ -30,8 +30,7 @@ include("config.php");
     </thead>
     <tbody class='table-hover'>
       <?php
-      if (isset($_POST['searchType']) && isset($_POST['searchData'])) {
-
+      if (isset($_POST['searchType']) && isset($_POST['searchData']) && is_numeric($_POST['searchData'])) {
         switch ($_POST['searchType']) {
           case 'studentID':
             $input = $_POST['searchData'];
@@ -146,10 +145,9 @@ include("config.php");
             }
           }
           $conn->close();
-        } else {
-          echo ("<tr><td colspan='7'><h3 class='text-danger d-flex justify-content-center'>ไม่มีข้อมูล</h3></td></tr>");
         }
       }
+      echo ("<tr><td colspan='7'><h3 class='text-danger d-flex justify-content-center'>ไม่มีข้อมูล</h3></td></tr>");
       ?>
     </tbody>
   </table>
