@@ -24,7 +24,7 @@ function login()
 		if ($dbarr['email'] == $email && $dbarr['password'] == $_POST['password']) {
 			$_SESSION['login_true'] = $email;
 			$conn->close();
-			echo($_SESSION['login_true']);
+			echo ($_SESSION['login_true']);
 			header("location: ./?page=main");
 		}
 	}
@@ -88,7 +88,7 @@ function login()
 						</span>
 					</div>
 					<div class="d-flex justify-content-center">
-					Email หรือ รหัสผ่าน ไม่ถูกต้อง กรุณาลองอีกครั้ง
+						Email หรือ รหัสผ่าน ไม่ถูกต้อง กรุณาลองอีกครั้ง
 					</div>
 				</div>
 				<div class="modal-footer">
