@@ -37,10 +37,10 @@
             FROM exam 
             LEFT JOIN timeexam ON exam.time = timeexam.id 
             WHERE exam.phase = $phase AND exam.semester = $semester AND exam.year = $year 
-            GROUP BY exam.year, timeexam.timeStart";
+            ORDER BY exam.year, timeexam.timeStart";
     if ($phase == "1") {
         $phase = "Midterm";
-    } else {
+    }else{
         $phase = "Final";
     }
     ?>
@@ -57,7 +57,7 @@
                 <th> เวลา </th>
                 <th> ห้องสอบ </th>
                 <th> ผู้คุมสอบ(อาจารย์) </th>
-                <th> ผู้คุมสอบ(บุคลากร) </th>
+                <th> ผู้คุมสอบ(เจ้าหน้าที่) </th>
                 <?php
                 if ($access == 3) {
                 ?>
@@ -80,13 +80,15 @@
                     $room = $row['room'];
                     $examiner_t = $row['examiner_t'];
                     $examiner_s = $row['examiner_s'];
+                    $timeStart = $row['timeStart'];
+                    $timeFinish = $row['timeFinish'];
+
                     echo "<tr align='center'>";
                     echo "<td>"  . $course .  "</td>";
                     echo "<td>" . $day . "/" . $month . "/" . $year . "</td>";
-                    $timeStart = $row['timeStart'];
-                    $timeFinish = $row['timeFinish'];
                     echo "<td>" . $timeStart . " - " . $timeFinish . "</td>";
                     echo "<td>" . $room . "</td>";
+
                     if (!is_null($examiner_t)) {
                         $sql_t = "SELECT fname, lname FROM user WHERE id = '$examiner_t'";
                         $result_t = $conn->query($sql_t);
@@ -115,25 +117,22 @@
                     }
 
                     if ($access == 3) {
-                        echo "<td><form action='?page=update' method='POST'>
-                      <button class = 'btn btn-link'>
-                      <i class='fas fa-cog text-warning'></i>
-                      </button>
-                      <input type='hidden' name = 'id' value = '$id'>
-                      </form>
-                      </td>
-                      </tr>";
+                        echo "  <td><form action='?page=update' method='POST'>
+                                <button class = 'btn btn-link'>
+                                <i class='fas fa-cog text-warning'></i>
+                                </button>
+                                <input type='hidden' name = 'id' value = '$id'>
+                                </form>
+                                </td>
+                                </tr>";
                     }
-                }  //end while
-
-                echo "</table>";
+                }
             } else {
-                echo "ไม่มีข้อมูล";
+                    echo "ไม่มีข้อมูล";
             }
             $conn->close();
             ?>
         </tbody>
     </table>
 </body>
-
 </html>
