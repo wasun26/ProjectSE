@@ -181,7 +181,7 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 				</tr>
 				<tr>
-					<td>ผู้คุมสอบ(บุคลากร):
+					<td>ผู้คุมสอบ(เจ้าหน้าที่):
 						<?php
 						$sql = "SELECT id, fname, lname FROM user WHERE access=3";
 						$result = $conn->query($sql);
