@@ -87,7 +87,7 @@ include("config.php");
             $input = $_POST['searchData'];
             // echo "$input";
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name, E.ownerID
-            FROM timeexam T, exam E, enroll EN, phase P
+            FROM timeexam T, exam E, phase P
             WHERE E.ownerID='$input'
             GROUP BY E.subject
             ORDER BY E.date";
