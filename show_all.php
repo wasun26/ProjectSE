@@ -33,7 +33,11 @@
 
     mysqli_set_charset($conn, "utf8");
 
-    $sql = "SELECT exam.examiner_s, exam.examiner_t, exam.room, exam.time, exam.date, exam.subject, exam.id, timeexam.timeStart, timeexam.timeFinish FROM exam LEFT JOIN timeexam ON time = timeexam.id WHERE phase = $phase AND semester = $semester AND year = $year GROUP BY date, timeStart"; //final, semester, year ต้องรับค่าเข้ามา
+    $sql = "SELECT exam.id, exam.subject, exam.date, exam.time, exam.room, exam.examiner_t, exam.examiner_s, timeexam.timeStart, timeexam.timeFinish 
+            FROM exam 
+            LEFT JOIN timeexam ON exam.time = timeexam.id 
+            WHERE exam.phase = $phase AND exam.semester = $semester AND exam.year = $year 
+            GROUP BY exam.year, timeexam.timeStart"; 
     if ($phase == "1") {
         $phase = "Midterm";
     } else {
