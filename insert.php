@@ -38,7 +38,6 @@ if ($examiner_s == 'NULL'){
 $result = $conn->query($sql_check);
 
 if ($result->num_rows > 0) {
-  echo '2';
   while ($row = $result->fetch_assoc()) {
     $phase_db = $row['phase'];
     $yea_db = $row['year'];
@@ -52,6 +51,16 @@ if ($result->num_rows > 0) {
 
     if ($subject == $subject_db) {
       echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว";
+    }else{
+      mysqli_set_charset($conn, "utf8");
+      if ($examiner_s == 'NULL'){
+        $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
+                                   (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
+      }else{
+        $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
+                                   (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
+      }
+      $conn->query($sql);
     }
     if ($room == $room_db and $time == $time_db and $date == $date_db) {
       echo "<b>ห้อง $room</b> นี้ได้ถูกใช้แล้ว";
@@ -61,32 +70,22 @@ if ($result->num_rows > 0) {
     }
     if ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db) {
       echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว";
-    }else{
-      
     }
     echo ("<br>");
     break;
   }
-} else {
+}else{
   mysqli_set_charset($conn, "utf8");
   if ($examiner_s == 'NULL'){
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
                                (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
   }else{
-    echo '1';
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
                                (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
   }
   $conn->query($sql);
+}
+$conn->close();
 ?>
-  <div class="card">
-    <div class="card-header">
-      เพิ่มข้อมูลเรียบร้อยแล้ว
-    </div>
-    <div class="card-body">
-    <?php }
-  $conn->close();
-    ?>
-    <a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
-    </div>
-  </div>
+เพิ่มข้อมูลเรียบร้อยแล้ว
+<a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
