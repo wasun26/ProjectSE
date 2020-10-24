@@ -27,20 +27,26 @@ mysqli_set_charset($conn, "utf8");
 			<tbody>
 				<tr>
 					<td>ผู้กรอก:</td>
-					<td class="text-danger"><input type="text" name="id" class="form-control" value="<?php echo($idUser); ?>" required disabled></td>
+					<td class="text-danger"><input type="text" name="id" class="form-control" value="<?php echo ($idUser); ?>" required disabled></td>
 				</tr>
 				<tr>
 					<td>ปีการศึกษา:</td>
-					<td class="text-danger"><input type="text" name="year" class="form-control" required></td>
+					<td class="text-danger">
+						<input type="text" name="year" class="form-control" placeholder="25XX" required>
+					</td>
 				</tr>
 				<tr>
-					<td><label for="semester">ภาคการศึกษา:</label></td>
-					<td class="text-danger"><select name="semester" id="semester" class="form-control" required>
+					<td>
+						<label for="semester">ภาคการศึกษา:</label>
+					</td>
+					<td class="text-danger">
+						<select name="semester" id="semester" class="form-control" required>
 							<option value="NULL">เลือก</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
-						</select></td>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td><?php
