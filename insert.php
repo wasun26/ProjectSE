@@ -82,7 +82,6 @@ if ($result->num_rows > 0) {
       echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว<br>";
       $state = 1;
     }
-    echo ("<a href='?page=staff' class='btn btn-primary'>เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class='btn btn-primary'>กลับไปหน้าหลัก</a>");
     break;
   }
 } else {
@@ -108,5 +107,5 @@ $conn->close();
   <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
 </div>
 เพิ่มข้อมูลเรียบร้อยแล้ว<br>
-<a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
 <?php } ?>
+<a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
