@@ -16,7 +16,7 @@ $subject = $_POST['subject'];
 $date = $_POST['date'];
 $room = $_POST['room'];
 $time = $_POST['time'];
-$examiner_t = $_POST['examiner_t'];
+$examiner_t = $_POST['examiner_t']; 
 $examiner_s = $_POST['examiner_s'];
 $owner_id = $idUser;
 
@@ -30,19 +30,15 @@ $conn = new mysqli(
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-$sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase`='$phase' AND `year`='$year' AND `semester`='$semester') AND (`date`='$date' OR `time`='$time' OR `subject`='$subject' OR `room`='$room' OR `examiner_t`='$examiner_t' OR `examiner_s`='$examiner_s')";
+if ($examiner_s == 'NULL'){
+  $sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester')";
+}else{
+  $sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester')";
+}
 $result = $conn->query($sql_check);
 
 if ($result->num_rows > 0) {
-?>
-  <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
-    <span class="swal2-x-mark">
-      <span class="swal2-x-mark-line-left"></span>
-      <span class="swal2-x-mark-line-right"></span>
-    </span>
-  </div>
-  <?php
+  echo '2';
   while ($row = $result->fetch_assoc()) {
     $phase_db = $row['phase'];
     $yea_db = $row['year'];
@@ -52,47 +48,37 @@ if ($result->num_rows > 0) {
     $room_db = $row['room'];
     $time_db = $row['time'];
     $examiner_t_db = $row['examiner_t'];
-    echo ($row['examiner_s']);
-    if ($row['$examiner_s'] == "NULL") {
-      $examiner_s_db = "";
-    } else {
-      $examiner_s_db = $row['examiner_s'];
-    }
+    $examiner_s_db = $row['examiner_s'];
+
     if ($subject == $subject_db) {
       echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว";
-    } elseif ($room == $room_db and $time == $time_db and $date == $date_db) {
+    }
+    if ($room == $room_db and $time == $time_db and $date == $date_db) {
       echo "<b>ห้อง $room</b> นี้ได้ถูกใช้แล้ว";
-    } elseif ($examiner_t == $examiner_t_db and $time == $time_db and $date == $date_db) {
+    }
+    if ($examiner_t == $examiner_t_db and $time == $time_db and $date == $date_db) {
       echo "<b>ผู้คุมสอบ(อาจารย์) $examiner_t</b> มีหน้าที่ในเวลานี้แล้ว";
-    } elseif ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db) {
+    }
+    if ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db) {
       echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว";
+    }else{
+      
     }
     echo ("<br>");
     break;
   }
 } else {
-  ?>
-  <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
-    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
-    <span class="swal2-success-line-tip"></span>
-    <span class="swal2-success-line-long"></span>
-    <div class="swal2-success-ring"></div>
-    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
-    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
-  </div>
-  <?php
-  echo '2';
   mysqli_set_charset($conn, "utf8");
-  if ($examiner_s == "NULL") {
-    echo '1';
+  if ($examiner_s == 'NULL'){
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
                                (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
-  } else {
+  }else{
+    echo '1';
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
                                (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
   }
   $conn->query($sql);
-  ?>
+?>
   <div class="card">
     <div class="card-header">
       เพิ่มข้อมูลเรียบร้อยแล้ว
