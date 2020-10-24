@@ -177,7 +177,6 @@ mysqli_set_charset($conn, "utf8");
 								}
 							}
 							?>
-							<option value=NULL>ไม่เลือก</option>
 						</select>
 					</td>
 				</tr>

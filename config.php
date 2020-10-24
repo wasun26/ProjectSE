@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/83c8aea536.js" crossorigin="anonymous"></script>
     <script src="./js/bootstrap-datepicker.js"></script>
     <link href="./css/bootstrap-datepicker3.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="animation.css">
 </head>
 
 </html>
