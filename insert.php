@@ -66,10 +66,10 @@ if ($result->num_rows > 0) {
   if ($examiner_s == 'NULL'){
     echo '1';
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
-                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
+                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', $examiner_t, NULL, '$owner_id')";
   }else{
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
-                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
+                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', $examiner_t, $examiner_s, '$owner_id')";
   }
   $conn->query($sql);
 ?>
