@@ -19,6 +19,7 @@ $time = $_POST['time'];
 $examiner_t = $_POST['examiner_t'];
 $examiner_s = $_POST['examiner_s'];
 $owner_id = $idUser;
+$state = 0;
 
 $conn = new mysqli(
   $config['hostname'],
@@ -47,24 +48,26 @@ if ($result->num_rows > 0) {
     $time_db = $row['time'];
     $examiner_t_db = $row['examiner_t'];
     $examiner_s_db = $row['examiner_s'];
-    $state = 0;
-    $fail = 0;
+    $fail_1 = 0;
+    $fail_2 = 0;
+    $fail_3 = 0;
+    $fail_4 = 0;
 
     if ($subject == $subject_db) {
       $state = 1;
-      $fail = 1;
+      $fail_1 = 1;
     }
     if ($room == $room_db and $time == $time_db and $date == $date_db) {
       $state = 1;
-      $fail = 2;
+      $fail_2 = 1;
     }
     if ($examiner_t == $examiner_t_db and $time == $time_db and $date == $date_db) {
       $state = 1;
-      $fail = 3;
+      $fail_3 = 1;
     }
     if ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db) {
       $state = 1;
-      $fail = 4;
+      $fail_4 = 1;
     }
     if ($state == 1){
       echo ("<div class='swal2-icon swal2-error swal2-animate-error-icon' style='display: flex;'>
@@ -73,13 +76,16 @@ if ($result->num_rows > 0) {
       <span class='swal2-x-mark-line-right'></span>
       </span>
       </div>");
-      if($fail == 1){
+      if($fail_1 == 1){
         echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว<br>";
-      }elseif ($fail == 2){
+      }
+      if ($fail_2 == 1){
         echo "<b>ห้อง $room</b> ถูกใช้แล้ว<br>";
-      }elseif ($fail == 3){
+      }
+      if ($fail_3 == 1){
         echo "<b>ผู้คุมสอบ(อาจารย์) $examiner_t</b> มีหน้าที่ในเวลานี้แล้ว<br>";
-      }elseif ($fail == 4){
+      }
+      if ($fail_4 == 1){
         echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว<br>";
       }
     }
