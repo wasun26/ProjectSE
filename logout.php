@@ -6,7 +6,7 @@ if (!(isset($_SESSION['login_true']))) {
     exit;
 }
 ?>
-<meta http-equiv=refresh content=1;URL=?>
+<meta http-equiv=refresh content=5;URL=?>
 <link rel="stylesheet" type="text/css" href="animation.css">
 <div class="container d-flex justify-content-center mb-auto">
     <div class="card">

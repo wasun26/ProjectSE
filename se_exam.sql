@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2020 at 03:36 PM
+-- Generation Time: Oct 24, 2020 at 04:19 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -34,6 +34,13 @@ CREATE TABLE `enroll` (
   `semester` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `enroll`
+--
+
+INSERT INTO `enroll` (`id`, `sid`, `subjectid`, `semester`) VALUES
+(3, '610510809', '204321', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -45,7 +52,7 @@ CREATE TABLE `exam` (
   `phase` int(10) UNSIGNED NOT NULL,
   `subject` varchar(6) NOT NULL,
   `year` year(4) NOT NULL,
-  `semester` int(10) UNSIGNED NOT NULL,
+  `semester` int(1) UNSIGNED NOT NULL,
   `date` date NOT NULL,
   `time` int(1) NOT NULL,
   `room` varchar(8) NOT NULL,
@@ -118,7 +125,6 @@ INSERT INTO `room` (`name`) VALUES
 --
 
 CREATE TABLE `semester` (
-  `id` int(10) UNSIGNED NOT NULL,
   `term` int(1) UNSIGNED NOT NULL,
   `year` int(4) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -127,10 +133,10 @@ CREATE TABLE `semester` (
 -- Dumping data for table `semester`
 --
 
-INSERT INTO `semester` (`id`, `term`, `year`) VALUES
-(1, 1, 2020),
-(2, 2, 2020),
-(3, 3, 2020);
+INSERT INTO `semester` (`term`, `year`) VALUES
+(1, 2020),
+(2, 2020),
+(3, 2020);
 
 -- --------------------------------------------------------
 
@@ -166,8 +172,8 @@ INSERT INTO `subject` (`id`, `name`, `tid`) VALUES
 
 CREATE TABLE `timeexam` (
   `id` int(1) NOT NULL,
-  `timeStart` time(5) NOT NULL,
-  `timeFinish` time(5) NOT NULL
+  `timeStart` time NOT NULL,
+  `timeFinish` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -175,9 +181,9 @@ CREATE TABLE `timeexam` (
 --
 
 INSERT INTO `timeexam` (`id`, `timeStart`, `timeFinish`) VALUES
-(1, '08:00:00.00000', '11:00:00.00000'),
-(2, '12:00:00.00000', '15:00:00.00000'),
-(3, '15:30:00.00000', '18:30:00.00000');
+(1, '08:00:00', '11:00:00'),
+(2, '12:00:00', '15:00:00'),
+(3, '15:30:00', '18:30:00');
 
 -- --------------------------------------------------------
 
@@ -202,7 +208,7 @@ INSERT INTO `user` (`id`, `fname`, `lname`, `access`, `email`, `password`) VALUE
 ('610510665', 'นายภูริภัทร', 'สิวะโภไคยกุล', 1, 'Puripat.si@cmu.ac.th', 'Puripat'),
 ('610510710', 'นายสหัสวรรษ', 'ปัญจขันธ์', 1, 'sahassawas_panjakan@cmu.ac.th', 'sahassawas'),
 ('610510803', 'นายธเนศ ', 'สิงห์ลอ', 1, 'Tanad_s@cmu.ac.th', 'Tanad'),
-('610510809', 'นายวสันต์ ', 'แพทย์รัตน์', 1, 'wasun_pa@cmu.ac.th', 'wasun'),
+('610510809', 'นายวสันต์ ', 'แพทย์รัตน์', 3, 'wasun_pa@cmu.ac.th', '1111'),
 ('610510815', 'นายสิทธา', 'สินประสาธน์', 1, 'sittha_sinprasat@cmu.ac.th', 'sittha'),
 ('S1', 'นางสาววราภรณ์', 'อินสม', 3, 'insom.waraporn@cmu.ac.th', 'insom'),
 ('T1', 'ผู้ช่วยศาสตราจารย์ ดร.วัชรี', 'จำปามูล', 2, 'wjumpa@cmu.ac.th', 'wjumpa'),
@@ -253,7 +259,8 @@ ALTER TABLE `exam`
   ADD KEY `examiner_t` (`examiner_t`),
   ADD KEY `examiner_s` (`examiner_s`),
   ADD KEY `time` (`time`),
-  ADD KEY `ownerID` (`ownerID`);
+  ADD KEY `ownerID` (`ownerID`),
+  ADD KEY `semester` (`semester`);
 
 --
 -- Indexes for table `phase`
@@ -271,8 +278,7 @@ ALTER TABLE `room`
 -- Indexes for table `semester`
 --
 ALTER TABLE `semester`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `term` (`term`),
+  ADD PRIMARY KEY (`term`),
   ADD KEY `year` (`year`);
 
 --
@@ -309,24 +315,18 @@ ALTER TABLE `user_access`
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `phase`
 --
 ALTER TABLE `phase`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `semester`
---
-ALTER TABLE `semester`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -351,7 +351,7 @@ ALTER TABLE `user_access`
 ALTER TABLE `enroll`
   ADD CONSTRAINT `enroll_ibfk_1` FOREIGN KEY (`subjectid`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `enroll_ibfk_2` FOREIGN KEY (`sid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `enroll_ibfk_3` FOREIGN KEY (`semester`) REFERENCES `semester` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `enroll_ibfk_3` FOREIGN KEY (`semester`) REFERENCES `semester` (`term`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `exam`
@@ -361,6 +361,7 @@ ALTER TABLE `exam`
   ADD CONSTRAINT `exam_ibfk_10` FOREIGN KEY (`examiner_t`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_11` FOREIGN KEY (`examiner_s`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_12` FOREIGN KEY (`ownerID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `exam_ibfk_13` FOREIGN KEY (`semester`) REFERENCES `semester` (`term`) ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_6` FOREIGN KEY (`phase`) REFERENCES `phase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_7` FOREIGN KEY (`subject`) REFERENCES `subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `exam_ibfk_9` FOREIGN KEY (`time`) REFERENCES `timeexam` (`id`) ON UPDATE CASCADE;
