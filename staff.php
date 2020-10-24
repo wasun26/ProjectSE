@@ -57,7 +57,7 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name="semester" id="semester" class="form-control" required>
-							<option value="NULL">เลือก</option>
+							<option value></option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -73,7 +73,7 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='phase' class="form-control" required>
-							<option value='NULL'> เลือก </option>
+							<option value></option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -98,7 +98,7 @@ mysqli_set_charset($conn, "utf8");
 						วิชา:
 					<td class="text-danger">
 						<select name='subject' class="form-control" required>
-							<option value='NULL'> เลือก </option>
+							<option value></option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -120,7 +120,7 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='room' class="form-control" required>
-							<option value='NULL'> เลือก </option>
+							<option value></option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -141,7 +141,7 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='time' class="form-control" required>
-							<option value='NULL'> เลือก </option>
+							<option value></option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -164,7 +164,7 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='examiner_t' class="form-control" required>
-							<option value='NULL'> เลือก </option>
+							<option value></option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
@@ -187,7 +187,8 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='examiner_s' class="form-control" required>
-							<option value='NULL'>เลือก</option>
+							<option value></option>
+							<option value=NULL>ไม่เลือก</option>
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
