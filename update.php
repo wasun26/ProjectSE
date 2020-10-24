@@ -23,7 +23,6 @@ if (isset($_POST['id'])) {
 	$sql = "SELECT e.* from exam e where e.id = '$input'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
-	echo "$input";
 ?>
 	<div class="container">
 		<h1>แก้ไขวิชาสอบ</h1>
