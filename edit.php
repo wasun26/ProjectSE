@@ -34,7 +34,7 @@ mysqli_set_charset($conn, "utf8");
 
 
 // $sql = "UPDATE exam SET 
-                        // WHERE  exam.id  = '$id'";
+// WHERE  exam.id  = '$id'";
 ?>
 <?php
 $sql = "SELECT phase, semester, date, room, time, examiner_t, examiner_s from exam where id != $id";
@@ -61,8 +61,9 @@ if ($result->num_rows > 0) {  //begin if
     }
     break;
   }
-} if ($update == TRUE) {
-  if ($examiner_s != 'NULL'){
+}
+if ($update == TRUE) {
+  if ($examiner_s != 'NULL') {
     $sql = "UPDATE exam SET exam.phase = '$phase',
     exam.semester = '$semester',
     exam.date = '$date',
@@ -70,9 +71,8 @@ if ($result->num_rows > 0) {  //begin if
     exam.time = '$time',
     exam.examiner_t = '$examiner_t',
     exam.examiner_s = '$examiner_s'
-    WHERE  exam.id  = '$id'" ;
-    }
-  else{
+    WHERE  exam.id  = '$id'";
+  } else {
     $sql = "UPDATE exam SET exam.phase = '$phase',
     exam.semester = '$semester',
     exam.date = '$date',
@@ -80,13 +80,19 @@ if ($result->num_rows > 0) {  //begin if
     exam.time = '$time',
     exam.examiner_t = '$examiner_t',
     exam.examiner_s = NULL
-    WHERE  exam.id  = '$id'" ;
-    }
+    WHERE  exam.id  = '$id'";
   }
+}
 $conn->query($sql);
 $conn->close();
 
-if ($sql and $update == TRUE) {    
-    echo "แก้ไขเสร็จแล้ว <br><br>";
+if ($sql and $update == TRUE) {
+  echo "<div class='swal2-icon swal2-error swal2-animate-error-icon' style='display: flex;'>
+    <span class='swal2-x-mark'>
+    <span class='swal2-x-mark-line-left'></span>
+    <span class='swal2-x-mark-line-right'></span>
+    </span>
+    </div>
+    แก้ไขเสร็จแล้ว <br><br>";
 }
 ?>
