@@ -53,7 +53,7 @@ if ($result->num_rows > 0) {
     $time_db = $row['time'];
     $examiner_t_db = $row['examiner_t'];
     echo ($row['examiner_s']);
-    if ($row['$examiner_s'] == NULL) {
+    if ($row['$examiner_s'] == "NULL") {
       $examiner_s_db = "";
     } else {
       $examiner_s_db = $row['examiner_s'];
@@ -83,10 +83,10 @@ if ($result->num_rows > 0) {
   <?php
   echo '2';
   mysqli_set_charset($conn, "utf8");
-  if ($examiner_s == 'NULL') {
+  if ($examiner_s == "NULL") {
     echo '1';
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
-                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', $examiner_t, NULL, '$owner_id')";
+                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
   } else {
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
                                (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
