@@ -48,6 +48,7 @@ if ($result->num_rows > 0) {
     $time_db = $row['time'];
     $examiner_t_db = $row['examiner_t'];
     $examiner_s_db = $row['examiner_s'];
+    $state = 0;
 
     if ($subject == $subject_db) {
       echo ("<div class='swal2-icon swal2-error swal2-animate-error-icon' style='display: flex;'>
@@ -56,7 +57,8 @@ if ($result->num_rows > 0) {
       <span class='swal2-x-mark-line-right'></span>
       </span>
       </div>");
-      echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว";
+      echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว<br>";
+      $state = 1;
     } else {
       mysqli_set_charset($conn, "utf8");
       if ($examiner_s == 'NULL') {
@@ -69,15 +71,18 @@ if ($result->num_rows > 0) {
       $conn->query($sql);
     }
     if ($room == $room_db and $time == $time_db and $date == $date_db) {
-      echo "<b>ห้อง $room</b> นี้ได้ถูกใช้แล้ว";
+      echo "<b>ห้อง $room</b> ถูกใช้แล้ว<br>";
+      $state = 1;
     }
     if ($examiner_t == $examiner_t_db and $time == $time_db and $date == $date_db) {
-      echo "<b>ผู้คุมสอบ(อาจารย์) $examiner_t</b> มีหน้าที่ในเวลานี้แล้ว";
+      echo "<b>ผู้คุมสอบ(อาจารย์) $examiner_t</b> มีหน้าที่ในเวลานี้แล้ว<br>";
+      $state = 1;
     }
     if ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db) {
-      echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว";
+      echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว<br>";
+      $state = 1;
     }
-    echo ("<br>");
+    echo ("<a href='?page=staff' class='btn btn-primary'>เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class='btn btn-primary'>กลับไปหน้าหลัก</a>");
     break;
   }
 } else {
@@ -93,6 +98,7 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+<?php if ($state == 0) { ?>
 <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
   <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
   <span class="swal2-success-line-tip"></span>
@@ -103,3 +109,4 @@ $conn->close();
 </div>
 เพิ่มข้อมูลเรียบร้อยแล้ว<br>
 <a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
+<?php } ?>
