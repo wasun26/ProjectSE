@@ -17,8 +17,8 @@ $subject = $_POST['subject'];
 $date = $_POST['date'];
 $room = $_POST['room'];
 $time = $_POST['time'];
-$examiner_t = !empty($row['examiner_t']) ? "'$row[examiner_t]'" : "NULL";
-$examiner_s = !empty($row['examiner_s']) ? "'$row[examiner_s]'" : "NULL";
+$examiner_t = $_POST['examiner_t']; 
+$examiner_s = $_POST['examiner_s'];
 $owner_id = $idUser;
 
 $conn = new mysqli(
@@ -31,7 +31,11 @@ $conn = new mysqli(
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR (`examiner_t` = '$examiner_t' AND `examiner_t` IS NOT NULL) OR (`examiner_s` = '$examiner_s' AND `examiner_s` IS NOT NULL))";
+if ($examiner_s == 'NULL'){
+  $sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR `examiner_t` = '$examiner_t')";
+}else{
+  $sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR `examiner_t` = '$examiner_t' OR `examiner_s` = '$examiner_s')";
+}
 $result = $conn->query($sql_check);
 
 if ($result->num_rows > 0) {
@@ -61,10 +65,14 @@ if ($result->num_rows > 0) {
   }
 } else {
   mysqli_set_charset($conn, "utf8");
-
-  $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
-    (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', $examiner_t, $examiner_s, '$owner_id')";
-
+  if ($examiner_s == 'NULL'){
+    echo '1';
+    $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
+                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', $examiner_t, NULL, '$owner_id')";
+  }else{
+    $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
+                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', $examiner_t, $examiner_s, '$owner_id')";
+  }
   $conn->query($sql);
 ?>
   <div class="card">
