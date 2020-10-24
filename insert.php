@@ -17,7 +17,8 @@ $subject = $_POST['subject'];
 $date = $_POST['date'];
 $room = $_POST['room'];
 $time = $_POST['time'];
-$examiner_t = $_POST['examiner_t'];
+$examiner_t = !empty($row['examiner_t']) ? "'$row[examiner_t]'" : "NULL";
+$examiner_s = !empty($row['examiner_s']) ? "'$row[examiner_s]'" : "NULL";
 $owner_id = $idUser;
 
 $conn = new mysqli(
@@ -30,7 +31,7 @@ $conn = new mysqli(
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR `examiner_t` = '$examiner_t' OR `examiner_s` = '$examiner_s')";
+$sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR (`examiner_t` = '$examiner_t' AND `examiner_t` IS NOT NULL) OR (`examiner_s` = '$examiner_s' AND `examiner_s` IS NOT NULL))";
 $result = $conn->query($sql_check);
 
 if ($result->num_rows > 0) {
@@ -44,17 +45,18 @@ if ($result->num_rows > 0) {
     $time_db = $row['time'];
     // $examiner_t_db = $row['examiner_t'];
     // $examiner_s_db = $row['examiner_s'];
-    $examiner_t = !empty($row['examiner_t']) ? "'$row[examiner_t]'" : "NULL";
-    $examiner_s = !empty($row['examiner_s']) ? "'$row[examiner_s]'" : "NULL";
+    $examiner_t_db = !empty($row['examiner_t']) ? "'$row[examiner_t]'" : "NULL";
+    $examiner_s_db = !empty($row['examiner_s']) ? "'$row[examiner_s]'" : "NULL";
     if ($subject == $subject_db) {
-      echo "วิชานี้ได้ถูกลงทะเบียนแล้ว";
+      echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว";
     } elseif ($room == $room_db and $time == $time_db and $date == $date_db) {
-      echo "ห้องนี้ได้ถูกใช้แล้ว";
+      echo "<b>ห้อง $room</b> นี้ได้ถูกใช้แล้ว";
     } elseif ($examiner_t == $examiner_t_db and $time == $time_db and $date == $date_db) {
-      echo "ผู้คุมสอบ(อาจารย์)มีหน้าที่ในเวลานี้แล้ว";
+      echo "<b>ผู้คุมสอบ(อาจารย์) $examiner_t</b> มีหน้าที่ในเวลานี้แล้ว";
     } elseif ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db) {
-      echo "ผู้คุมสอบ(บุคลากร)มีหน้าที่ในเวลานี้แล้ว";
+      echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว";
     }
+    echo ("<br>");
     break;
   }
 } else {
