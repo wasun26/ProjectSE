@@ -30,7 +30,7 @@ include("config.php");
     </thead>
     <tbody class='table-hover'>
       <?php
-      if (isset($_POST['searchType']) && isset($_POST['searchData']) && is_numeric($_POST['searchData'])) {
+      if (isset($_POST['searchType']) && isset($_POST['searchData']) && is_numeric($_POST['searchData']) || is_array($_POST['searchData'])) {
         switch ($_POST['searchType']) {
           case 'studentID':
             $input = $_POST['searchData'];
@@ -43,26 +43,23 @@ include("config.php");
             $input = $_POST['searchData'];
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
             FROM timeexam T, exam E, phase P
-            WHERE E.phase=P.id AND E.time=T.id OR E.id LIKE '$input%'
+            WHERE E.phase=P.id AND E.time=T.id AND E.subject LIKE '$input%'
             ORDER BY E.date";
             break;
           case 'multisubjectID':
             $input = $_POST['searchData'];
-            $sum = "0";
-            if ($input == "") {
-              $sum = "$input[0]";
-              for ($i = 1; $i < 4; $i++) {
-                if ($input[$i] != "") {
-                  $sum .= ", $input[$i]";
-                }
+            $sum = $input[0];
+            for ($i = 1; $i < 5; $i++) {
+              if ($input[$i] == "") {
+                break;
               }
+              $sum .= ",$input[$i]";
             }
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
             FROM timeexam T, exam E, phase P
             WHERE E.phase=P.id AND E.time=T.id AND E.subject IN ($sum)";
             break;
           case 'examinerName':
-
             $input = $_POST['searchData'];
             $name = explode(" ", $input);
             $nameCon = "U.fname='" . $name[0] . "'";
@@ -145,9 +142,12 @@ include("config.php");
             }
           }
           $conn->close();
+        } else {
+          echo ("<tr><td colspan='7'><h3 class='text-danger d-flex justify-content-center'>ไม่มีข้อมูล</h3></td></tr>");
         }
+      } else {
+        echo ("<tr><td colspan='7'><h3 class='text-danger d-flex justify-content-center'>ไม่มีข้อมูล</h3></td></tr>");
       }
-      echo ("<tr><td colspan='7'><h3 class='text-danger d-flex justify-content-center'>ไม่มีข้อมูล</h3></td></tr>");
       ?>
     </tbody>
   </table>
