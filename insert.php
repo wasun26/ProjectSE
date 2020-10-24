@@ -22,6 +22,7 @@ $date = $_POST['date'];
 $room = $_POST['room'];
 $time = $_POST['time'];
 $examiner_t = $_POST['examiner_t']; 
+$examiner_s = $_POST['examiner_s'];
 $owner_id = $idUser;
 
 // Create connection
@@ -35,7 +36,11 @@ $conn = new mysqli(
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR `examiner_t` = '$examiner_t' OR `examiner_s` = '$examiner_s')";
+if ($examiner_s == 'NULL'){
+  $sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR `examiner_t` = '$examiner_t')";
+}else{
+  $sql_check = "SELECT `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`,`examiner_t`, `examiner_s` FROM `exam` WHERE (`phase` = '$phase' AND `year` = '$year' AND `semester` = '$semester') AND (`date` = '$date' OR `time` = '$time' OR `subject` = '$subject' OR `room` = '$room' OR `examiner_t` = '$examiner_t' OR `examiner_s` = '$examiner_s')";
+}
 $result = $conn->query($sql_check);
 
 if ($result->num_rows > 0) {  //begin if
