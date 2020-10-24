@@ -46,7 +46,7 @@ include("config.php");
                             <div class="input-group-prepend">
                                 <span class="input-group-text">รหัสวิชา</span>
                             </div>
-                            <input name="searchData" type="text" required class="form-control" id="course_keyword" placeholder="XXX" maxlength="3">
+                            <input name="searchData" type="text" required class="form-control" id="course_keyword" placeholder="204" minlength="3" maxlength="3">
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -76,7 +76,7 @@ include("config.php");
                             <div class='input-group-prepend'>
                                 <span class='input-group-text'>รหัสวิชา</span>
                             </div>
-                            <input type='text' name='searchData[]' id='$i' class='form-control' maxlength='6' placeholder='204XXX'>
+                            <input type='text' name='searchData[]' id='$i' class='form-control' minlength='6' maxlength='6' placeholder='204XXX'>
                         </div>
                             ");
                         }
@@ -101,7 +101,7 @@ include("config.php");
                             <div class="input-group-prepend">
                                 <span class="input-group-text">ชื่อ-สกุล</span>
                             </div>
-                            <input type="text" name="searchData" class="form-control">
+                            <input type="text" name="searchData" class="form-control" required>
                         </div>
                     </li>
                     <li class="list-group-item">
