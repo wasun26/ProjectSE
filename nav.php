@@ -57,13 +57,11 @@
 							case '2':
 								echo ("
 								<li class='nav-item'><a href='?page=staff' class='nav-link'>เพิ่มกระบวนวิชาสอบ</a></li>
-								<li class='nav-item'><a href='?page=listtable' class='nav-link'>จัดการคำขอ</a></li>
 								");
 								break;
 							case '3':
 								echo ("
 								<li class='nav-item'><a href='?page=staff' class='nav-link'>เพิ่มกระบวนวิชาสอบ</a></li>
-								<li class='nav-item'><a href='?page=listtable' class='nav-link'>จัดการคำขอ</a></li>
 								");
 								break;
 						}

@@ -8,14 +8,15 @@ if (!isset($_SESSION['login_true'])) {
 include("config.php");
 
 $conn = new mysqli(
-	$config['hostname'],
-	$config['dbuser'],
-	$config['dbpassword'],
-	$config['dbname']
+    $config['hostname'],
+    $config['dbuser'],
+    $config['dbpassword'],
+    $config['dbname']
 );
 
 $sql = "SELECT DISTINCT year FROM exam";
 $result = $conn->query($sql);
+$num_row = $result->num_rows;
 ?><br>
 <div class="form-inline d-flex justify-content-center">
     <div class="card">
@@ -33,18 +34,29 @@ $result = $conn->query($sql);
                 </select>
                 <select name="year" class="form-control">
                     <?php
-                    if ($result->num_rows > 0) {
+                    if ($num_row > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $year = $row['year'];
                             echo ("<option value = '$year'> $year </option>");
                         }
+                    } else {
+                        echo ("<option> ไม่มีข้อมูล </option>");
                     }
                     ?>
                 </select>
                 <input type="hidden" name="searchType" value="byterm">
                 <input type="hidden" name="searchData" value="0">
-                <button type="submit" value="ค้นหา" class="btn btn-primary">ค้นหา</button>
+                <?php
+                if ($num_row == 0) {
+                    echo("<button type='submit' value='ค้นหา' class='btn btn-primary' disabled>ค้นหา</button>");
+                } else {
+                    echo("<button type='submit' value='ค้นหา' class='btn btn-primary'>ค้นหา</button>");
+                }
+                ?>
             </form>
         </div>
     </div>
 </div>
+<?php
+$conn->close();
+?>
