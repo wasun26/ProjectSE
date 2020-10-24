@@ -5,7 +5,7 @@ if (!isset($_SESSION['login_true'])) {
 	exit;
 }
 if ($access < 2) {
-	echo("<meta http-equiv=refresh content=0;URL=?>");
+	echo ("<meta http-equiv=refresh content=0;URL=?>");
 	exit;
 }
 include("config.php");
@@ -23,6 +23,18 @@ if ($conn->connect_error) {
 
 mysqli_set_charset($conn, "utf8");
 ?>
+<script>
+	$(document).ready(function() {
+		$('.datepicker').datepicker({
+			format: 'yyyy',
+			viewMode: "years",
+			minViewMode: "years",
+			todayBtn: false,
+			language: 'th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+			thaiyear: true //Set เป็นปี พ.ศ.
+		});
+	});
+</script>
 
 <div class="container">
 	<h1>เพิ่มวิชาสอบ</h1>
@@ -36,7 +48,7 @@ mysqli_set_charset($conn, "utf8");
 				<tr>
 					<td>ปีการศึกษา:</td>
 					<td class="text-danger">
-						<input type="text" name="year" class="form-control" placeholder="25XX" required>
+						<input type="text" name="year" class="form-control datepicker" placeholder="ค.ศ." required>
 					</td>
 				</tr>
 				<tr>

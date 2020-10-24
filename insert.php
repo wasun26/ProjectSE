@@ -15,7 +15,7 @@ include("config.php");
 
 
 $phase = $_POST['phase'];
-$year = $_POST['year'];
+$year = $_POST['year']-543;
 $semester = $_POST['semester'];
 $subject = $_POST['subject'];
 $date = $_POST['date'];

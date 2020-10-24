@@ -139,3 +139,19 @@ include("config.php");
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            todayBtn: false,
+            language: 'th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+            thaiyear: true //Set เป็นปี พ.ศ.
+        }); //กำหนดเป็นวันปัจุบัน
+    });
+</script>
+
+<div class="col-md-10">
+    <input id="inputdatepicker" class="datepicker" data-date-format="yyyy">
+</div>
