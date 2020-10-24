@@ -186,8 +186,12 @@ mysqli_set_charset($conn, "utf8");
 						<select name='examiner_t' class="form-control" required>
 <<<<<<< Updated upstream
 							<option value></option>
+<<<<<<< Updated upstream
 =======
 							<option value= NULL> เลือก </option>
+>>>>>>> Stashed changes
+=======
+							<option value=NULL>ไม่เลือก</option>
 >>>>>>> Stashed changes
 							<?php
 							if ($result->num_rows > 0) {
