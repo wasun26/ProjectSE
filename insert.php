@@ -15,7 +15,7 @@ include("config.php");
 
 
 $phase = $_POST['phase'];
-$year = $_POST['year'] - 543;
+$year = $_POST['year'];
 $semester = $_POST['semester'];
 $subject = $_POST['subject'];
 $date = $_POST['date'];
@@ -63,9 +63,9 @@ if ($result->num_rows > 0) {  //begin if
 } else {
   mysqli_set_charset($conn, "utf8");
 
-  if ($examiner_s == NULL) {
+  if ($examiner_s == 'NULL') {
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
-    (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', $examiner_s, '$owner_id')";
+                               (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
   } else {
     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES  
                                (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
