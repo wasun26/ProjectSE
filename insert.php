@@ -21,8 +21,7 @@ $subject = $_POST['subject'];
 $date = $_POST['date'];
 $room = $_POST['room'];
 $time = $_POST['time'];
-$examiner_t = $_POST['examiner_t'];
-$examiner_s = $_POST['examiner_s'];
+$examiner_t = $_POST['examiner_t']; 
 $owner_id = $idUser;
 
 // Create connection
@@ -82,6 +81,6 @@ if ($result->num_rows > 0) {  //begin if
     <?php }
   $conn->close();
     ?>
-    <a href='staff.php' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='main.php' class="btn btn-primary">กลับไปหน้าหลัก</a>
+    <a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
     </div>
   </div>

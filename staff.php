@@ -57,7 +57,11 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name="semester" id="semester" class="form-control" required>
+<<<<<<< Updated upstream
 							<option value></option>
+=======
+							<option value= NULL>เลือก</option>
+>>>>>>> Stashed changes
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -73,7 +77,11 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='phase' class="form-control" required>
+<<<<<<< Updated upstream
 							<option value></option>
+=======
+							<option value= NULL> เลือก </option>
+>>>>>>> Stashed changes
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -98,7 +106,11 @@ mysqli_set_charset($conn, "utf8");
 						วิชา:
 					<td class="text-danger">
 						<select name='subject' class="form-control" required>
+<<<<<<< Updated upstream
 							<option value></option>
+=======
+							<option value= NULL> เลือก </option>
+>>>>>>> Stashed changes
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -120,7 +132,11 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='room' class="form-control" required>
+<<<<<<< Updated upstream
 							<option value></option>
+=======
+							<option value= NULL> เลือก </option>
+>>>>>>> Stashed changes
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -141,7 +157,11 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='time' class="form-control" required>
+<<<<<<< Updated upstream
 							<option value></option>
+=======
+							<option value= NULL> เลือก </option>
+>>>>>>> Stashed changes
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) { //begin while
@@ -164,17 +184,24 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='examiner_t' class="form-control" required>
+<<<<<<< Updated upstream
 							<option value></option>
+=======
+							<option value= NULL> เลือก </option>
+>>>>>>> Stashed changes
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
-									$id = $row['id'];
-									$f_name = $row['fname'];
-									$l_name = $row['lname'];
-									echo "<option value='$id'>$f_name $l_name</option>";
+									if ($row['id'] != 'T0'){
+										$id = $row['id'];
+										$f_name = $row['fname'];
+										$l_name = $row['lname'];
+										echo "<option value='$id'>$f_name $l_name</option>";
+									}
 								}
 							}
 							?>
+							<option value= 'T0'>ไม่มี</option>
 						</select>
 					</td>
 				</tr>
@@ -187,18 +214,25 @@ mysqli_set_charset($conn, "utf8");
 					</td>
 					<td class="text-danger">
 						<select name='examiner_s' class="form-control" required>
+<<<<<<< Updated upstream
 							<option value></option>
 							<option value=NULL>ไม่เลือก</option>
+=======
+							<option value= NULL>เลือก</option>
+>>>>>>> Stashed changes
 							<?php
 							if ($result->num_rows > 0) {
 								while ($row = $result->fetch_assoc()) {
-									$id = $row['id'];
-									$f_name = $row['fname'];
-									$l_name = $row['lname'];
-									echo "<option value='$id'>$f_name $l_name</option>";
+									if ($row['id'] != 'S0'){
+										$id = $row['id'];
+										$f_name = $row['fname'];
+										$l_name = $row['lname'];
+										echo "<option value='$id'>$f_name $l_name</option>";
+									}
 								}
 							}
 							?>
+							<option value= 'S0'>ไม่มี</option>
 						</select>
 					</td>
 				</tr>
