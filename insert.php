@@ -68,6 +68,7 @@ if ($result->num_rows > 0) {  //begin if
     break;
   }
 } else {
+  echo '2';
   mysqli_set_charset($conn, "utf8");
   if ($examiner_s == 'NULL'){
     echo '1';
