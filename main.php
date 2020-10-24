@@ -24,7 +24,7 @@ include("config.php");
                             <div class="input-group-prepend">
                                 <span class="input-group-text">รหัสนักศึกษา</span>
                             </div>
-                            <input name="searchData" type="text" required class="form-control" id="student_id" placeholder="610510XXX" maxlength="9">
+                            <input name="searchData" type="text" required class="form-control" id="student_id" placeholder="610510XXX" minlength="9" maxlength="9">
                         </div>
                     </li>
                     <li class="list-group-item">
