@@ -7,12 +7,7 @@ if (!isset($_SESSION['login_true'])) {
   exit;
 }
 
-if (!isset($_POST[''])) {
-  # code...
-}
-
 include("config.php");
-
 
 $phase = $_POST['phase'];
 $year = $_POST['year'];
@@ -25,7 +20,6 @@ $examiner_t = $_POST['examiner_t'];
 $examiner_s = $_POST['examiner_s'];
 $owner_id = $idUser;
 
-// Create connection
 $conn = new mysqli(
   $config['hostname'],
   $config['dbuser'],
@@ -43,7 +37,7 @@ if ($examiner_s == 'NULL'){
 }
 $result = $conn->query($sql_check);
 
-if ($result->num_rows > 0) {  //begin if
+if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     $phase_db = $row['phase'];
     $yea_db = $row['year'];
@@ -52,19 +46,18 @@ if ($result->num_rows > 0) {  //begin if
     $date_db = $row['date'];
     $room_db = $row['room'];
     $time_db = $row['time'];
-    // $examiner_t_db = $row['examiner_t'];
-    // $examiner_s_db = $row['examiner_s'];
-    $examiner_t_db = !empty($row['examiner_t']) ? "'$row[examiner_t]'" : "NULL";
-    $examiner_s_db = !empty($row['examiner_s']) ? "'$row[examiner_s]'" : "NULL";
+    $examiner_t_db = $row['examiner_t'];
+    $examiner_s_db = $row['examiner_s'];
     if ($subject == $subject_db) {
-      echo "วิชานี้ได้ถูกลงทะเบียนแล้ว";
+      echo "<b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว";
     } elseif ($room == $room_db and $time == $time_db and $date == $date_db) {
-      echo "ห้องนี้ได้ถูกใช้แล้ว";
+      echo "<b>ห้อง $room</b> นี้ได้ถูกใช้แล้ว";
     } elseif ($examiner_t == $examiner_t_db and $time == $time_db and $date == $date_db) {
-      echo "ผู้คุมสอบ(อาจารย์)มีหน้าที่ในเวลานี้แล้ว";
+      echo "<b>ผู้คุมสอบ(อาจารย์) $examiner_t</b> มีหน้าที่ในเวลานี้แล้ว";
     } elseif ($examiner_s == $examiner_s_db and $time == $time_db and $date == $date_db) {
-      echo "ผู้คุมสอบ(บุคลากร)มีหน้าที่ในเวลานี้แล้ว";
+      echo "<b>ผู้คุมสอบ(บุคลากร) $examiner_s</b> มีหน้าที่ในเวลานี้แล้ว";
     }
+    echo ("<br>");
     break;
   }
 } else {
