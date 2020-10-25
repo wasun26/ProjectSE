@@ -1,10 +1,10 @@
 <head>
   <meta charset="UTF-8">
   <style>
-        .top {
-            margin-top: 3.5%;
-        }
-    </style>
+    .top {
+      margin-top: 3.5%;
+    }
+  </style>
 </head>
 <?php
 if (!isset($_SESSION['login_true'])) {
@@ -77,54 +77,57 @@ if ($result->num_rows > 0) {
   }
 }
 ?>
-
-<?php if ($state == 0) { 
-   mysqli_set_charset($conn, "utf8");
-   if ($examiner_s == 'NULL') {
-     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`)
+<div class="top card d-flex justify-content-center mb-auto" style="width: 30%;">
+  <?php if ($state == 0) {
+    mysqli_set_charset($conn, "utf8");
+    if ($examiner_s == 'NULL') {
+      $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`)
              VALUES (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', NULL, '$owner_id')";
-   } else {
-     $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`)
+    } else {
+      $sql = "INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`)
             VALUES (NULL, '$phase', '$subject', '$year', '$semester', '$date', '$time', '$room', '$examiner_t', '$examiner_s', '$owner_id')";
-   }
-   $conn->query($sql);
-?>
-<center>
-<div class="top card d-flex justify-content-center mb-auto" style="width: 15%;">
-<div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
-  <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
-  <span class="swal2-success-line-tip"></span>
-  <span class="swal2-success-line-long"></span>
-  <div class="swal2-success-ring"></div>
-  <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
-  <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
-</div>
-</div>
-</center>
-<br>
-<span class='text-light'>เพิ่มข้อมูลเรียบร้อยแล้ว</span><br>
-<?php 
-}else{
-  echo (
-    "<center><span><div class='top card d-flex justify-content-center mb-auto' style='width: 15%;'>
+    }
+    $conn->query($sql);
+  ?>
+
+    <div class="card-body">
+      <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+        <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+        <span class="swal2-success-line-tip"></span>
+        <span class="swal2-success-line-long"></span>
+        <div class="swal2-success-ring"></div>
+        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+      </div>
+
+
+      <br>
+      <span>เพิ่มข้อมูลเรียบร้อยแล้ว</span><br>
+
+    <?php
+  } else {
+    echo ("
     <div class='swal2-icon swal2-error swal2-animate-error-icon' style='display: flex;'>
           <span class='swal2-x-mark'>
           <span class='swal2-x-mark-line-left'></span>
           <span class='swal2-x-mark-line-right'></span>
           </span>
-          </div></div></span></center>");
-  if($fail_1 == 1){
-    echo "<span class='text-light'><b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว<br></span>";
-  }
-  if ($fail_2 == 1){
-    echo "<span class='text-light'><b>ห้อง $room</b> ถูกใช้แล้ว<br></span>";
-  }
-  if ($fail_3 == 1){
-    echo "<span class='text-light'><b >ผู้คุมสอบ(อาจารย์)</b> มีหน้าที่ในเวลานี้แล้ว<br></span>";
-  }
-  if ($fail_4 == 1){
-    echo "<span class='text-light'><b>ผู้คุมสอบ(เจ้าหน้าที่)</b> มีหน้าที่ในเวลานี้แล้ว<br></span>";
-  }
-} ?>
-<br>
-<a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
+          </div>");
+    if ($fail_1 == 1) {
+      echo "<span ><b>วิชา $subject</b> ได้ถูกลงทะเบียนแล้ว<br></span>";
+    }
+    if ($fail_2 == 1) {
+      echo "<span ><b>ห้อง $room</b> ถูกใช้แล้ว<br></span>";
+    }
+    if ($fail_3 == 1) {
+      echo "<span><b >ผู้คุมสอบ(อาจารย์)</b> มีหน้าที่ในเวลานี้แล้ว<br></span>";
+    }
+    if ($fail_4 == 1) {
+      echo "<span ><b>ผู้คุมสอบ(เจ้าหน้าที่)</b> มีหน้าที่ในเวลานี้แล้ว<br></span>";
+    }
+  } ?>
+    </div>
+    <div class="card-footer">
+      <a href='?page=staff' class="btn btn-primary">เพิ่มข้อมูล</a>&nbsp;&nbsp;&nbsp;<a href='?page=main' class="btn btn-primary">กลับไปหน้าหลัก</a>
+    </div>
+</div>
