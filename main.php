@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 
+<head>
+	<style>
+		.top {
+			margin-top: 3.5%;
+		}
+	</style>
+
+</head>
+
 <?php
 if (!isset($_SESSION['login_true'])) {
     header("Location: login.php");
@@ -8,8 +17,8 @@ if (!isset($_SESSION['login_true'])) {
 
 include("config.php");
 ?>
-<div class="container">
-    <div class="card" align="center" style="border: none;">
+<div class="container top">
+    <div align="center" style="border: none; " class="text-light">
         <h1>Exam Time Table Management</h1>
     </div>
 

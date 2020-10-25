@@ -2,6 +2,8 @@
 <html>
 <?php
 
+
+
 if (!isset($_SESSION['login_true'])) {
   header("Location: login.php");
   exit;
@@ -9,8 +11,15 @@ if (!isset($_SESSION['login_true'])) {
 
 include("config.php");
 ?>
-
+<head>
+  <style>
+        .top {
+            margin-top: 3.5%;
+        }
+    </style>
+</head>
 <body>
+  <div class='card top'>
   <table class='table table-hover table-striped'>
     <thead>
       <th>รหัสวิชา</th>
@@ -151,6 +160,7 @@ include("config.php");
       ?>
     </tbody>
   </table>
+  </div>
 </body>
 
 </html>

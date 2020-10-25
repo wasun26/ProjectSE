@@ -1,3 +1,11 @@
+<head>
+  <meta charset="UTF-8">
+  <style>
+        .top {
+            margin-top: 3.5%;
+        }
+    </style>
+</head>
 <?php
 session_destroy();
 
@@ -8,7 +16,7 @@ if (!(isset($_SESSION['login_true']))) {
 ?>
 <meta http-equiv=refresh content=5;URL=?>
 <link rel="stylesheet" type="text/css" href="animation.css">
-<div class="container d-flex justify-content-center mb-auto">
+<div class="container d-flex justify-content-center mb-auto top">
     <div class="card">
         <div class="card-header text-light bg-primary">
             ข้อความจากระบบ

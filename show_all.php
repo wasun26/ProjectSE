@@ -1,6 +1,14 @@
 <!doctype html>
 
 <head>
+    <style>
+        .top {
+            margin-top: 3.5%;
+        }
+        .h2 {
+           color: white;
+        }
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -40,15 +48,16 @@
             ORDER BY exam.year, timeexam.timeStart";
     if ($phase == "1") {
         $phase = "Midterm";
-    }else{
+    } else {
         $phase = "Final";
     }
     ?>
-    <div class="d-flex justify-content-center text-primary">
+    <div class="d-flex justify-content-center text-primary top">
         <?php
-        echo "<h2>ตารางสอบ " . $phase . " ภาคเรียนที่ " . $semester . " ปีการศึกษา " . $year . "</h2>";
+        echo "<span><h2 class='text-light'>ตารางสอบ " . $phase . " ภาคเรียนที่ " . $semester . " ปีการศึกษา " . $year . "</h2></span>";
         ?>
-    </div>
+    </div><br>
+    <div class="card">
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
             <tr align="center">
@@ -128,11 +137,13 @@
                     }
                 }
             } else {
-                    echo "ไม่มีข้อมูล";
+                echo "ไม่มีข้อมูล";
             }
             $conn->close();
             ?>
         </tbody>
     </table>
+    </div>
 </body>
+
 </html>

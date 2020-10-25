@@ -3,18 +3,6 @@
 
 <head>
     <style>
-        html,
-        body {
-            background-image: url('image/home-banner.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-            width: 100%;
-            height: 100%;
-            font-family: 'Numans', sans-serif;
-        }
-
         .button1 {
             text-align: center;
             cursor: pointer;
