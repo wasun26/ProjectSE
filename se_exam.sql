@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 04:19 PM
+-- Generation Time: Oct 25, 2020 at 04:29 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -98,23 +98,14 @@ INSERT INTO `room` (`name`) VALUES
 ('CS201'),
 ('CS202'),
 ('CS203'),
-('CS204'),
-('CS205'),
-('CS206'),
 ('CS207'),
-('CS208'),
 ('CS209'),
 ('CS210'),
 ('CS301'),
 ('CS302'),
 ('CS303'),
-('CS304'),
-('CS305'),
-('CS306'),
 ('CS307'),
 ('CS308'),
-('CS309'),
-('CS310'),
 ('CSB100-1'),
 ('CSB100-2');
 
