@@ -28,7 +28,7 @@
         }
 
         .top {
-            margin-top: 5%;
+            margin-top: 3.5%;
         }
 
         .top2 {
@@ -39,9 +39,15 @@
             color: #ffffff;
             text-shadow: 4px 4px#000000;
         }
-        .size_img{
+
+        .size_img {
             width: 200px;
             height: 200px;
+        }
+
+        hr.new1 {
+            border-top: 1px solid white;
+            margin-top: -0.5%;
         }
     </style>
 </head>
@@ -51,8 +57,6 @@
     <div align="center" class="top">
         <img src="image/cs_logo.png" class="size_img" alt="CS LOGO">
         <img src="image/cmu.png" alt="CMU LOGO">
-        <img src="image/reglogo.png" alt="REG LOGO">
-        
     </div>
 
     <div align="center" class="deepshd">
@@ -62,26 +66,29 @@
 
     <div class="card-deck">
         <div class="card top2 bg-transparent border-0">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('2')">สำหรับอาจารย์</button>
+            <button style="padding:15px; font-size:26px; font-weight:bold; box-shadow: 5px 8px #fff; width:100%; font-family:Mitr;" type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('2') ">สำหรับอาจารย์</button>
             <br>
+            <hr class="new1">
             <ul class="text-light">
                 <li>จัดการและส่งคำขอใช้ห้องสอบ</li>
                 <li>ตรวจห้องสอบและวันเวลาที่พร้อมใช้</li>
                 <li>จัดการลงวันเวลาสอบ</li>
             </ul>
         </div>
-        <div class="card top2">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('3')">สำหรับเจ้าหน้าที่</button>
+        <div class="card top2 bg-transparent border-0">
+            <button style="padding:15px; font-size:26px; font-weight:bold; box-shadow: 5px 8px #fff; width:100%; font-family:Mitr;" type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('3')">สำหรับเจ้าหน้าที่</button>
             <br>
-            <ul>
+            <hr class="new1">
+            <ul class="text-light">
                 <li>จัดการคำขอใช้ห้องสอบ</li>
                 <li>ตรวจห้องสอบและวันเวลาที่พร้อมใช้</li>
             </ul>
         </div>
-        <div class="card top2">
-            <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('1')">สำหรับนักศึกษา</button>
+        <div class="card top2 bg-transparent border-0">
+            <button style="padding:15px; font-size:26px; font-weight:bold; box-shadow: 5px 8px #fff; width:100%; font-family:Mitr;" type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('1')">สำหรับนักศึกษา</button>
             <br>
-            <ul>
+            <hr class="new1">
+            <ul class="text-light">
                 <li>ดูวันและเวลาสอบ</li>
                 <li>ตารางสอบ</li>
                 <li>ห้องสอบ</li>
