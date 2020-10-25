@@ -61,10 +61,10 @@
     </div>
 
     <div class="card-deck">
-        <div class="card top2">
+        <div class="card top2 bg-transparent border-0">
             <button type="button" class="btn btn-primary btn-lg btn-block btn-huge button1" onclick="Login('2')">สำหรับอาจารย์</button>
             <br>
-            <ul>
+            <ul class="text-light">
                 <li>จัดการและส่งคำขอใช้ห้องสอบ</li>
                 <li>ตรวจห้องสอบและวันเวลาที่พร้อมใช้</li>
                 <li>จัดการลงวันเวลาสอบ</li>
