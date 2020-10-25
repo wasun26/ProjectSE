@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <?php
 if (!isset($_SESSION['login_true'])) {
     header("Location: login.php");
