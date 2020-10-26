@@ -69,10 +69,10 @@ include("config.php");
             WHERE E.phase=P.id AND E.time=T.id AND E.subject IN ($sum)";
             break;
           case 'examinerName':
-            $input = $_POST['searchData'];
+            $input = $_POST['nameExam'];
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
             FROM timeexam T, exam E, phase P, user U
-            WHERE E.phase=P.id AND E.time=T.id AND (E.examiner_t=U.id OR E.examiner_s=U.id) AND CONCAT(U.fname,U.lname) LIKE ('%$input%')";
+            WHERE E.phase=P.id AND E.time=T.id AND (E.examiner_t=U.id OR E.examiner_s=U.id) AND (CONCAT(U.fname,U.lname) LIKE ('%$input%'))";
             break;
           case 'byterm':
             $phase = $_POST['phase'];

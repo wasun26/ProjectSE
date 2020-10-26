@@ -109,9 +109,10 @@ include("config.php");
                     <li class="list-group-item">
                         <div class="input-group m-b">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">ชื่อ</span>
+                                <span class="input-group-text">ชื่อ-สกุล</span>
                             </div>
-                            <input type="text" name="searchData" class="form-control" required>
+                            <input type="text" name="nameExam" class="form-control" required>
+                            <input type="hidden" name="searchData" value="0">
                         </div>
                     </li>
                     <li class="list-group-item">
