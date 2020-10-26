@@ -16,8 +16,7 @@ if ($access < 2) {
 	exit;
 }
 if (!isset($_POST['year'])) {
-  echo ("<meta http-equiv=refresh content=0;URL=?page=staff>");
-	exit;
+  
 }
 
 include("config.php");

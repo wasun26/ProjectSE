@@ -1,9 +1,14 @@
 <head>
   <meta charset="UTF-8">
+  <style>
+    .top {
+      margin-top: 3.5%;
+    }
+  </style>
 </head>
 <?php
 if (!isset($_SESSION['login_true'])) {
-  echo("<meta http-equiv=refresh content=0;URL=login.php>");
+  echo ("<meta http-equiv=refresh content=0;URL=login.php>");
   exit;
 }
 
@@ -87,14 +92,25 @@ $conn->query($sql);
 $conn->close();
 
 if ($sql and $update == TRUE) {
-  echo "<div class='swal2-icon swal2-success swal2-animate-success-icon' style='display: flex;'>
-  <div class='swal2-success-circular-line-left' style='background-color: rgb(255, 255, 255);'></div>
-  <span class='swal2-success-line-tip'></span>
-  <span class='swal2-success-line-long'></span>
-  <div class='swal2-success-ring'></div>
-  <div class='swal2-success-fix' style='background-color: rgb(255, 255, 255);'></div>
-  <div class='swal2-success-circular-line-right' style='background-color: rgb(255, 255, 255);'></div>
-</div>
-    แก้ไขเสร็จแล้ว <br><br>";
+?>
+  <div class="container top" style="width: 30%;">
+    <div class='card'>
+      <div class='card-body d-flex justify-content-center'>
+        <div class='swal2-icon swal2-success swal2-animate-success-icon' style='display: flex;'>
+          <div class='swal2-success-circular-line-left' style='background-color: rgb(255, 255, 255);'></div>
+          <span class='swal2-success-line-tip'></span>
+          <span class='swal2-success-line-long'></span>
+          <div class='swal2-success-ring'></div>
+          <div class='swal2-success-fix' style='background-color: rgb(255, 255, 255);'></div>
+          <div class='swal2-success-circular-line-right' style='background-color: rgb(255, 255, 255);'></div>
+        </div>
+      </div>
+      <span class="d-flex justify-content-center">แก้ไขเสร็จแล้ว</span>
+      <div class='card-footer d-flex justify-content-center'>
+        <a href='?page=main' class='btn btn-primary'>กลับไปหน้าหลัก</a>
+      </div>
+    </div>
+  </div>
+<?php
 }
 ?>
