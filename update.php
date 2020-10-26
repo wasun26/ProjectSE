@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+
+<head>
+	<style>
+		.top {
+			margin-top: 3.5%;
+		}
+	</style>
+
+</head>
 <?php
 if (!isset($_SESSION['login_true'])) {
 	echo ("<meta http-equiv=refresh content=0;URL=login.php>");
@@ -25,8 +35,9 @@ if (isset($_POST['id'])) {
 	$row = $result->fetch_assoc();
 ?>
 	<div class="container top">
+	<center><h1 class="text-light">แก้ไขวิชาสอบ</h1></center>
 		<div class="card">
-			<h1>แก้ไขวิชาสอบ</h1>
+			
 			<form action="?page=edit" method="POST">
 				<input type='hidden' name='id' value="<?php echo ($row['id']); ?>">
 				<table width="100%" border=" 0" class="table table-striped table-hover">
