@@ -70,14 +70,10 @@ include("config.php");
             break;
           case 'examinerName':
             $input = $_POST['searchData'];
-            $name = explode(" ", $input);
-            $nameCon = "U.fname='" . $name[0] . "'";
-            if (count($name) == 2) {
-              $nameCon .= " AND U.lname='" . $name[1] . "'";
             }
             $sql = "SELECT E.id, E.subject, E.date, T.timeStart, T.timeFinish, E.room, P.name
             FROM timeexam T, exam E, phase P, user U
-            WHERE E.phase=P.id AND E.time=T.id AND (E.examiner_t=U.id OR E.examiner_s=U.id) AND $nameCon";
+            WHERE E.phase=P.id AND E.time=T.id AND (E.examiner_t=U.id OR E.examiner_s=U.id) AND ($nameCon)";
             break;
           case 'byterm':
             $phase = $_POST['phase'];
