@@ -4,6 +4,10 @@
     .top {
       margin-top: 3.5%;
     }
+
+    .top_neg {
+      margin-top: -5%;
+    }
   </style>
 </head>
 <?php
@@ -105,7 +109,8 @@ if ($sql and $update == TRUE) {
           <div class='swal2-success-circular-line-right' style='background-color: rgb(255, 255, 255);'></div>
         </div>
       </div>
-      <span class="d-flex justify-content-center">แก้ไขเสร็จแล้ว</span>
+      <span class="d-flex justify-content-center top_neg">แก้ไขเสร็จแล้ว</span><br>  
+      
       <div class='card-footer d-flex justify-content-center'>
         <a href='?page=main' class='btn btn-primary'>กลับไปหน้าหลัก</a>
       </div>
