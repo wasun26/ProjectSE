@@ -11,7 +11,7 @@
 <body>
   <?php
   if (!isset($_SESSION['login_true'])) {
-    header("Location: login.php");
+    echo("<meta http-equiv=refresh content=0;URL=login.php>");
     exit;
   }
 
