@@ -11,6 +11,14 @@ if (!isset($_SESSION['login_true'])) {
   echo("<meta http-equiv=refresh content=0;URL=login.php>");
   exit;
 }
+if ($access < 2) {
+	echo ("<meta http-equiv=refresh content=0;URL=?>");
+	exit;
+}
+if (!isset($_POST['year'])) {
+  echo ("<meta http-equiv=refresh content=0;URL=?page=staff>");
+	exit;
+}
 
 include("config.php");
 
