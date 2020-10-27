@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2020 at 06:30 PM
+-- Generation Time: Oct 27, 2020 at 09:47 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -75,10 +75,14 @@ CREATE TABLE `exam` (
 --
 
 INSERT INTO `exam` (`id`, `phase`, `subject`, `year`, `semester`, `date`, `time`, `room`, `examiner_t`, `examiner_s`, `ownerID`) VALUES
-(82, 1, '204361', 2020, 1, '2020-09-10', 1, 'CSB100-1', 'T1', NULL, 'S1'),
-(83, 1, '204321', 2020, 1, '2020-09-13', 3, 'CSB100-1', 'T2', NULL, 'S1'),
+(82, 1, '204361', 2020, 1, '2020-09-10', 1, 'CSB100-1', 'T2', 'S1', 'S1'),
+(83, 1, '204321', 2020, 1, '2020-09-13', 3, 'CSB100-1', 'T2', 'S1', 'S1'),
 (84, 2, '204321', 2020, 1, '2020-11-10', 2, 'CSB100-1', 'T2', NULL, 'S1'),
-(85, 2, '204361', 2020, 1, '2020-11-13', 3, 'CSB100-1', 'T1', NULL, 'S1');
+(85, 2, '204361', 2020, 1, '2020-11-13', 3, 'CSB100-1', 'T1', NULL, 'S1'),
+(87, 1, '204211', 2021, 2, '2020-10-10', 2, 'CSB100-1', 'T1', 'S1', 'S1'),
+(88, 1, '204202', 2025, 2, '2020-10-09', 1, 'CS203', 'T1', 'S1', 'S1'),
+(89, 2, '204211', 2019, 1, '2019-12-01', 2, 'CSB100-1', 'T3', NULL, 'S1'),
+(90, 2, '204361', 2021, 1, '2020-11-27', 1, 'CSB100-1', 'T1', NULL, 'S1');
 
 -- --------------------------------------------------------
 
@@ -219,7 +223,7 @@ INSERT INTO `user` (`id`, `fname`, `lname`, `access`, `email`, `password`) VALUE
 ('610510665', 'นายภูริภัทร', 'สิวะโภไคยกุล', 1, 'Puripat.si@cmu.ac.th', 'Puripat'),
 ('610510710', 'นายสหัสวรรษ', 'ปัญจขันธ์', 1, 'sahassawas_panjakan@cmu.ac.th', 'sahassawas'),
 ('610510803', 'นายธเนศ ', 'สิงห์ลอ', 1, 'Tanad_s@cmu.ac.th', 'Tanad'),
-('610510809', 'นายวสันต์ ', 'แพทย์รัตน์', 1, 'wasun_pa@cmu.ac.th', 'wasun'),
+('610510809', 'นายวสันต์ ', 'แพทย์รัตน์', 1, 'wasun_pa@cmu.ac.th', '1111'),
 ('610510815', 'นายสิทธา', 'สินประสาธน์', 1, 'sittha_sinprasat@cmu.ac.th', 'sittha'),
 ('S1', 'นางสาววราภรณ์', 'อินสม', 3, 'insom.waraporn@cmu.ac.th', 'insom'),
 ('T1', 'ผู้ช่วยศาสตราจารย์ ดร.วัชรี', 'จำปามูล', 2, 'wjumpa@cmu.ac.th', 'wjumpa'),
@@ -332,7 +336,7 @@ ALTER TABLE `enroll`
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `phase`
