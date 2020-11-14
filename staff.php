@@ -45,26 +45,26 @@ mysqli_set_charset($conn, "utf8");
 	});
 </script>
 
-<div class="container top">
-<center><h1 class="text-light">เพิ่มวิชาสอบ</h1></center>
+<div class="container top"><!--page UI-->
+<center><h1 class="text-light">เพิ่มวิชาสอบ</h1></center><!--add subject-->
 	<div class="card">
 		
 		<form action="?page=insert" method="POST">
 			<table width="100%" border=" 0" class="table table-striped table-hover">
 				<tbody>
 					<tr>
-						<td>ผู้กรอก:</td>
+						<td>ผู้กรอก:</td><!--show id user-->
 						<td class="text-danger"><input type="text" name="id" class="form-control" value="<?php echo ($idUser); ?>" required disabled></td>
 					</tr>
 					<tr>
-						<td>ปีการศึกษา:</td>
+						<td>ปีการศึกษา:</td><!--add year-->
 						<td class="text-danger">
 							<input type="text" name="year" class="form-control datepicker" placeholder="ค.ศ." required>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="semester">ภาคการศึกษา:</label>
+							<label for="semester">ภาคการศึกษา:</label><!--select semester-->
 						</td>
 						<td class="text-danger">
 							<select name="semester" id="semester" class="form-control" required>
@@ -80,14 +80,14 @@ mysqli_set_charset($conn, "utf8");
 							$sql = "SELECT * FROM phase ";
 							$result = $conn->query($sql);
 							?>
-							ช่วงสอบ:
+							ช่วงสอบ:<!--select phase exam-->
 						</td>
 						<td class="text-danger">
 							<select name='phase' class="form-control" required>
 								<option value></option>
 								<?php
 								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) { //begin while
+									while ($row = $result->fetch_assoc()) {
 										$id = $row['id'];
 										$name = $row['name'];
 										echo "<option value = '$id'> $name </option>";
@@ -98,7 +98,7 @@ mysqli_set_charset($conn, "utf8");
 						</td>
 					</tr>
 					<tr>
-						<td><label for="date">วันที่:</label></td>
+						<td><label for="date">วันที่:</label></td><!--select date-->
 						<td class="text-danger"><input type="date" id="date" name="date" class="form-control" required></td>
 					</tr>
 					<tr>
@@ -106,13 +106,13 @@ mysqli_set_charset($conn, "utf8");
 							$sql = "SELECT id, name FROM subject";
 							$result = $conn->query($sql);
 							?>
-							วิชา:
+							วิชา:<!--select subject-->
 						<td class="text-danger">
 							<select name='subject' class="form-control" required>
 								<option value></option>
 								<?php
 								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) { //begin while
+									while ($row = $result->fetch_assoc()) {
 										$code = $row['id'];
 										$name = $row['name'];
 										echo "<option value = '$code'> $code - $name </option>";
@@ -127,14 +127,14 @@ mysqli_set_charset($conn, "utf8");
 							$sql = "SELECT name FROM room ";
 							$result = $conn->query($sql);
 							?>
-							ห้องสอบ:
+							ห้องสอบ:<!--select room-->
 						</td>
 						<td class="text-danger">
 							<select name='room' class="form-control" required>
 								<option value></option>
 								<?php
 								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) { //begin while
+									while ($row = $result->fetch_assoc()) {
 										$name = $row['name'];
 										echo "<option value = '$name'> $name </option>";
 									}
@@ -148,14 +148,14 @@ mysqli_set_charset($conn, "utf8");
 							$sql = "SELECT id, timeStart, timeFinish FROM timeexam ";
 							$result = $conn->query($sql);
 							?>
-							เวลาสอบ:
+							เวลาสอบ:<!--select time exam-->
 						</td>
 						<td class="text-danger">
 							<select name='time' class="form-control" required>
 								<option value></option>
 								<?php
 								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) { //begin while
+									while ($row = $result->fetch_assoc()) {
 										$time = $row['id'];
 										$time_start = $row['timeStart'];
 										$time_end = $row['timeFinish'];
@@ -171,7 +171,7 @@ mysqli_set_charset($conn, "utf8");
 							$sql = "SELECT id, fname, lname FROM user WHERE access=2";
 							$result = $conn->query($sql);
 							?>
-							ผู้คุมสอบ(อาจารย์):
+							ผู้คุมสอบ(อาจารย์):<!--select examiner(teacher)-->
 						</td>
 						<td class="text-danger">
 							<select name='examiner_t' class="form-control" required>
@@ -192,7 +192,7 @@ mysqli_set_charset($conn, "utf8");
 						</td>
 					</tr>
 					<tr>
-						<td>ผู้คุมสอบ(เจ้าหน้าที่):
+						<td>ผู้คุมสอบ(เจ้าหน้าที่):<!--select examiner(staff)-->
 							<?php
 							$sql = "SELECT id, fname, lname FROM user WHERE access=3";
 							$result = $conn->query($sql);
