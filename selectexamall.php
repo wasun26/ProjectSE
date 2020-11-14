@@ -34,8 +34,8 @@ $num_row = $result->num_rows;
                 </select>
                 <select name="year" class="form-control">
                     <?php
-                    if ($num_row > 0) {
-                        while ($row = $result->fetch_assoc()) {
+                    if ($num_row > 0) { //begin if
+                        while ($row = $result->fetch_assoc()) { //begin while
                             $year = $row['year'];
                             echo ("<option value = '$year'> $year </option>");
                         }

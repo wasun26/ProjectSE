@@ -46,7 +46,7 @@
             LEFT JOIN timeexam ON exam.time = timeexam.id 
             WHERE exam.phase = $phase AND exam.semester = $semester AND exam.year = $year 
             ORDER BY exam.year, timeexam.timeStart";
-    if ($phase == "1") {
+    if ($phase == "1") { 
         $phase = "Midterm";
     } else {
         $phase = "Final";
