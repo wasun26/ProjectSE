@@ -4,7 +4,6 @@
     .top {
       margin-top: 3.5%;
     }
-
     .top_neg {
       margin-top: -5%;
     }
@@ -15,7 +14,6 @@ if (!isset($_SESSION['login_true'])) {
   echo ("<meta http-equiv=refresh content=0;URL=login.php>");
   exit;
 }
-
 include("config.php");
 
 $id = $_POST['id'];
@@ -40,17 +38,13 @@ if ($conn->connect_error) {
 }
 
 mysqli_set_charset($conn, "utf8");
-
-
-// $sql = "UPDATE exam SET 
-// WHERE  exam.id  = '$id'";
 ?>
 <?php
 $sql = "SELECT phase, semester, date, room, time, examiner_t, examiner_s from exam where id != $id";
 $result = $conn->query($sql);
 $update = TRUE;
 if ($result->num_rows > 0) {  //begin if
-  while ($row = $result->fetch_assoc()) {
+  while ($row = $result->fetch_assoc()) { //begin while
     $phase_db = $row['phase'];
     $semester_db = $row['semester'];
     $date_db = $row['date'];
@@ -69,9 +63,9 @@ if ($result->num_rows > 0) {  //begin if
       $update = FALSE;
     }
     break;
-  }
-}
-if ($update == TRUE) {
+  } //end while
+} //end if
+if ($update == TRUE) { //begin if
   if ($examiner_s != 'NULL') {
     $sql = "UPDATE exam SET exam.phase = '$phase',
     exam.semester = '$semester',
@@ -91,11 +85,11 @@ if ($update == TRUE) {
     exam.examiner_s = NULL
     WHERE  exam.id  = '$id'";
   }
-}
+}// end
 $conn->query($sql);
 $conn->close();
 
-if ($sql and $update == TRUE) {
+if ($sql and $update == TRUE) {//begin if
 ?>
   <div class="container top" style="width: 30%;">
     <div class='card'>
@@ -109,13 +103,12 @@ if ($sql and $update == TRUE) {
           <div class='swal2-success-circular-line-right' style='background-color: rgb(255, 255, 255);'></div>
         </div>
       </div>
-      <span class="d-flex justify-content-center top_neg">แก้ไขเสร็จแล้ว</span><br>  
-      
+      <span class="d-flex justify-content-center top_neg">แก้ไขเสร็จแล้ว</span><br>
       <div class='card-footer d-flex justify-content-center'>
         <a href='?page=main' class='btn btn-primary'>กลับไปหน้าหลัก</a>
       </div>
     </div>
   </div>
 <?php
-}
+}// end
 ?>

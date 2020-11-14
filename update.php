@@ -28,16 +28,15 @@ if ($conn->connect_error) {
 }
 
 mysqli_set_charset($conn, "utf8");
-if (isset($_POST['id'])) {
+if (isset($_POST['id'])) { //begin if
 	$input = $_POST['id'];
 	$sql = "SELECT e.* from exam e where e.id = '$input'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
 ?>
 	<div class="container top">
-	<center><h1 class="text-light">แก้ไขวิชาสอบ</h1></center>
-		<div class="card">
-			
+		<center><h1 class="text-light">แก้ไขวิชาสอบ</h1></center>
+		<div class="card">			
 			<form action="?page=edit" method="POST">
 				<input type='hidden' name='id' value="<?php echo ($row['id']); ?>">
 				<table width="100%" border=" 0" class="table table-striped table-hover">
@@ -45,9 +44,9 @@ if (isset($_POST['id'])) {
 						<tr>
 							<td>ปีการศึกษา:</td>
 							<td><input type="text" name="year" value="<?php
-																		$year = $row['year'];
-																		echo "$year";
-																		?>" disabled></a></td>
+																	$year = $row['year'];
+																	echo "$year";
+																	?>" disabled></a></td>
 						</tr>
 						<tr>
 							<td><label for="semester">ภาคการศึกษา:</label></td>
@@ -68,9 +67,6 @@ if (isset($_POST['id'])) {
 										$i++;
 									}
 									?>
-									<!-- <option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option> -->
 								</select></td>
 						</tr>
 						<tr>
@@ -81,7 +77,6 @@ if (isset($_POST['id'])) {
 									$i = 1;
 									while ($i != 3) {
 										echo "<option value ='$i'"; ?>
-
 										<?php
 										if ($row['phase'] == $i) {
 											echo "selected";
@@ -98,8 +93,6 @@ if (isset($_POST['id'])) {
 										$i++;
 									}
 									?>
-									<!-- <option value="1">Midterm</option>
-							<option value="2">Final</option> -->
 								</select></td>
 						</tr>
 						<tr>
@@ -116,13 +109,13 @@ if (isset($_POST['id'])) {
 								<select name='subject' disabled>
 									<option value='<?php echo ($row['subject']) ?>' disabled> เลือก </option>
 									<?php
-									if ($result->num_rows > 0) {
+									if ($result->num_rows > 0) { //begin if
 										while ($row = $result->fetch_assoc()) { //begin while
 											$code = $row['id'];
 											$name = $row['name'];
 											echo "<option value = '$code'> $code - $name </option>";
-										}
-									}
+										} //end while
+									} //end if
 									?>
 								</select>
 							</td>
@@ -264,7 +257,7 @@ if (isset($_POST['id'])) {
 	</div>
 
 
-<?php
+<?php //end if
 } else {
 	echo ("<meta http-equiv=refresh content=0;URL=?>");
 }
