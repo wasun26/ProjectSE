@@ -86,8 +86,8 @@ mysqli_set_charset($conn, "utf8");
 							<select name='phase' class="form-control" required>
 								<option value></option>
 								<?php
-								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) {
+								if ($result->num_rows > 0) { //begin if
+									while ($row = $result->fetch_assoc()) { //begin while
 										$id = $row['id'];
 										$name = $row['name'];
 										echo "<option value = '$id'> $name </option>";
@@ -111,8 +111,8 @@ mysqli_set_charset($conn, "utf8");
 							<select name='subject' class="form-control" required>
 								<option value></option>
 								<?php
-								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) {
+								if ($result->num_rows > 0) { //begin if
+									while ($row = $result->fetch_assoc()) { //begin while
 										$code = $row['id'];
 										$name = $row['name'];
 										echo "<option value = '$code'> $code - $name </option>";
@@ -133,8 +133,8 @@ mysqli_set_charset($conn, "utf8");
 							<select name='room' class="form-control" required>
 								<option value></option>
 								<?php
-								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) {
+								if ($result->num_rows > 0) { //begin if
+									while ($row = $result->fetch_assoc()) { //begin while
 										$name = $row['name'];
 										echo "<option value = '$name'> $name </option>";
 									}
@@ -154,8 +154,8 @@ mysqli_set_charset($conn, "utf8");
 							<select name='time' class="form-control" required>
 								<option value></option>
 								<?php
-								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) {
+								if ($result->num_rows > 0) { //begin if
+									while ($row = $result->fetch_assoc()) { //begin while
 										$time = $row['id'];
 										$time_start = $row['timeStart'];
 										$time_end = $row['timeFinish'];
@@ -177,8 +177,8 @@ mysqli_set_charset($conn, "utf8");
 							<select name='examiner_t' class="form-control" required>
 								<option value></option>
 								<?php
-								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) {
+								if ($result->num_rows > 0) { //begin if
+									while ($row = $result->fetch_assoc()) { //begin while
 										if ($row['id'] != 'T0') {
 											$id = $row['id'];
 											$f_name = $row['fname'];
@@ -202,8 +202,8 @@ mysqli_set_charset($conn, "utf8");
 							<select name='examiner_s' class="form-control" required>
 								<option value></option>
 								<?php
-								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) {
+								if ($result->num_rows > 0) { //begin if
+									while ($row = $result->fetch_assoc()) { //begin while
 										if ($row['id'] != 'S0') {
 											$id = $row['id'];
 											$f_name = $row['fname'];
